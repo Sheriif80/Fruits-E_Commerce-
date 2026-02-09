@@ -14,7 +14,7 @@ class OnBoardingPageView extends StatelessWidget {
           backgroundImage: Assets.imagesPageViewBacgroundImage1,
           title: Row(
             mainAxisAlignment: .center,
-            children: [Text(" مرحبًا بك في"), Text("Fruit"), Text("HUB")],
+            children: [Text(" مرحبًا بك في  "), Text("Fruit"), Text("HUB")],
           ),
           subtitle: Text(
             "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
