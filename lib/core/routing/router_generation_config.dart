@@ -1,5 +1,6 @@
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
-import 'package:fruits_e_commerce_app/features/splash/presentations/view/splash_view.dart';
+import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
+import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
@@ -11,6 +12,12 @@ class RouterGenerationConfig {
         name: AppRoutes.splashView,
 
         builder: (context, state) => const SplashView(),
+      ),
+      GoRoute(
+        path: AppRoutes.onBoardingView,
+        name: AppRoutes.onBoardingView,
+
+        builder: (context, state) => const OnBoardingView(),
       ),
     ],
   );
