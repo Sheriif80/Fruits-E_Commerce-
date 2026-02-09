@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_e_commerce_app/core/utils/assets.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:svg_flutter/svg.dart';
 
 class SplashViewBody extends StatelessWidget {
@@ -10,7 +10,10 @@ class SplashViewBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: .spaceBetween,
       children: [
-        Row(children: [SvgPicture.asset(Assets.imagesPlant)]),
+        Row(
+          mainAxisAlignment: .end,
+          children: [SvgPicture.asset(Assets.imagesPlant)],
+        ),
         SvgPicture.asset(Assets.imagesLogo),
         SvgPicture.asset(Assets.imagesBottom, fit: BoxFit.fill),
       ],
