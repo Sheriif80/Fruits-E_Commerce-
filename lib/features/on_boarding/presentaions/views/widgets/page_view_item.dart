@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/constants.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
+import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -38,9 +42,19 @@ class PageViewItem extends StatelessWidget {
               ),
               Visibility(
                 visible: isVisible,
-                child: const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Text("تخط"),
+                child: GestureDetector(
+                  onTap: () {
+                    CacheHelper.saveData(
+                      key: kIsOnBoardingVisible,
+                      value: true,
+                    );
+
+                    GoRouter.of(context).pushReplacement(AppRoutes.loginView);
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text("تخط"),
+                  ),
                 ),
               ),
             ],

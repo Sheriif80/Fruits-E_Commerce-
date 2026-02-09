@@ -1,10 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
+import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/widgets/on_boarding_page_view.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -54,9 +57,16 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           maintainState: true,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-            child: CustomButton(text: "ابدأ الان", onPressed: () {}),
+            child: CustomButton(
+              text: "ابدأ الان",
+              onPressed: () {
+                CacheHelper.saveData(key: kIsOnBoardingVisible, value: true);
+                GoRouter.of(context).pushReplacement(AppRoutes.loginView);
+              },
+            ),
           ),
         ),
+
         const Gap(35),
       ],
     );
