@@ -2,9 +2,21 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesAppleIcon
+  /// assets/images/apple_icon.svg
+  static const String imagesAppleIcon = "assets/images/apple_icon.svg";
+
   /// Assets for imagesBottom
   /// assets/images/bottom.svg
   static const String imagesBottom = "assets/images/bottom.svg";
+
+  /// Assets for imagesFacebookIcon
+  /// assets/images/facebook_icon.svg
+  static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";
+
+  /// Assets for imagesGoogleIcon
+  /// assets/images/google_icon.svg
+  static const String imagesGoogleIcon = "assets/images/google_icon.svg";
 
   /// Assets for imagesLogo
   /// assets/images/logo.svg
