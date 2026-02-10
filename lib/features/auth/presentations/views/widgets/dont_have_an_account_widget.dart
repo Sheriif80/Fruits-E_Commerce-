@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:go_router/go_router.dart';
 
 class DontHaveAnAccountWidget extends StatelessWidget {
   const DontHaveAnAccountWidget({super.key});
@@ -15,7 +18,14 @@ class DontHaveAnAccountWidget extends StatelessWidget {
               color: const Color(0xFF949D9E),
             ),
           ),
-          const TextSpan(text: ' قم بانشاء حساب', style: Appstyles.semiBold16),
+          TextSpan(
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                GoRouter.of(context).pushNamed(AppRoutes.singupView);
+              },
+            text: ' قم بانشاء حساب',
+            style: Appstyles.semiBold16,
+          ),
         ],
       ),
       textAlign: TextAlign.center,
