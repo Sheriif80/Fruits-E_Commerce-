@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signup_cubit/signup_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/have_an_account_widget.dart';
+import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/password_text_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/terms_and_conditions.dart';
 import 'package:gap/gap.dart';
 
@@ -46,14 +47,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 hintText: 'البريد الإلكتروني',
               ),
               const Gap(16),
-              CustomTextFormField(
-                onSaved: (value) {
-                  _password = value!;
-                },
-                keyboardType: TextInputType.visiblePassword,
-                hintText: 'كلمة المرور',
-                suffixIcon: Icon(Icons.remove_red_eye),
-              ),
+              PasswordTextField(onSaved: (value) => _password = value!),
               const Gap(16),
               const TermsAndConditions(),
               const Gap(30),
