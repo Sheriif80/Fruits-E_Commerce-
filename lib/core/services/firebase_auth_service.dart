@@ -29,6 +29,9 @@ class FirebaseAuthService {
       } else if (e.code == 'weak-password') {
         debugPrint('The password provided is too weak.');
         throw CustomException('Weak password');
+      } else if (e.code == 'network-request-failed') {
+        debugPrint("An error occurred: $e");
+        throw CustomException('تأكد من الاتصال بالانترنت');
       }
       rethrow; // Pass other errors up
     } catch (e) {

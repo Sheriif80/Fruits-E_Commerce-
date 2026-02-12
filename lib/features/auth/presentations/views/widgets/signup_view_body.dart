@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signup_cubit/signup_cubit.dart';
@@ -18,6 +19,7 @@ class SignupViewBody extends StatefulWidget {
 
 class _SignupViewBodyState extends State<SignupViewBody> {
   late String _name, _email, _password;
+  bool isTermsAccepted = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -49,23 +51,36 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               const Gap(16),
               PasswordTextField(onSaved: (value) => _password = value!),
               const Gap(16),
-              const TermsAndConditions(),
+              TermsAndConditions(
+                onChecked: (value) {
+                  isTermsAccepted = value;
+                },
+              ),
               const Gap(30),
               CustomButton(
                 text: "إنشاء حساب جديد ",
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
+
+                    if (isTermsAccepted) {
+                      BlocProvider.of<SignupCubit>(
+                        context,
+                      ).createUserWithEmailAndPassword(
+                        email: _email,
+                        password: _password,
+                        name: _name,
+                      );
+                    } else {
+                      AppSnackbars.showError(
+                        context,
+                        message: "يجب الموافقة على الشروط والأحكام",
+                      );
+                    }
+                  } else {
                     setState(() {
                       _autovalidateMode = AutovalidateMode.onUserInteraction;
                     });
-                    BlocProvider.of<SignupCubit>(
-                      context,
-                    ).createUserWithEmailAndPassword(
-                      email: _email,
-                      password: _password,
-                      name: _name,
-                    );
                   }
                 },
               ),

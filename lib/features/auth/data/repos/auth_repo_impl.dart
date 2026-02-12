@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_e_commerce_app/core/errors/custom_exception.dart';
@@ -26,6 +28,7 @@ class AuthRepoImpl extends AuthRepo {
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
+      log("An error occurred: ${e.toString()}");
       return left(ServerFailure("An error occurred: $e"));
     }
   }

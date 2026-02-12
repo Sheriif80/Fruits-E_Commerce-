@@ -3,7 +3,8 @@ import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 
 class TermsAndConditions extends StatefulWidget {
-  const TermsAndConditions({super.key});
+  const TermsAndConditions({super.key, required this.onChecked});
+  final ValueChanged<bool> onChecked;
 
   @override
   State<TermsAndConditions> createState() => _TermsAndConditionsState();
@@ -17,13 +18,14 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
       children: [
         Checkbox(
           value: isChecked,
+          activeColor: AppColors.lightpPrimaryColor,
           onChanged: (value) {
             setState(() {
               isChecked = value!;
+              widget.onChecked(isChecked);
             });
           },
         ),
-
         Expanded(
           child: Text.rich(
             TextSpan(
@@ -40,16 +42,8 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
                     color: AppColors.lightpPrimaryColor,
                   ),
                 ),
-
                 TextSpan(
-                  text: 'الخاصة ',
-                  style: Appstyles.semiBold13.copyWith(
-                    color: AppColors.lightpPrimaryColor,
-                  ),
-                ),
-
-                TextSpan(
-                  text: 'بنا ',
+                  text: 'الخاصة بنا',
                   style: Appstyles.semiBold13.copyWith(
                     color: AppColors.lightpPrimaryColor,
                   ),
