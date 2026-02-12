@@ -21,7 +21,7 @@ class SocialLoginButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Color(0xFFDCDEDE), width: 1),
+            side: const BorderSide(color: Color(0xFFDCDEDE)),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
