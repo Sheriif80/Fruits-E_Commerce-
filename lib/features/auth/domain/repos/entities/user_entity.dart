@@ -1,7 +1,7 @@
 class UserEntity {
   final String? email;
   final String? password;
-  final String userId;
+  final String? userId;
 
   const UserEntity({
     required this.email,
