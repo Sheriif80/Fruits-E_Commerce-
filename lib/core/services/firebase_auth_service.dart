@@ -1,5 +1,6 @@
 import 'dart:developer'; // Better for logging than debugPrint
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruits_e_commerce_app/core/errors/custom_exception.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -159,6 +160,54 @@ class FirebaseAuthService {
     } catch (e) {
       log("Generic Exception: $e");
       throw CustomException('حدث خطأ غير متوقع');
+    }
+  }
+
+  Future<User> signInWithFacebook() async {
+    try {
+      // 1. Trigger Facebook Login
+      final LoginResult result = await FacebookAuth.instance.login();
+
+      // 2. Check if user cancelled
+      if (result.status == LoginStatus.cancelled) {
+        throw CustomException('تم إلغاء تسجيل الدخول بواسطة فيسبوك');
+      }
+
+      // 3. Check for specific Facebook errors
+      if (result.status == LoginStatus.failed) {
+        throw CustomException('فشل تسجيل الدخول بواسطة فيسبوك');
+      }
+
+      // 4. Create a credential from the access token
+      final OAuthCredential credential = FacebookAuthProvider.credential(
+        result.accessToken!.tokenString,
+      );
+
+      // 5. Sign in to Firebase
+      return (await FirebaseAuth.instance.signInWithCredential(
+        credential,
+      )).user!;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'account-exists-with-different-credential') {
+        throw CustomException(
+          'يوجد حساب بالفعل بنفس البريد الإلكتروني ولكن بطريقة تسجيل دخول مختلفة',
+        );
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException('حدث خطأ في بيانات الاعتماد من فيسبوك');
+      } else if (e.code == 'operation-not-allowed') {
+        throw CustomException('تسجيل الدخول بفيسبوك غير مفعل حالياً');
+      } else if (e.code == 'user-disabled') {
+        throw CustomException('تم تعطيل هذا المستخدم');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException('تأكد من اتصالك بالإنترنت');
+      } else {
+        throw CustomException(
+          'حدث خطأ أثناء تسجيل الدخول بفيسبوك، يرجى المحاولة لاحقاً',
+        );
+      }
+    } catch (e) {
+      if (e is CustomException) rethrow;
+      throw CustomException('حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى');
     }
   }
 }
