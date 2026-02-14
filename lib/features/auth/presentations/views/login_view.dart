@@ -4,7 +4,6 @@ import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signin_cubit/signin_cubit.dart';
-import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/login_view_body.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/login_view_body_bloc_consumer.dart';
 
 class LoginView extends StatelessWidget {
