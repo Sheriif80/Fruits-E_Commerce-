@@ -1,81 +1,85 @@
+import 'dart:developer'; // Better for logging than debugPrint
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-import 'package:fruits_e_commerce_app/core/errors/custom_exception.dart'; // For debugPrint
+import 'package:fruits_e_commerce_app/core/errors/custom_exception.dart';
 
 class FirebaseAuthService {
-  // 1. Create an instance of FirebaseAuth
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // 2. Stream to listen to auth state changes (User Login/Logout)
   Stream<User?> get authStateChanges => _auth.authStateChanges();
-
-  // 3. Get current user
   User? get currentUser => _auth.currentUser;
 
   /// **Sign Up with Email & Password**
-  Future<User?> signUpWithEmailAndPassword(
-    String email,
-    String password,
-  ) async {
+  Future<User> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
       final UserCredential credential = await _auth
           .createUserWithEmailAndPassword(email: email, password: password);
-      return credential.user;
+      return credential.user!;
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
-        debugPrint('The account already exists for that email.');
-        // You can throw a custom exception here to show in UI
-        throw CustomException('Email already in use');
-      } else if (e.code == 'weak-password') {
-        debugPrint('The password provided is too weak.');
-        throw CustomException('Weak password');
-      } else if (e.code == 'network-request-failed') {
-        debugPrint("An error occurred: $e");
-        throw CustomException('تأكد من الاتصال بالانترنت');
+      log("Exception in FirebaseAuthService.signUp: ${e.code}");
+
+      // Handle specific Firebase errors
+      if (e.code == 'weak-password') {
+        throw CustomException('كلمة المرور ضعيفة جداً');
+      } else if (e.code == 'email-already-in-use') {
+        throw CustomException('البريد الإلكتروني مستخدم بالفعل');
       } else if (e.code == 'invalid-email') {
-        debugPrint("An error occurred: $e");
-        throw CustomException('Invalid email');
+        throw CustomException('عنوان البريد الإلكتروني غير صالح');
       } else if (e.code == 'operation-not-allowed') {
-        debugPrint("An error occurred: $e");
-        throw CustomException('Operation not allowed');
-      } else if (e.code == 'user-disabled') {
-        debugPrint("An error occurred: $e");
-        throw CustomException('User is disabled');
+        throw CustomException('عملية التسجيل غير مفعلة حالياً');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException('تأكد من اتصالك بالإنترنت');
+      } else {
+        // Fallback for other Firebase errors
+        throw CustomException('حدث خطأ أثناء التسجيل، يرجى المحاولة لاحقاً');
       }
-      rethrow; // Pass other errors up
     } catch (e) {
-      debugPrint("An error occurred: $e");
-      return null;
+      log("Generic Exception in FirebaseAuthService.signUp: $e");
+      throw CustomException('حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى');
     }
   }
 
   /// **Sign In with Email & Password**
-  Future<User?> signInWithEmailAndPassword(
-    String email,
-    String password,
-  ) async {
+  Future<User> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     try {
       final UserCredential credential = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return credential.user;
+      return credential.user!;
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-        debugPrint('Invalid email or password.');
-        throw CustomException('Invalid email or password');
+      log("Exception in FirebaseAuthService.signIn: ${e.code}");
+
+      if (e.code == 'user-not-found') {
+        throw CustomException('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      } else if (e.code == 'wrong-password') {
+        throw CustomException('البريد الإلكتروني أو كلمة المرور غير صحيحة');
       } else if (e.code == 'invalid-credential') {
-        // Newer Firebase error code
-        debugPrint('Invalid email or password.');
-        throw CustomException('Invalid email or password');
+        // Important: This is the new error code for invalid login in newer Firebase versions
+        throw CustomException('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      } else if (e.code == 'user-disabled') {
+        throw CustomException('تم تعطيل هذا الحساب، يرجى التواصل مع الدعم');
+      } else if (e.code == 'invalid-email') {
+        throw CustomException('عنوان البريد الإلكتروني غير صالح');
+      } else if (e.code == 'too-many-requests') {
+        throw CustomException(
+          'تم تجاوز الحد المسموح من المحاولات، حاول لاحقاً',
+        );
       } else if (e.code == 'network-request-failed') {
-        debugPrint("An error occurred: $e");
-        throw CustomException('تأكد من الاتصال بالانترنت');
+        throw CustomException('تأكد من اتصالك بالإنترنت');
+      } else {
+        throw CustomException(
+          'حدث خطأ أثناء تسجيل الدخول، يرجى المحاولة لاحقاً',
+        );
       }
-      rethrow;
     } catch (e) {
-      debugPrint("An error occurred: $e");
-      return null;
+      log("Generic Exception in FirebaseAuthService.signIn: $e");
+      throw CustomException('حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى');
     }
   }
 
@@ -84,13 +88,18 @@ class FirebaseAuthService {
     await _auth.signOut();
   }
 
-  /// **Password Reset Email**
+  /// **Password Reset**
   Future<void> sendPasswordResetEmail(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      debugPrint("Error sending password reset email: ${e.code}");
-      throw CustomException('Error sending password reset email');
+      if (e.code == 'user-not-found') {
+        throw CustomException('لم يتم العثور على حساب بهذا البريد الإلكتروني');
+      } else if (e.code == 'invalid-email') {
+        throw CustomException('عنوان البريد الإلكتروني غير صالح');
+      } else {
+        throw CustomException('حدث خطأ، يرجى المحاولة لاحقاً');
+      }
     }
   }
 }

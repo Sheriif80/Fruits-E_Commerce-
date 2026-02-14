@@ -21,8 +21,8 @@ class AuthRepoImpl extends AuthRepo {
   }) async {
     try {
       final User? user = await firebaseAuthService.signUpWithEmailAndPassword(
-        email,
-        password,
+        email: email,
+        password: password,
       );
       return right(UserModel.fromFirebaseUser(user!));
     } on CustomException catch (e) {
@@ -40,8 +40,8 @@ class AuthRepoImpl extends AuthRepo {
   }) async {
     try {
       final User? user = await firebaseAuthService.signInWithEmailAndPassword(
-        email,
-        password,
+        email: email,
+        password: password,
       );
       return right(UserModel.fromFirebaseUser(user!));
     } on CustomException catch (e) {
