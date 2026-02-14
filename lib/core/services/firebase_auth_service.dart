@@ -1,9 +1,12 @@
 import 'dart:developer'; // Better for logging than debugPrint
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_e_commerce_app/core/errors/custom_exception.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+  bool _googleInitialized = false;
 
   Stream<User?> get authStateChanges => _auth.authStateChanges();
   User? get currentUser => _auth.currentUser;
@@ -85,6 +88,8 @@ class FirebaseAuthService {
 
   /// **Sign Out**
   Future<void> signOut() async {
+    await _googleSignIn.signOut();
+
     await _auth.signOut();
   }
 
@@ -100,6 +105,60 @@ class FirebaseAuthService {
       } else {
         throw CustomException('حدث خطأ، يرجى المحاولة لاحقاً');
       }
+    }
+  }
+
+  /// **Sign In with Google**
+  Future<User> signInWithGoogle() async {
+    try {
+      // Initialize only once
+      if (!_googleInitialized) {
+        await _googleSignIn.initialize();
+        _googleInitialized = true;
+      }
+
+      final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
+
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+      );
+
+      final UserCredential userCredential = await _auth.signInWithCredential(
+        credential,
+      );
+
+      return userCredential.user!;
+    } on GoogleSignInException catch (e) {
+      log("GoogleSignInException: ${e.code}");
+
+      switch (e.code) {
+        case GoogleSignInExceptionCode.canceled:
+          throw CustomException('تم إلغاء تسجيل الدخول');
+
+        case GoogleSignInExceptionCode.interrupted:
+          throw CustomException('تم مقاطعة تسجيل الدخول');
+
+        case GoogleSignInExceptionCode.clientConfigurationError:
+          throw CustomException('خطأ في إعداد Google Sign-In');
+
+        default:
+          throw CustomException('تأكد من اتصالك بالإنترنت أو حاول لاحقاً');
+      }
+    } on FirebaseAuthException catch (e) {
+      log("FirebaseAuthException: ${e.code}");
+
+      if (e.code == 'account-exists-with-different-credential') {
+        throw CustomException('يوجد حساب بنفس البريد ولكن بطريقة تسجيل مختلفة');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException('بيانات تسجيل الدخول غير صالحة');
+      } else {
+        throw CustomException('فشل تسجيل الدخول بواسطة Google');
+      }
+    } catch (e) {
+      log("Generic Exception: $e");
+      throw CustomException('حدث خطأ غير متوقع');
     }
   }
 }
