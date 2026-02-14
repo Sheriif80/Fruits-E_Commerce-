@@ -32,6 +32,15 @@ class FirebaseAuthService {
       } else if (e.code == 'network-request-failed') {
         debugPrint("An error occurred: $e");
         throw CustomException('تأكد من الاتصال بالانترنت');
+      } else if (e.code == 'invalid-email') {
+        debugPrint("An error occurred: $e");
+        throw CustomException('Invalid email');
+      } else if (e.code == 'operation-not-allowed') {
+        debugPrint("An error occurred: $e");
+        throw CustomException('Operation not allowed');
+      } else if (e.code == 'user-disabled') {
+        debugPrint("An error occurred: $e");
+        throw CustomException('User is disabled');
       }
       rethrow; // Pass other errors up
     } catch (e) {
@@ -59,6 +68,9 @@ class FirebaseAuthService {
         // Newer Firebase error code
         debugPrint('Invalid email or password.');
         throw CustomException('Invalid email or password');
+      } else if (e.code == 'network-request-failed') {
+        debugPrint("An error occurred: $e");
+        throw CustomException('تأكد من الاتصال بالانترنت');
       }
       rethrow;
     } catch (e) {
