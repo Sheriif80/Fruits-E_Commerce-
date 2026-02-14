@@ -7,7 +7,7 @@ import 'package:fruits_e_commerce_app/core/errors/failures.dart';
 import 'package:fruits_e_commerce_app/core/services/firebase_auth_service.dart';
 import 'package:fruits_e_commerce_app/features/auth/data/models/user_model.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
-import 'package:fruits_e_commerce_app/features/auth/domain/repos/entities/user_entity.dart';
+import 'package:fruits_e_commerce_app/features/auth/domain/entities/user_entity.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;

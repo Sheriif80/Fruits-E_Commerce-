@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
-import 'package:fruits_e_commerce_app/features/auth/domain/repos/entities/user_entity.dart';
+import 'package:fruits_e_commerce_app/features/auth/domain/entities/user_entity.dart';
 import 'package:meta/meta.dart';
 
 part 'signup_state.dart';
