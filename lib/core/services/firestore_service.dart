@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fruits_e_commerce_app/core/services/database_service.dart';
-import 'package:fruits_e_commerce_app/features/auth/data/models/user_model.dart';
-import 'package:fruits_e_commerce_app/features/auth/domain/entities/user_entity.dart';
 
 class FirestoreService implements DatabaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -15,12 +13,16 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<UserEntity> getUserData({
+  Future<Map<String, dynamic>> getData({
     required String path,
     required String userId,
   }) async {
-    final data = await firestore.collection(path).doc(userId).get();
+    final snapshot = await firestore.collection(path).doc(userId).get();
+    final data = snapshot.data();
 
-    return UserModel.fromJson(data.data() as Map<String, dynamic>);
+    if (data == null) {
+      throw StateError('User doc not found: $path/$userId');
+    }
+    return data; // Map<String, dynamic>
   }
 }
