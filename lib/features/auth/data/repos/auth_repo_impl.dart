@@ -109,7 +109,7 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<dynamic> addUserData({required UserEntity user}) async {
+  Future<void> addUserData({required UserEntity user}) async {
     await databaseService.addData(
       path: AppEndPoints.addUserData,
       data: user.toMap(),
