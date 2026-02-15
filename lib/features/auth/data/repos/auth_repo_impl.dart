@@ -25,8 +25,9 @@ class AuthRepoImpl extends AuthRepo {
     required String password,
     required String name,
   }) async {
+    User? user;
     try {
-      final User user = await firebaseAuthService.signUpWithEmailAndPassword(
+      user = await firebaseAuthService.signUpWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -34,8 +35,14 @@ class AuthRepoImpl extends AuthRepo {
       await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteAccount();
+      }
       return left(ServerFailure(e.message));
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteAccount();
+      }
       log("An error occurred: ${e.toString()}");
       return left(ServerFailure("An error occurred, please try again later"));
     }

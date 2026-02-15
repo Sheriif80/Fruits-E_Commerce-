@@ -109,6 +109,11 @@ class FirebaseAuthService {
     }
   }
 
+  /// **Delete Account**
+  Future<void> deleteAccount() async {
+    await _auth.currentUser!.delete();
+  }
+
   /// **Sign In with Google**
   Future<User> signInWithGoogle() async {
     try {
