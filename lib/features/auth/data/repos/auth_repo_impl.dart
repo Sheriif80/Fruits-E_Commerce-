@@ -31,7 +31,11 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      final userEntity = UserEntity(name: name, email: email, userId: user.uid);
+      final userEntity = UserEntity(
+        name: name,
+        email: email.toLowerCase(),
+        userId: user.uid,
+      );
       await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
@@ -58,7 +62,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      final userEntity = await getUserData(userId: user.uid);
+      return right(userEntity);
     } on CustomException catch (e) {
       log("An error occurred: ${e.message}");
       return left(ServerFailure(e.message));
@@ -100,9 +105,15 @@ class AuthRepoImpl extends AuthRepo {
       await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteAccount();
+      }
       log("An error occurred: ${e.message}");
       return left(ServerFailure(e.message));
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteAccount();
+      }
       log("An error occurred: ${e.toString()}");
       return left(ServerFailure("An error occurred, please try again later"));
     }
@@ -113,6 +124,7 @@ class AuthRepoImpl extends AuthRepo {
     await databaseService.addData(
       path: AppEndPoints.addUserData,
       data: user.toMap(),
+      documentID: user.userId,
     );
   }
 
