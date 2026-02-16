@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signin_cubit/signin_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/login_view_body.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginViewBodyBlocConsumer extends StatelessWidget {
   const LoginViewBodyBlocConsumer({super.key});
@@ -19,6 +21,7 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
         if (state is SigninSuccess) {
           EasyLoading.dismiss();
           AppSnackbars.showSuccess(context, message: "تم تسجيل الدخول بنجاح");
+          GoRouter.of(context).pushReplacement(AppRoutes.homeView);
         }
 
         if (state is SigninFailure) {

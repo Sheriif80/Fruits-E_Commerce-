@@ -95,18 +95,19 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 },
               ),
               const Gap(16),
-              Platform.isIOS
-                  ? Column(
-                      children: [
-                        SocialLoginButton(
-                          image: Assets.imagesAppleIcon,
-                          title: "تسجيل بواسطة أبل",
-                          onPressed: () {},
-                        ),
-                        const Gap(16),
-                      ],
-                    )
-                  : const SizedBox(),
+              Visibility(
+                visible: Platform.isIOS,
+                child: Column(
+                  children: [
+                    SocialLoginButton(
+                      image: Assets.imagesAppleIcon,
+                      title: "تسجيل بواسطة أبل",
+                      onPressed: () {},
+                    ),
+                    const Gap(16),
+                  ],
+                ),
+              ),
               SocialLoginButton(
                 image: Assets.imagesFacebookIcon,
                 title: "تسجيل بواسطة فيسبوك",

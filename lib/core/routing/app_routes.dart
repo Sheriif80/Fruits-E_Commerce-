@@ -3,4 +3,5 @@ class AppRoutes {
   static const String onBoardingView = '/OnBoardingView';
   static const String loginView = '/LoginView';
   static const String singupView = '/SingupView';
+  static const String homeView = '/HomeView';
 }
