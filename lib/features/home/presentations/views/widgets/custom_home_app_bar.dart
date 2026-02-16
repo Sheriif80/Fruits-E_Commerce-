@@ -13,12 +13,12 @@ class CustomHomeAppBar extends StatelessWidget {
       title: Text(
         'صباح الخير !..',
         textAlign: TextAlign.right,
-        style: Appstyles.regular16.copyWith(color: const Color(0xFF949D9E)),
+        style: Appstyles.semiBold16.copyWith(color: const Color(0xFF949D9E)),
       ),
       subtitle: Text(
         'شريف أشرف',
         textAlign: TextAlign.right,
-        style: Appstyles.regular16.copyWith(color: const Color(0xFF0C0D0D)),
+        style: Appstyles.bold16.copyWith(color: const Color(0xFF0C0D0D)),
       ),
       trailing: SvgPicture.asset(Assets.imagesNotification),
     );

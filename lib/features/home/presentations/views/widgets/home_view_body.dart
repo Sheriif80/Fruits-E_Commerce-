@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_search_text_field.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/custom_home_app_bar.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/featured_list_view.dart';
 import 'package:gap/gap.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -10,12 +11,18 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Column(
-              children: [CustomHomeAppBar(), Gap(16), CustomSearchTextField()],
+              children: [
+                CustomHomeAppBar(),
+                Gap(16),
+                CustomSearchTextField(),
+                Gap(12),
+                FeaturedListView(),
+              ],
             ),
           ),
         ],
