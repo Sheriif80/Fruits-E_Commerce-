@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_search_text_field.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/best_seller_header.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/custom_home_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/featured_list_view.dart';
 import 'package:gap/gap.dart';
@@ -22,6 +23,8 @@ class HomeViewBody extends StatelessWidget {
                 CustomSearchTextField(),
                 Gap(12),
                 FeaturedListView(),
+                Gap(12),
+                BestSellerHeader(),
               ],
             ),
           ),
