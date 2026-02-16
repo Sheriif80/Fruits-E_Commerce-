@@ -17,7 +17,7 @@ class FruitItem extends StatelessWidget {
         children: [
           Column(
             children: [
-              const SizedBox(height: 15),
+              const SizedBox(height: 12),
               AspectRatio(
                 aspectRatio: 114 / 80,
                 child: Image.asset(Assets.imagesStrawberryTest),
