@@ -17,13 +17,13 @@ class _NavBarItemState extends State<NavBarItem>
   @override
   Widget build(BuildContext context) {
     return AnimatedSize(
-      duration: const Duration(milliseconds: 250),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeOutCubic,
       alignment: Alignment.center,
       child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 220),
-        switchInCurve: Curves.easeOutCubic,
-        switchOutCurve: Curves.easeInCubic,
+        duration: const Duration(milliseconds: 300),
+        switchInCurve: Curves.linearToEaseOut,
+        switchOutCurve: Curves.easeOutCubic,
         transitionBuilder: (child, animation) {
           final scaleAnimation = Tween<double>(begin: 0.95, end: 1.0).animate(
             CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
