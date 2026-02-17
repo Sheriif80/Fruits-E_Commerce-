@@ -66,6 +66,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       final userEntity = await getUserData(userId: user.uid);
+      await saveUserDataLocal(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       log("An error occurred: ${e.message}");
@@ -91,6 +92,7 @@ class AuthRepoImpl extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserDataLocal(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       if (user != null) {
@@ -122,6 +124,7 @@ class AuthRepoImpl extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserDataLocal(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       if (user != null) {
