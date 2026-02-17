@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fruits_e_commerce_app/constants.dart';
 import 'package:fruits_e_commerce_app/core/errors/custom_exception.dart';
 import 'package:fruits_e_commerce_app/core/errors/failures.dart';
+import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
 import 'package:fruits_e_commerce_app/core/services/database_service.dart';
 import 'package:fruits_e_commerce_app/core/services/firebase_auth_service.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_end_points.dart';
@@ -139,7 +142,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<void> addUserData({required UserEntity user}) async {
     await databaseService.addData(
       path: AppEndPoints.addUserData,
-      data: user.toMap(),
+      data: UserModel.fromEntity(user).toMap(),
       documentID: user.userId,
     );
   }
@@ -151,5 +154,12 @@ class AuthRepoImpl extends AuthRepo {
       userId: userId,
     );
     return UserModel.fromJson(data);
+  }
+
+  @override
+  Future saveUserDataLocal({required UserEntity user}) async {
+    final jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+
+    await CacheHelper.saveData(key: kUserData, value: jsonData);
   }
 }
