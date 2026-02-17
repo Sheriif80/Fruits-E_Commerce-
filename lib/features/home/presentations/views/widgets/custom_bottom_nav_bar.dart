@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
-import 'package:svg_flutter/svg.dart';
+import 'package:fruits_e_commerce_app/features/home/domain/entites/nav_bar_item_entity.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/nav_bar_item.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key});
@@ -26,38 +26,12 @@ class CustomBottomNavBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: navBarItems
+            .map((e) => NavBarItem(isSelected: false, item: e))
+            .toList(),
+      ),
     );
-  }
-}
-
-class NavBarItem extends StatelessWidget {
-  const NavBarItem({super.key, required this.isSelected});
-  final bool isSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return isSelected
-        ? const ActiveItem(image: Assets.imagesNavBarIconsHome)
-        : const InActiveItem();
-  }
-}
-
-class InActiveItem extends StatelessWidget {
-  const InActiveItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(Assets.imagesNavBarIconsHome);
-  }
-}
-
-class ActiveItem extends StatelessWidget {
-  const ActiveItem({super.key, required this.image});
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(image);
   }
 }
