@@ -14,8 +14,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 375,
-      height: 70,
+      width: MediaQuery.of(context).size.width,
+      height: 75,
       decoration: const ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
