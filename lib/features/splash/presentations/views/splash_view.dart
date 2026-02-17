@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
+import 'package:fruits_e_commerce_app/core/services/firebase_auth_service.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/widgets/splash_view_body.dart';
 import 'package:go_router/go_router.dart';
 
@@ -31,9 +33,11 @@ class _SplashViewState extends State<SplashView> {
           key: kIsOnBoardingVisible,
         );
         if (isOnBoardingVisible == true) {
-          GoRouter.of(context).go(AppRoutes.loginView);
-        } else {
-          GoRouter.of(context).go(AppRoutes.onBoardingView);
+          if (FirebaseAuthService().isUserSignedIn()) {
+            GoRouter.of(context).go(AppRoutes.homeView);
+          } else {
+            GoRouter.of(context).go(AppRoutes.loginView);
+          }
         }
       } else {
         GoRouter.of(context).go(AppRoutes.onBoardingView);

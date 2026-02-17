@@ -215,4 +215,6 @@ class FirebaseAuthService {
       throw CustomException('حدث خطأ غير متوقع، يرجى المحاولة مرة أخرى');
     }
   }
+
+  bool isUserSignedIn() => _auth.currentUser != null;
 }
