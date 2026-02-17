@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
-import 'package:svg_flutter/svg.dart';
+import 'package:fruits_e_commerce_app/core/widgets/notification_widget.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -20,7 +20,7 @@ class CustomHomeAppBar extends StatelessWidget {
         textAlign: TextAlign.right,
         style: Appstyles.bold16.copyWith(color: const Color(0xFF0C0D0D)),
       ),
-      trailing: SvgPicture.asset(Assets.imagesNotification),
+      trailing: NotificationWidget(),
     );
   }
 }

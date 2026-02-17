@@ -1,6 +1,7 @@
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/login_view.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/signup_view.dart';
+import 'package:fruits_e_commerce_app/features/best_seller/presentations/views/best_seller_view.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/home_view.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
@@ -39,6 +40,12 @@ class RouterGenerationConfig {
         name: AppRoutes.homeView,
 
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: AppRoutes.bestSellerView,
+        name: AppRoutes.bestSellerView,
+
+        builder: (context, state) => const BestSellerView(),
       ),
     ],
   );
