@@ -18,17 +18,16 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<Map<String, dynamic>> getData({
-    required String path,
-    required String userId,
-  }) async {
-    final snapshot = await firestore.collection(path).doc(userId).get();
-    final data = snapshot.data();
-
-    if (data == null) {
-      throw StateError('User doc not found: $path/$userId');
+  Future<dynamic> getData({required String path, String? docID}) async {
+    if (docID != null) {
+      final snapshot = await firestore.collection(path).doc(docID).get();
+      final data = snapshot.data();
+      return data;
+    } else {
+      final snapshot = await firestore.collection(path).get();
+      final data = snapshot.docs.map((doc) => doc.data()).toList();
+      return data;
     }
-    return data; // Map<String, dynamic>
   }
 
   @override

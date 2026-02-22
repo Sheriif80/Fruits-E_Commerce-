@@ -154,7 +154,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<UserEntity> getUserData({required String userId}) async {
     final data = await databaseService.getData(
       path: AppEndPoints.getUserData,
-      userId: userId,
+      docID: userId,
     );
     return UserModel.fromJson(data);
   }
