@@ -20,7 +20,7 @@ class CartViewBody extends StatelessWidget {
             ],
           ),
         ),
-        const CartItemsList(),
+        const CartItemsList(cartItems: []),
         const SliverToBoxAdapter(
           child: Divider(height: 20, color: Color(0xFFF1F1F5)),
         ),

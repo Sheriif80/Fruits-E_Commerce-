@@ -13,7 +13,7 @@ class CartHeader extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: const BoxDecoration(color: Color(0xFFEBF9F1)),
       child: Text(
-        'لديك 3 منتجات في سله التسوق',
+        'لديك 2 منتجات في سله التسوق',
         style: Appstyles.regular13.copyWith(color: AppColors.primaryColor),
       ),
     );

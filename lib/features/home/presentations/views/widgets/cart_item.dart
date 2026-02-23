@@ -4,12 +4,15 @@ import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
+import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_item_entity.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_item_action_buttons.dart';
 import 'package:gap/gap.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  const CartItem({super.key, required this.cartItemEntity});
+
+  final CartItemEntity cartItemEntity;
 
   @override
   Widget build(BuildContext context) {
