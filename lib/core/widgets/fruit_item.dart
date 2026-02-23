@@ -1,10 +1,13 @@
+import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
+import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
+  const FruitItem({super.key, required this.productEntity});
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +23,22 @@ class FruitItem extends StatelessWidget {
               const SizedBox(height: 12),
               AspectRatio(
                 aspectRatio: 114 / 80,
-                child: Image.asset(Assets.imagesStrawberryTest),
+                child: CachedNetworkImage(
+                  imageUrl: productEntity.imageURL!,
+                  placeholder: (context, url) => const Center(
+                    child: CustomLoadingIndicator(width: 20, height: 20),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      const Center(child: Icon(Icons.error)),
+                ),
               ),
               const Spacer(),
               ListTile(
                 dense: true,
                 visualDensity: const VisualDensity(vertical: -2),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                title: const Text(
-                  'بطيخ',
+                title: Text(
+                  productEntity.name,
                   textAlign: TextAlign.right,
                   style: Appstyles.semiBold16,
                 ),
@@ -36,7 +46,7 @@ class FruitItem extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: '30جنية ',
+                        text: '${productEntity.price} جنية ',
                         style: Appstyles.semiBold13.copyWith(
                           color: AppColors.secondaryColor,
                         ),

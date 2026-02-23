@@ -18,7 +18,7 @@ class BestSellerGridView extends StatelessWidget {
         mainAxisSpacing: 8,
       ),
       itemBuilder: (context, index) {
-        return const FruitItem();
+        return FruitItem(productEntity: products[index]);
       },
     );
   }
