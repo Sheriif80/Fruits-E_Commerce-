@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/notification_widget.dart';
 
-AppBar buildAppBar({required String title}) {
+AppBar buildAppBar({required String title, bool isNotificationVisible = true}) {
   return AppBar(
     backgroundColor: Colors.white,
-    actions: const [
+    actions: [
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: NotificationWidget(),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Visibility(
+          visible: isNotificationVisible,
+          child: const NotificationWidget(),
+        ),
       ),
     ],
     centerTitle: true,

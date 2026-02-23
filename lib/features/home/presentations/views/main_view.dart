@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_view.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/home_view.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/products_view.dart';
@@ -13,7 +14,11 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   int selectedIndex = 0;
 
-  late final List<Widget> screens = [const HomeView(), const ProductsView()];
+  late final List<Widget> screens = [
+    const HomeView(),
+    const ProductsView(),
+    const CartView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
