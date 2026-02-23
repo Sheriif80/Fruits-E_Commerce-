@@ -9,11 +9,10 @@ class CustomHomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int now = DateTime.now().hour;
     return ListTile(
       leading: Image.asset(Assets.imagesAvatar),
       title: Text(
-        now < 12 ? 'صباح الخير !..' : 'مساء الخير !..',
+        DateTime.now().hour < 12 ? 'صباح الخير !..' : 'مساء الخير !..',
         textAlign: TextAlign.right,
         style: Appstyles.semiBold16.copyWith(color: const Color(0xFF949D9E)),
       ),
