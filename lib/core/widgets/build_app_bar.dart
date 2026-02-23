@@ -4,6 +4,7 @@ import 'package:fruits_e_commerce_app/core/widgets/notification_widget.dart';
 
 AppBar buildAppBar({required String title}) {
   return AppBar(
+    backgroundColor: Colors.white,
     actions: const [
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
