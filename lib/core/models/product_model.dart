@@ -17,7 +17,7 @@ class ProductModel {
   final num avgRating;
   final int numberOfRatings;
   final List<ReviewModel> reviews;
-  final int sellinCount;
+  final int sellingCount;
 
   ProductModel({
     required this.code,
@@ -34,7 +34,7 @@ class ProductModel {
     required this.avgRating,
     required this.numberOfRatings,
     required this.reviews,
-    required this.sellinCount,
+    required this.sellingCount,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
@@ -56,7 +56,7 @@ class ProductModel {
         : List<ReviewModel>.from(
             json['reviews'].map((x) => ReviewModel.fromJson(x)),
           ),
-    sellinCount: json['sellinCount'],
+    sellingCount: json['sellingCount'],
   );
 
   ProductEntity toEntity() => ProductEntity(
@@ -90,6 +90,6 @@ class ProductModel {
     "avgRating": avgRating,
     "numberOfRatings": numberOfRatings,
     "reviews": reviews.map((e) => e.toJson()).toList(),
-    "sellinCount": sellinCount,
+    "sellingCount": sellingCount,
   };
 }
