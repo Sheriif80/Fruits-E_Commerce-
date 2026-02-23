@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/models/review_model.dart';
 
@@ -6,7 +5,6 @@ class ProductModel {
   final String code;
   final String name;
   final String description;
-  final File image;
   final num price;
   final bool isFeatured;
   final String? imageURL;
@@ -23,7 +21,6 @@ class ProductModel {
     required this.code,
     required this.name,
     required this.description,
-    required this.image,
     required this.price,
     required this.isFeatured,
     required this.imageURL,
@@ -41,7 +38,6 @@ class ProductModel {
     code: json['code'],
     name: json['name'],
     description: json['description'],
-    image: json['image'],
     price: json['price'],
     isFeatured: json['isFeatured'],
     imageURL: json['imageURL'],
@@ -63,7 +59,6 @@ class ProductModel {
     code: code,
     name: name,
     description: description,
-    image: image,
     price: price,
     isFeatured: isFeatured,
     imageURL: imageURL,

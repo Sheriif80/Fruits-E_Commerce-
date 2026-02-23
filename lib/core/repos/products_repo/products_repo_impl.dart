@@ -1,4 +1,4 @@
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
@@ -41,7 +41,7 @@ class ProductsRepoImpl implements ProductsRepo {
                 query: {
                   "limit": 10,
                   "orderBy": "sellingCount",
-                  "descending": "true",
+                  "descending": true,
                 },
               )
               as List<Map<String, dynamic>>;
