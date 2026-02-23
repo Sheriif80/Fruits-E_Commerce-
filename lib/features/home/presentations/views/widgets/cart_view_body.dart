@@ -27,7 +27,7 @@ class CartViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomButton(text: "الدفع", onPressed: () {}),
+            child: CustomButton(text: "الدفع الان", onPressed: () {}),
           ),
         ),
       ],

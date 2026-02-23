@@ -5,4 +5,12 @@ class CartItemEntity {
   int quantity;
 
   CartItemEntity({required this.productEntity, this.quantity = 1});
+
+  num calculateTotalPrice() => productEntity.price * quantity;
+
+  num calculateTotalWeight() => productEntity.unitAmount * quantity;
+
+  int increaseQuantity() => quantity++;
+
+  int decreaseQuantity() => quantity--;
 }

@@ -30,7 +30,7 @@ class CartItem extends StatelessWidget {
             errorWidget: (context, url, error) =>
                 const Center(child: Icon(Icons.error)),
 
-            imageUrl: "",
+            imageUrl: cartItemEntity.productEntity.imageURL!,
           ),
         ),
         const Gap(17),
@@ -45,7 +45,10 @@ class CartItem extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("بطيخ ", style: Appstyles.bold13),
+                      Text(
+                        cartItemEntity.productEntity.name,
+                        style: Appstyles.bold13,
+                      ),
                       GestureDetector(
                         onTap: () {},
                         child: SvgPicture.asset(Assets.imagesTrash),
@@ -54,13 +57,13 @@ class CartItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "3 كم ",
+                  "${cartItemEntity.calculateTotalWeight()} كم ",
                   style: Appstyles.bold13.copyWith(
                     color: AppColors.secondaryColor,
                   ),
                 ),
                 const Gap(6),
-                const CartItemActionButtons(),
+                CartItemActionButtons(cartItemEntity: cartItemEntity),
               ],
             ),
           ),
