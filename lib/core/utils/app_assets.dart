@@ -101,5 +101,9 @@ class Assets {
   /// Assets for imagesStrawberryTest
   /// assets/images/strawberry_test.png
   static const String imagesStrawberryTest = "assets/images/strawberry_test.png";
+
+  /// Assets for imagesTrash
+  /// assets/images/trash.svg
+  static const String imagesTrash = "assets/images/trash.svg";
 }
 
