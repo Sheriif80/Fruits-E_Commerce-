@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_header.dart';
-import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_item.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_items_list.dart';
 import 'package:gap/gap.dart';
 
 class CartViewBody extends StatelessWidget {
@@ -8,10 +9,26 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       slivers: [
+        const SliverToBoxAdapter(
+          child: Column(
+            children: [
+              CartHeader(),
+              Gap(12),
+              Divider(height: 24, color: Color(0xFFF1F1F5)),
+            ],
+          ),
+        ),
+        const CartItemsList(),
+        const SliverToBoxAdapter(
+          child: Divider(height: 20, color: Color(0xFFF1F1F5)),
+        ),
         SliverToBoxAdapter(
-          child: Column(children: [CartHeader(), Gap(24), CartItem()]),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: CustomButton(text: "الدفع", onPressed: () {}),
+          ),
         ),
       ],
     );

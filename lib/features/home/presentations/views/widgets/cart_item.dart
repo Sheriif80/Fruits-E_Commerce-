@@ -19,7 +19,7 @@ class CartItem extends StatelessWidget {
           width: 73,
           height: 92,
           padding: const EdgeInsets.all(8),
-          decoration: const BoxDecoration(color: const Color(0xFFF3F5F7)),
+          decoration: const BoxDecoration(color: Color(0xFFF3F5F7)),
           child: CachedNetworkImage(
             placeholder: (context, url) => const Center(
               child: CustomLoadingIndicator(width: 20, height: 20),
@@ -33,7 +33,6 @@ class CartItem extends StatelessWidget {
         const Gap(17),
         Expanded(
           child: Container(
-            padding: const EdgeInsets.only(left: 17.5),
             width: 73,
             height: 92,
             child: Column(
