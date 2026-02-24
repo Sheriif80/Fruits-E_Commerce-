@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_header.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_items_list.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/custom_cart_button.dart';
 import 'package:gap/gap.dart';
 
 class CartViewBody extends StatelessWidget {
@@ -34,16 +34,7 @@ class CartViewBody extends StatelessWidget {
                 child: Divider(height: 24, color: Color(0xFFF1F1F5)),
               )
             : const SliverToBoxAdapter(child: SizedBox()),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomButton(
-              text:
-                  "الدفع الان  :  ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه",
-              onPressed: () {},
-            ),
-          ),
-        ),
+        const SliverToBoxAdapter(child: CustomCartButton()),
       ],
     );
   }
