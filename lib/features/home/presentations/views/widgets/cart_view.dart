@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/cubits/care_item_cubit/cart_item_cubit.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_view_body.dart';
 
 class CartView extends StatelessWidget {
@@ -7,10 +9,13 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(title: 'السلة', isNotificationVisible: false),
+    return BlocProvider(
+      create: (context) => CartItemCubit(),
+      child: Scaffold(
+        appBar: buildAppBar(title: 'السلة', isNotificationVisible: false),
 
-      body: const SafeArea(child: CartViewBody()),
+        body: const SafeArea(child: CartViewBody()),
+      ),
     );
   }
 }
