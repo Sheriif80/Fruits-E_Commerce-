@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_view.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/home_view.dart';
@@ -22,17 +24,20 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: IndexedStack(index: selectedIndex, children: screens),
-      ),
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: selectedIndex,
-        onItemSelected: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
+    return BlocProvider(
+      create: (context) => CartCubit(),
+      child: Scaffold(
+        body: SafeArea(
+          child: IndexedStack(index: selectedIndex, children: screens),
+        ),
+        bottomNavigationBar: CustomBottomNavBar(
+          currentIndex: selectedIndex,
+          onItemSelected: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+        ),
       ),
     );
   }

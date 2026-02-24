@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_header.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_items_list.dart';
 import 'package:gap/gap.dart';
@@ -11,19 +13,25 @@ class CartViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: Column(
             children: [
-              CartHeader(),
-              Gap(12),
-              Divider(height: 24, color: Color(0xFFF1F1F5)),
+              const CartHeader(),
+              const Gap(12),
+              BlocProvider.of<CartCubit>(
+                    context,
+                  ).cartEntity.cartItems.isNotEmpty
+                  ? const Divider(height: 24, color: Color(0xFFF1F1F5))
+                  : const SizedBox(),
             ],
           ),
         ),
         const CartItemsList(cartItems: []),
-        const SliverToBoxAdapter(
-          child: Divider(height: 20, color: Color(0xFFF1F1F5)),
-        ),
+        BlocProvider.of<CartCubit>(context).cartEntity.cartItems.isNotEmpty
+            ? const SliverToBoxAdapter(
+                child: Divider(height: 24, color: Color(0xFFF1F1F5)),
+              )
+            : const SliverToBoxAdapter(child: SizedBox()),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
