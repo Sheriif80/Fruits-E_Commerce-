@@ -12,8 +12,17 @@ class CartEntity {
   void removeCartItem(CartItemEntity cartItemEntity) =>
       cartItems.remove(cartItemEntity);
 
+  CartItemEntity? findItem(ProductEntity productEntity) {
+    for (final item in cartItems) {
+      if (item.productEntity.code == productEntity.code) {
+        return item;
+      }
+    }
+    return null;
+  }
+
   bool isItemInCart(ProductEntity productEntity) =>
-      cartItems.contains(CartItemEntity(productEntity: productEntity));
+      findItem(productEntity) != null;
 
   double calculateTotalPrice() {
     double totalPrice = 0;

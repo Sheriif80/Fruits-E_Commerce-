@@ -26,7 +26,9 @@ class CartViewBody extends StatelessWidget {
             ],
           ),
         ),
-        const CartItemsList(cartItems: []),
+        CartItemsList(
+          cartItems: context.watch<CartCubit>().cartEntity.cartItems,
+        ),
         BlocProvider.of<CartCubit>(context).cartEntity.cartItems.isNotEmpty
             ? const SliverToBoxAdapter(
                 child: Divider(height: 24, color: Color(0xFFF1F1F5)),
