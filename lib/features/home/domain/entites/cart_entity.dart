@@ -9,8 +9,12 @@ class CartEntity {
   void addCartItem(CartItemEntity cartItemEntity) =>
       cartItems.add(cartItemEntity);
 
-  void removeCartItem(CartItemEntity cartItemEntity) =>
-      cartItems.remove(cartItemEntity);
+  void removeCartItem(CartItemEntity cartItemEntity) {
+    final CartItemEntity? item = findItem(cartItemEntity.productEntity);
+    if (item != null) {
+      cartItems.remove(item);
+    }
+  }
 
   CartItemEntity? findItem(ProductEntity productEntity) {
     for (final item in cartItems) {

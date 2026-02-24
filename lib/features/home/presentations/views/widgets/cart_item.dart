@@ -1,10 +1,12 @@
 import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_item_entity.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/cart_item_action_buttons.dart';
 import 'package:gap/gap.dart';
 import 'package:svg_flutter/svg.dart';
@@ -50,7 +52,11 @@ class CartItem extends StatelessWidget {
                         style: Appstyles.bold13,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.read<CartCubit>().removeProduct(
+                            cartItemEntity.productEntity,
+                          );
+                        },
                         child: SvgPicture.asset(Assets.imagesTrash),
                       ),
                     ],
