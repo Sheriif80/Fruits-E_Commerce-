@@ -14,7 +14,9 @@ class CartItemActionButtons extends StatelessWidget {
         CartItemActionButton(
           icon: Icons.add,
           color: AppColors.primaryColor,
-          onTap: cartItemEntity.increaseQuantity,
+          onTap: () {
+            cartItemEntity.increaseQuantity();
+          },
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -27,7 +29,9 @@ class CartItemActionButtons extends StatelessWidget {
           icon: Icons.remove,
           color: const Color(0xFFF3F5F7),
           iconColor: Colors.grey,
-          onTap: cartItemEntity.decreaseQuantity,
+          onTap: () {
+            cartItemEntity.decreaseQuantity();
+          },
         ),
         const Spacer(),
         Text(

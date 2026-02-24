@@ -16,6 +16,12 @@ class CartEntity {
     }
   }
 
+  void removeIfQuantityZero() {
+    if (cartItems.any((element) => element.quantity == 0)) {
+      cartItems.removeWhere((element) => element.quantity == 0);
+    }
+  }
+
   CartItemEntity? findItem(ProductEntity productEntity) {
     for (final item in cartItems) {
       if (item.productEntity.code == productEntity.code) {

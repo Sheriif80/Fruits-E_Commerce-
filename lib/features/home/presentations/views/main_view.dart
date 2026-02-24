@@ -32,6 +32,10 @@ class _MainViewState extends State<MainView> {
           if (state is CartItemAdded) {
             AppSnackbars.showInfo(context, message: "تم اضافة المنتج بنجاح");
           }
+
+          if (state is CartItemRemoved) {
+            AppSnackbars.showInfo(context, message: "تم حذف المنتج بنجاح");
+          }
         },
         child: Scaffold(
           body: SafeArea(
