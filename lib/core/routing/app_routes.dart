@@ -5,4 +5,5 @@ class AppRoutes {
   static const String singupView = '/SingupView';
   static const String homeView = '/HomeView';
   static const String bestSellerView = '/BestSellerView';
+  static const String checkoutView = '/checkoutView';
 }

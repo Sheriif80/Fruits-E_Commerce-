@@ -2,6 +2,7 @@ import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/login_view.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/signup_view.dart';
 import 'package:fruits_e_commerce_app/features/best_seller/presentations/views/best_seller_view.dart';
+import 'package:fruits_e_commerce_app/features/checkout/presentation/views/checkout_view.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/main_view.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
@@ -46,6 +47,12 @@ class RouterGenerationConfig {
         name: AppRoutes.bestSellerView,
 
         builder: (context, state) => const BestSellerView(),
+      ),
+      GoRoute(
+        path: AppRoutes.checkoutView,
+        name: AppRoutes.checkoutView,
+
+        builder: (context, state) => const CheckoutView(),
       ),
     ],
   );
