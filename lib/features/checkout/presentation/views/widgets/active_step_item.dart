@@ -4,11 +4,13 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:gap/gap.dart';
 
 class ActiveStepItem extends StatelessWidget {
-  const ActiveStepItem({super.key});
+  const ActiveStepItem({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: .center,
       children: [
         CircleAvatar(
           backgroundColor: AppColors.primaryColor,
@@ -17,7 +19,7 @@ class ActiveStepItem extends StatelessWidget {
         ),
         const Gap(4),
         Text(
-          "الشحن",
+          title,
           style: Appstyles.bold13.copyWith(color: AppColors.primaryColor),
         ),
       ],
