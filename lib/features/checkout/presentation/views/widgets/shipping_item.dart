@@ -9,37 +9,34 @@ class ShippingItem extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.price,
+    required this.isActive,
   });
 
   final String title;
   final String subtitle;
   final String price;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.only(top: 16, left: 13, right: 28, bottom: 16),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         color: const Color(0x33D9D9D9),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: isActive ? AppColors.primaryColor : Colors.transparent,
+          ),
+          borderRadius: BorderRadius.circular(4),
+        ),
       ),
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: .start,
-
           children: [
-            Container(
-              width: 18,
-              height: 18,
-              decoration: const ShapeDecoration(
-                shape: OvalBorder(
-                  side: BorderSide(
-                    color: Color(0xFF949D9E) /* Grayscale-400 */,
-                  ),
-                ),
-              ),
-            ),
+            isActive ? const ActiveDot() : const InActiveDot(),
             const Gap(10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,6 +63,39 @@ class ShippingItem extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class InActiveDot extends StatelessWidget {
+  const InActiveDot({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 18,
+      height: 18,
+      decoration: const ShapeDecoration(
+        shape: OvalBorder(
+          side: BorderSide(color: Color(0xFF949D9E) /* Grayscale-400 */),
+        ),
+      ),
+    );
+  }
+}
+
+class ActiveDot extends StatelessWidget {
+  const ActiveDot({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 18,
+      height: 18,
+      decoration: ShapeDecoration(
+        color: AppColors.primaryColor,
+        shape: OvalBorder(side: BorderSide(width: 3, color: Colors.white)),
       ),
     );
   }

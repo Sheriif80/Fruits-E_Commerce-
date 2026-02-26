@@ -14,12 +14,14 @@ class ShippingSection extends StatelessWidget {
           title: 'الدفع عند الاستلام',
           subtitle: 'التسليم من المكان',
           price: '40 جنيه',
+          isActive: true,
         ),
         Gap(16),
         ShippingItem(
           title: 'الدفع عند البطاقة البنكية',
           subtitle: 'يرجى تحديد طريقة الدفع',
           price: 'مجاني',
+          isActive: false,
         ),
       ],
     );
