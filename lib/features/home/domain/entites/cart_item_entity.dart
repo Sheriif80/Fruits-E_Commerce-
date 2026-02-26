@@ -12,5 +12,10 @@ class CartItemEntity {
 
   int increaseQuantity() => quantity++;
 
-  int decreaseQuantity() => quantity--;
+  int decreaseQuantity() {
+    if (quantity > 1) {
+      quantity--;
+    }
+    return quantity;
+  }
 }
