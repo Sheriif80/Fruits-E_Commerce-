@@ -41,7 +41,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CustomButton(
             text: "التالي",
             onPressed: () {
-              pageController.nextPage(
+              pageController.animateToPage(
+                2,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );
