@@ -10,58 +10,68 @@ class ShippingItem extends StatelessWidget {
     required this.subtitle,
     required this.price,
     required this.isActive,
+    required this.onTap,
   });
 
   final String title;
   final String subtitle;
   final String price;
   final bool isActive;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      padding: const EdgeInsets.only(top: 16, left: 13, right: 28, bottom: 16),
-      clipBehavior: Clip.antiAlias,
-      decoration: ShapeDecoration(
-        color: const Color(0x33D9D9D9),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: isActive ? AppColors.primaryColor : Colors.transparent,
-          ),
-          borderRadius: BorderRadius.circular(4),
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: const EdgeInsets.only(
+          top: 16,
+          left: 13,
+          right: 28,
+          bottom: 16,
         ),
-      ),
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: .start,
-          children: [
-            isActive ? const ActiveDot() : const InActiveDot(),
-            const Gap(10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: Appstyles.semiBold13),
-                Gap(6),
-                Text(
-                  subtitle,
-                  textAlign: TextAlign.right,
-                  style: Appstyles.regular13.copyWith(
-                    color: Colors.black.withValues(alpha: 0.50),
+        clipBehavior: Clip.antiAlias,
+        decoration: ShapeDecoration(
+          color: const Color(0x33D9D9D9),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: isActive ? AppColors.primaryColor : Colors.transparent,
+            ),
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: .start,
+            children: [
+              isActive ? const ActiveDot() : const InActiveDot(),
+              const Gap(10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: Appstyles.semiBold13),
+                  const Gap(6),
+                  Text(
+                    subtitle,
+                    textAlign: TextAlign.right,
+                    style: Appstyles.regular13.copyWith(
+                      color: Colors.black.withValues(alpha: 0.50),
+                    ),
+                  ),
+                ],
+              ),
+              const Spacer(),
+              Center(
+                child: Text(
+                  '$price ',
+                  style: Appstyles.bold13.copyWith(
+                    color: AppColors.lightpPrimaryColor,
                   ),
                 ),
-              ],
-            ),
-            Spacer(),
-            Center(
-              child: Text(
-                '$price ',
-                style: Appstyles.bold13.copyWith(
-                  color: AppColors.lightpPrimaryColor,
-                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -95,7 +105,9 @@ class ActiveDot extends StatelessWidget {
       height: 18,
       decoration: ShapeDecoration(
         color: AppColors.primaryColor,
-        shape: OvalBorder(side: BorderSide(width: 3, color: Colors.white)),
+        shape: const OvalBorder(
+          side: BorderSide(width: 3, color: Colors.white),
+        ),
       ),
     );
   }
