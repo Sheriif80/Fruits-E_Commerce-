@@ -40,7 +40,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       child: Column(
         children: [
           const Gap(15),
-          CheckoutSteps(currentStep: currentPage),
+          CheckoutSteps(
+            currentStep: currentPage,
+            pageController: pageController,
+          ),
           Expanded(
             child: CheckoutStepsPageViewBuilder(pageController: pageController),
           ),
