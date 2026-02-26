@@ -14,10 +14,16 @@ class CheckoutViewBody extends StatefulWidget {
 
 class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
+  int currentPage = 0;
 
   @override
   void initState() {
     pageController = PageController();
+    pageController.addListener(() {
+      setState(() {
+        currentPage = pageController.page!.toInt();
+      });
+    });
     super.initState();
   }
 
@@ -34,15 +40,15 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       child: Column(
         children: [
           const Gap(15),
-          const CheckoutSteps(),
+          CheckoutSteps(currentStep: currentPage),
           Expanded(
             child: CheckoutStepsPageViewBuilder(pageController: pageController),
           ),
           CustomButton(
-            text: "التالي",
+            text: currentPage == 2 ? "الدفع بواسطة PayPal" : "التالي",
             onPressed: () {
               pageController.animateToPage(
-                2,
+                currentPage + 1,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
               );
