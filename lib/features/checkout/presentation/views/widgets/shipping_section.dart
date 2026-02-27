@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/shipping_item.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
@@ -18,8 +20,9 @@ class _ShippingSectionState extends State<ShippingSection> {
         const Gap(22),
         ShippingItem(
           title: 'الدفع عند الاستلام',
-          subtitle: 'التسليم من المكان',
-          price: '40 جنيه',
+          subtitle: 'السعر يشمل مصاريف الشحن',
+          price:
+              '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 40} جنيه',
           isActive: selectedIndex == 0,
           onTap: () {
             setState(() {
@@ -29,9 +32,10 @@ class _ShippingSectionState extends State<ShippingSection> {
         ),
         const Gap(16),
         ShippingItem(
-          title: 'الدفع عند البطاقة البنكية',
-          subtitle: 'يرجى تحديد طريقة الدفع',
-          price: 'مجاني',
+          title: 'الدفع باستخدام البطاقة البنكية',
+          subtitle: 'الشحن مجاني',
+          price:
+              "${context.read<OrderEntity>().cartEntity.calculateTotalPrice()} جنيه",
           isActive: selectedIndex == 1,
           onTap: () {
             setState(() {

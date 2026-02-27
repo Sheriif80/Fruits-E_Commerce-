@@ -25,7 +25,7 @@ class CustomCartButton extends StatelessWidget {
               ).cartEntity.cartItems.isNotEmpty) {
                 GoRouter.of(context).pushNamed(
                   AppRoutes.checkoutView,
-                  extra: context.read<CartCubit>().cartEntity.cartItems,
+                  extra: context.read<CartCubit>().cartEntity,
                 );
               } else {
                 AppSnackbars.showInfo(

@@ -3,6 +3,7 @@ import 'package:fruits_e_commerce_app/features/auth/presentations/views/login_vi
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/signup_view.dart';
 import 'package:fruits_e_commerce_app/features/best_seller/presentations/views/best_seller_view.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/checkout_view.dart';
+import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_entity.dart';
 import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_item_entity.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/main_view.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
@@ -54,7 +55,7 @@ class RouterGenerationConfig {
         name: AppRoutes.checkoutView,
 
         builder: (context, state) =>
-            CheckoutView(cartItems: state.extra as List<CartItemEntity>),
+            CheckoutView(cartEntity: state.extra as CartEntity),
       ),
     ],
   );
