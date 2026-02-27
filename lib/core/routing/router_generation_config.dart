@@ -4,7 +4,6 @@ import 'package:fruits_e_commerce_app/features/auth/presentations/views/signup_v
 import 'package:fruits_e_commerce_app/features/best_seller/presentations/views/best_seller_view.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/checkout_view.dart';
 import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_entity.dart';
-import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_item_entity.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/main_view.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
