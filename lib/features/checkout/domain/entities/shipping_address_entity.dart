@@ -1,10 +1,10 @@
 class ShippingAddressEntity {
-  final String fullName;
-  final String email;
-  final String phone;
-  final String address;
-  final String city;
-  final String? appartment;
+  String fullName;
+  String email;
+  String phone;
+  String address;
+  String city;
+  String? appartment;
 
   ShippingAddressEntity({
     required this.fullName,

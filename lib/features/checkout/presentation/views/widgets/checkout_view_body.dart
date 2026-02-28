@@ -16,6 +16,8 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   late PageController pageController;
   int currentPage = 0;
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     pageController = PageController();
@@ -45,7 +47,10 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             pageController: pageController,
           ),
           Expanded(
-            child: CheckoutStepsPageViewBuilder(pageController: pageController),
+            child: CheckoutStepsPageViewBuilder(
+              pageController: pageController,
+              formKey: _formKey,
+            ),
           ),
           CustomButton(
             text: currentPage == 2 ? "الدفع بواسطة PayPal" : "التالي",
