@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/helpers/get_user_data.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/shipping_address_entity.dart';
@@ -22,6 +23,7 @@ class _CheckoutViewState extends State<CheckoutView> {
   void initState() {
     super.initState();
     orderEntity = OrderEntity(
+      userID: getUserData().userId!,
       cartEntity: widget.cartEntity,
       shippingAddress: ShippingAddressEntity(),
     );
