@@ -6,22 +6,32 @@ import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widge
 import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_entity.dart';
 import 'package:provider/provider.dart';
 
-class CheckoutView extends StatelessWidget {
+class CheckoutView extends StatefulWidget {
   const CheckoutView({super.key, required this.cartEntity});
 
   final CartEntity cartEntity;
 
   @override
+  State<CheckoutView> createState() => _CheckoutViewState();
+}
+
+class _CheckoutViewState extends State<CheckoutView> {
+  late OrderEntity orderEntity;
+
+  @override
+  void initState() {
+    super.initState();
+    orderEntity = OrderEntity(
+      cartEntity: widget.cartEntity,
+      shippingAddress: ShippingAddressEntity(),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(title: "الشحن", isNotificationVisible: false),
-      body: Provider.value(
-        value: OrderEntity(
-          cartEntity: cartEntity,
-          shippingAddress: ShippingAddressEntity(),
-        ),
-        child: const CheckoutViewBody(),
-      ),
+      body: Provider.value(value: orderEntity, child: const CheckoutViewBody()),
     );
   }
 }
