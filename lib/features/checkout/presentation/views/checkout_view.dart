@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/helpers/get_user_data.dart';
+import 'package:fruits_e_commerce_app/core/repos/order_repos/order_repo.dart';
+import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/shipping_address_entity.dart';
+import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_entity.dart';
 import 'package:provider/provider.dart';
@@ -31,9 +35,15 @@ class _CheckoutViewState extends State<CheckoutView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(title: "الشحن", isNotificationVisible: false),
-      body: Provider.value(value: orderEntity, child: const CheckoutViewBody()),
+    return BlocProvider(
+      create: (context) => AddOrderCubit(getIt.get<OrderRepo>()),
+      child: Scaffold(
+        appBar: buildAppBar(title: "الشحن", isNotificationVisible: false),
+        body: Provider.value(
+          value: orderEntity,
+          child: const CheckoutViewBody(),
+        ),
+      ),
     );
   }
 }
