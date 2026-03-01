@@ -55,6 +55,13 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           CustomButton(
             text: currentPage == 2 ? "الدفع بواسطة PayPal" : "التالي",
             onPressed: () {
+              if (currentPage == 1) {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                } else {
+                  return;
+                }
+              }
               pageController.animateToPage(
                 currentPage + 1,
                 duration: const Duration(milliseconds: 300),

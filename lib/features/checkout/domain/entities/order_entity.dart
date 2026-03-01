@@ -8,8 +8,9 @@ class OrderEntity {
   ShippingAddressEntity? shippingAddress;
   OrderEntity({
     required this.cartEntity,
+
     this.payWithCash = true,
     this.payWithCard = false,
-    this.shippingAddress,
+    required this.shippingAddress,
   });
 }

@@ -14,56 +14,62 @@ class AddressInputSection extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomTextFormField(
-              hintText: "الاسم كاملاً",
-              keyboardType: TextInputType.name,
-              onSaved: (value) {
-                context.read<OrderEntity>().shippingAddress!.fullName = value!;
-              },
-            ),
-            const Gap(16),
-            CustomTextFormField(
-              hintText: " البريد الإلكتروني",
-              keyboardType: TextInputType.emailAddress,
-              onSaved: (value) {
-                context.read<OrderEntity>().shippingAddress!.email = value!;
-              },
-            ),
-            const Gap(16),
-            CustomTextFormField(
-              hintText: "رقم الهاتف",
-              keyboardType: TextInputType.phone,
-              onSaved: (value) {
-                context.read<OrderEntity>().shippingAddress!.phone = value!;
-              },
-            ),
-            const Gap(16),
-            CustomTextFormField(
-              hintText: "العنوان",
-              keyboardType: TextInputType.streetAddress,
-              onSaved: (value) {
-                context.read<OrderEntity>().shippingAddress!.address = value!;
-              },
-            ),
-            const Gap(16),
-            CustomTextFormField(
-              hintText: "المدينة",
-              keyboardType: TextInputType.streetAddress,
-              onSaved: (value) {
-                context.read<OrderEntity>().shippingAddress!.city = value!;
-              },
-            ),
-            const Gap(16),
-            CustomTextFormField(
-              hintText: "رقم الطابق ,, الشقة",
-              keyboardType: TextInputType.streetAddress,
-              onSaved: (value) {
-                context.read<OrderEntity>().shippingAddress!.appartment = value;
-              },
-            ),
-          ],
+        child: Form(
+          key: formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          child: Column(
+            children: [
+              CustomTextFormField(
+                hintText: "الاسم كاملاً",
+                keyboardType: TextInputType.name,
+                onSaved: (value) {
+                  context.read<OrderEntity>().shippingAddress!.fullName =
+                      value!;
+                },
+              ),
+              const Gap(16),
+              CustomTextFormField(
+                hintText: " البريد الإلكتروني",
+                keyboardType: TextInputType.emailAddress,
+                onSaved: (value) {
+                  context.read<OrderEntity>().shippingAddress!.email = value!;
+                },
+              ),
+              const Gap(16),
+              CustomTextFormField(
+                hintText: "رقم الهاتف",
+                keyboardType: TextInputType.phone,
+                onSaved: (value) {
+                  context.read<OrderEntity>().shippingAddress!.phone = value!;
+                },
+              ),
+              const Gap(16),
+              CustomTextFormField(
+                hintText: "العنوان",
+                keyboardType: TextInputType.streetAddress,
+                onSaved: (value) {
+                  context.read<OrderEntity>().shippingAddress!.address = value!;
+                },
+              ),
+              const Gap(16),
+              CustomTextFormField(
+                hintText: "المدينة",
+                keyboardType: TextInputType.streetAddress,
+                onSaved: (value) {
+                  context.read<OrderEntity>().shippingAddress!.city = value!;
+                },
+              ),
+              const Gap(16),
+              CustomTextFormField(
+                hintText: "رقم الطابق ,, الشقة",
+                keyboardType: TextInputType.streetAddress,
+                onSaved: (value) {
+                  context.read<OrderEntity>().shippingAddress!.appartment =
+                      value;
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
