@@ -29,6 +29,6 @@ class CheckoutStepsPageViewBuilder extends StatelessWidget {
   List<Widget> getPages() => [
     const ShippingSection(),
     AddressInputSection(formKey: formKey),
-    const PaymentSection(),
+    PaymentSection(pageController: pageController),
   ];
 }

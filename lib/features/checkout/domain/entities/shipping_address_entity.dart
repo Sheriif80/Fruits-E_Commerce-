@@ -14,4 +14,6 @@ class ShippingAddressEntity {
     this.city,
     this.appartment,
   });
+
+  String get fullAddress => "$address, $city, $appartment";
 }

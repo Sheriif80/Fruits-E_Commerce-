@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:gap/gap.dart';
+import 'package:provider/provider.dart';
 
 class AddressSummary extends StatelessWidget {
-  const AddressSummary({super.key});
+  const AddressSummary({super.key, required this.pageController});
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +18,38 @@ class AddressSummary extends StatelessWidget {
         children: [
           const Icon(Icons.location_on_rounded),
           const Gap(4),
-          Text(
-            'شارع النيل، مبنى رقم ١٢٣',
-            style: Appstyles.regular16.copyWith(color: const Color(0xFF4E5556)),
-          ),
-          const Spacer(),
-          Row(
-            children: [
-              const Icon(Icons.edit, size: 17),
-              const Gap(5),
-              Text(
-                "تعديل",
-                style: Appstyles.semiBold13.copyWith(color: Color(0xFF949D9E)),
+          Expanded(
+            child: Text(
+              context.read<OrderEntity>().shippingAddress!.fullAddress,
+              style: Appstyles.regular16.copyWith(
+                color: const Color(0xFF4E5556),
               ),
-            ],
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+          ),
+          const Gap(8),
+          GestureDetector(
+            onTap: () {
+              pageController.animateToPage(
+                1,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+              );
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.edit, size: 17),
+                const Gap(5),
+                Text(
+                  "تعديل",
+                  style: Appstyles.semiBold13.copyWith(
+                    color: const Color(0xFF949D9E),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
