@@ -14,4 +14,22 @@ class OrderEntity {
     this.payWithCard = false,
     required this.shippingAddress,
   });
+
+  double calculateShippingCost() {
+    if (payWithCard) {
+      return 0;
+    } else {
+      return 40;
+    }
+  }
+
+  double calculateShippingDiscount() {
+    return 0;
+  }
+
+  double calculateTotalOrderPrice() {
+    return cartEntity.calculateTotalPrice() +
+        calculateShippingCost() -
+        calculateShippingDiscount();
+  }
 }
