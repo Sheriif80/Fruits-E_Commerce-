@@ -20,7 +20,9 @@ class OrderModel {
   factory OrderModel.fromEntity(OrderEntity entity) => OrderModel(
     userID: entity.userID,
     shippingAddress: ShippingAddressModel.fromEntity(entity.shippingAddress!),
-    totalPrice: entity.cartEntity.calculateTotalPrice(),
+    totalPrice: entity.payWithCard
+        ? entity.cartEntity.calculateTotalPrice()
+        : entity.cartEntity.calculateTotalPrice() + 40,
     paymentMethod: entity.payWithCard ? "Card(Paypal)" : "Cash",
     orderedProducts: entity.cartEntity.cartItems
         .map((e) => OrderedProductModel.fromEntity(e))

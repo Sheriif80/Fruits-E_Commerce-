@@ -18,7 +18,7 @@ class OrderedProductModel {
         code: cartItemEntity.productEntity.code,
         name: cartItemEntity.productEntity.name,
         quantity: cartItemEntity.quantity,
-        price: cartItemEntity.productEntity.price,
+        price: cartItemEntity.calculateTotalPrice(),
       );
 
   toJson() => {
