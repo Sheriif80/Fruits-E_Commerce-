@@ -7,6 +7,7 @@ import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/shipping_address_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
+import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/add_order_bloc_consumer.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_entity.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +42,7 @@ class _CheckoutViewState extends State<CheckoutView> {
         appBar: buildAppBar(title: "الشحن", isNotificationVisible: false),
         body: Provider.value(
           value: orderEntity,
-          child: const CheckoutViewBody(),
+          child: AddOrderBlocConsumer(child: const CheckoutViewBody()),
         ),
       ),
     );

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
+import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_steps_page_view_builder.dart';
 import 'package:gap/gap.dart';
@@ -54,7 +57,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
           CustomButton(
             text: currentPage == 2 ? "الدفع بواسطة PayPal" : "التالي",
-            onPressed: () {
+            onPressed: () async {
               if (currentPage == 1) {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
@@ -62,6 +65,13 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   return;
                 }
               }
+              if (currentPage == 2) {
+                await context.read<AddOrderCubit>().addOrder(
+                  orderEntity: context.read<OrderEntity>(),
+                );
+                return;
+              }
+
               pageController.animateToPage(
                 currentPage + 1,
                 duration: const Duration(milliseconds: 300),
