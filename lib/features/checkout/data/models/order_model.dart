@@ -17,7 +17,7 @@ class OrderModel {
     required this.orderedProducts,
   });
 
-  factory OrderModel.fromEntity(OrderEntity entity) => OrderModel(
+  factory OrderModel.fromEntity(OrderInputEntity entity) => OrderModel(
     userID: entity.userID,
     shippingAddress: ShippingAddressModel.fromEntity(entity.shippingAddress!),
     totalPrice: entity.payWithCard

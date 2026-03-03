@@ -20,7 +20,7 @@ class AddressSummary extends StatelessWidget {
           const Gap(4),
           Expanded(
             child: Text(
-              context.read<OrderEntity>().shippingAddress!.fullAddress,
+              context.read<OrderInputEntity>().shippingAddress!.fullAddress,
               style: Appstyles.regular16.copyWith(
                 color: const Color(0xFF4E5556),
               ),

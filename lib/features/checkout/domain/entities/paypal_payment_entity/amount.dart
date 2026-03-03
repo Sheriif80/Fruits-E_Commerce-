@@ -16,7 +16,7 @@ class Amount {
     'details': details?.toJson(),
   };
 
-  factory Amount.fromEntity(OrderEntity order) => Amount(
+  factory Amount.fromEntity(OrderInputEntity order) => Amount(
     total: order.calculateTotalOrderPrice().toString(),
     currency: getCurrency(),
     details: DetailsEntity.fromEntity(order),

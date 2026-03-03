@@ -63,7 +63,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
           ),
           CustomButton(
             text: currentPage == 2
-                ? context.read<OrderEntity>().payWithCash
+                ? context.read<OrderInputEntity>().payWithCash
                       ? "تأكيد الطلب"
                       : "الدفع بواسطة PayPal"
                 : "التالي",
@@ -76,9 +76,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 }
               }
               if (currentPage == 2) {
-                if (context.read<OrderEntity>().payWithCash) {
+                if (context.read<OrderInputEntity>().payWithCash) {
                   await context.read<AddOrderCubit>().addOrder(
-                    orderEntity: context.read<OrderEntity>(),
+                    orderEntity: context.read<OrderInputEntity>(),
                   );
                   return;
                 } else {
@@ -110,7 +110,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   void _processPayment(BuildContext context) {
     //// Getting those with the old context before changing it
     //// while the payment process.
-    final OrderEntity orderEntity = context.read<OrderEntity>();
+    final OrderInputEntity orderEntity = context.read<OrderInputEntity>();
     final PaypalPaymentEntity payPalPaymentEntity =
         PaypalPaymentEntity.fromEntity(orderEntity);
     final addOrderCubit = context.read<AddOrderCubit>();

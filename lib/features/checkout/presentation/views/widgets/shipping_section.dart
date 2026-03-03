@@ -24,14 +24,14 @@ class _ShippingSectionState extends State<ShippingSection>
           title: 'الدفع عند الاستلام',
           subtitle: 'السعر يشمل مصاريف الشحن',
           price:
-              '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 40} جنيه',
+              '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40} جنيه',
           isActive: selectedIndex == 0,
           onTap: () {
             setState(() {
               selectedIndex = 0;
             });
-            context.read<OrderEntity>().payWithCash = true;
-            context.read<OrderEntity>().payWithCard = false;
+            context.read<OrderInputEntity>().payWithCash = true;
+            context.read<OrderInputEntity>().payWithCard = false;
           },
         ),
         const Gap(16),
@@ -39,14 +39,14 @@ class _ShippingSectionState extends State<ShippingSection>
           title: 'الدفع باستخدام البطاقة البنكية',
           subtitle: 'الشحن مجاني',
           price:
-              "${context.read<OrderEntity>().cartEntity.calculateTotalPrice()} جنيه",
+              "${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه",
           isActive: selectedIndex == 1,
           onTap: () {
             setState(() {
               selectedIndex = 1;
             });
-            context.read<OrderEntity>().payWithCash = false;
-            context.read<OrderEntity>().payWithCard = true;
+            context.read<OrderInputEntity>().payWithCash = false;
+            context.read<OrderInputEntity>().payWithCard = true;
           },
         ),
       ],

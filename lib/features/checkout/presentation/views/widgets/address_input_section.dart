@@ -23,7 +23,7 @@ class AddressInputSection extends StatelessWidget {
                 hintText: "الاسم كاملاً",
                 keyboardType: TextInputType.name,
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress!.fullName =
+                  context.read<OrderInputEntity>().shippingAddress!.fullName =
                       value!;
                 },
               ),
@@ -32,7 +32,8 @@ class AddressInputSection extends StatelessWidget {
                 hintText: " البريد الإلكتروني",
                 keyboardType: TextInputType.emailAddress,
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress!.email = value!;
+                  context.read<OrderInputEntity>().shippingAddress!.email =
+                      value!;
                 },
               ),
               const Gap(16),
@@ -40,7 +41,8 @@ class AddressInputSection extends StatelessWidget {
                 hintText: "رقم الهاتف",
                 keyboardType: TextInputType.phone,
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress!.phone = value!;
+                  context.read<OrderInputEntity>().shippingAddress!.phone =
+                      value!;
                 },
               ),
               const Gap(16),
@@ -48,7 +50,8 @@ class AddressInputSection extends StatelessWidget {
                 hintText: "العنوان",
                 keyboardType: TextInputType.streetAddress,
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress!.address = value!;
+                  context.read<OrderInputEntity>().shippingAddress!.address =
+                      value!;
                 },
               ),
               const Gap(16),
@@ -56,7 +59,8 @@ class AddressInputSection extends StatelessWidget {
                 hintText: "المدينة",
                 keyboardType: TextInputType.streetAddress,
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress!.city = value!;
+                  context.read<OrderInputEntity>().shippingAddress!.city =
+                      value!;
                 },
               ),
               const Gap(16),
@@ -64,7 +68,7 @@ class AddressInputSection extends StatelessWidget {
                 hintText: "رقم الطابق ,, الشقة",
                 keyboardType: TextInputType.streetAddress,
                 onSaved: (value) {
-                  context.read<OrderEntity>().shippingAddress!.appartment =
+                  context.read<OrderInputEntity>().shippingAddress!.appartment =
                       value;
                 },
               ),
