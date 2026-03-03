@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_keys.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
@@ -59,7 +62,11 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             ),
           ),
           CustomButton(
-            text: currentPage == 2 ? "الدفع بواسطة PayPal" : "التالي",
+            text: currentPage == 2
+                ? context.read<OrderEntity>().payWithCash
+                      ? "تأكيد الطلب"
+                      : "الدفع بواسطة PayPal"
+                : "التالي",
             onPressed: () async {
               if (currentPage == 1) {
                 if (_formKey.currentState!.validate()) {
@@ -69,7 +76,15 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 }
               }
               if (currentPage == 2) {
-                _processPayment(context);
+                if (context.read<OrderEntity>().payWithCash) {
+                  await context.read<AddOrderCubit>().addOrder(
+                    orderEntity: context.read<OrderEntity>(),
+                  );
+                  return;
+                } else {
+                  _processPayment(context);
+                  return;
+                }
 
                 ////////////////////////
                 /*  await context.read<AddOrderCubit>().addOrder(
@@ -93,27 +108,34 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _processPayment(BuildContext context) {
+    //// Getting those with the old context before changing it
+    //// while the payment process.
+    final OrderEntity orderEntity = context.read<OrderEntity>();
+    final PaypalPaymentEntity payPalPaymentEntity =
+        PaypalPaymentEntity.fromEntity(orderEntity);
+    final addOrderCubit = context.read<AddOrderCubit>();
+    ////
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context) => PaypalCheckoutView(
           sandboxMode: true,
           clientId: kPayPalClientID,
           secretKey: kPayPalSecretKey,
-          transactions: [
-            PaypalPaymentEntity.fromEntity(
-              context.read<OrderEntity>(),
-            ).toJson(),
-          ],
+          transactions: [payPalPaymentEntity.toJson()],
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
-            print("onSuccess: $params");
+            log("onSuccess: $params");
+            Navigator.pop(context);
+            AppSnackbars.showSuccess(context, message: "تم الدفع بنجاح");
+            await addOrderCubit.addOrder(orderEntity: orderEntity);
           },
           onError: (error) {
-            print("onError: $error");
+            log("onError: $error");
             Navigator.pop(context);
+            AppSnackbars.showError(context, message: "حدث خطأ ما");
           },
           onCancel: () {
-            print('cancelled:');
+            log('cancelled:');
           },
         ),
       ),
