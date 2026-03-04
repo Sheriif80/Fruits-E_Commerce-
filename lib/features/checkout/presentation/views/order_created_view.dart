@@ -10,7 +10,7 @@ class OrderCreatedView extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(title: "الدفع", isNotificationVisible: false),
 
-      body: OrderCreatedViewBody(),
+      body: const OrderCreatedViewBody(),
     );
   }
 }
