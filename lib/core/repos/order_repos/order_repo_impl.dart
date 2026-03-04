@@ -18,6 +18,7 @@ class OrderRepoImpl implements OrderRepo {
       await databaseService.addData(
         path: AppEndPoints.addOrders,
         data: OrderModel.fromEntity(orderEntity).toJson(),
+        documentID: OrderModel.fromEntity(orderEntity).orderID,
       );
       return const Right(null);
     } catch (e) {
