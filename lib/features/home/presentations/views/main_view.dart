@@ -6,6 +6,7 @@ import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/home_view.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/products_view.dart';
+import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/profile_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -21,6 +22,7 @@ class _MainViewState extends State<MainView> {
     const HomeView(),
     const ProductsView(),
     const CartView(),
+    const ProfileView(),
   ];
 
   @override
