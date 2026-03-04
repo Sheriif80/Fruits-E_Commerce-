@@ -15,10 +15,12 @@ class OrderRepoImpl implements OrderRepo {
     required OrderInputEntity orderEntity,
   }) async {
     try {
+      // making a model before adding it, to get the orderID as a documentID
+      final orderModel = OrderModel.fromEntity(orderEntity);
       await databaseService.addData(
         path: AppEndPoints.addOrders,
-        data: OrderModel.fromEntity(orderEntity).toJson(),
-        documentID: OrderModel.fromEntity(orderEntity).orderID,
+        data: orderModel.toJson(),
+        documentID: orderModel.orderID,
       );
       return const Right(null);
     } catch (e) {
