@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
+import 'package:go_router/go_router.dart';
 
 class AddOrderBlocConsumer extends StatelessWidget {
   const AddOrderBlocConsumer({super.key, required this.child});
@@ -16,7 +18,7 @@ class AddOrderBlocConsumer extends StatelessWidget {
         if (state is AddOrderSuccess) {
           EasyLoading.dismiss();
           AppSnackbars.showSuccess(context, message: "تم اضافة الطلب بنجاح");
-          Navigator.pop(context);
+          GoRouter.of(context).pushReplacement(AppRoutes.orderCreatedView);
         }
         if (state is AddOrderError) {
           EasyLoading.dismiss();
