@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
-import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/logout_button.dart';
-import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/profile_header.dart';
-import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/profile_list_item.dart';
-import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/profile_section_title.dart';
+import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/logout_button.dart';
+import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/profile_header.dart';
+import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/profile_list_item.dart';
+import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/profile_section_title.dart';
 import 'package:gap/gap.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -15,9 +15,9 @@ class ProfileViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListView(
         children: [
-          ProfileHeader(),
+          const ProfileHeader(),
 
-          ProfileSectionTitle(title: "عام"),
+          const ProfileSectionTitle(title: "عام"),
 
           ProfileListItem(
             title: "الملف الشخصي",
@@ -54,9 +54,9 @@ class ProfileViewBody extends StatelessWidget {
             iconPath: Assets.imagesProfileIconsInfoCircle,
             onTap: () {},
           ),
-          Gap(15),
-          LogoutButton(),
-          Gap(15),
+          const Gap(15),
+          const LogoutButton(),
+          const Gap(15),
         ],
       ),
     );
