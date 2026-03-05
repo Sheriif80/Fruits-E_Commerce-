@@ -98,6 +98,38 @@ class Assets {
   /// assets/images/plant.svg
   static const String imagesPlant = "assets/images/plant.svg";
 
+  /// Assets for imagesProfileIconsBox
+  /// assets/images/profile_icons/box.svg
+  static const String imagesProfileIconsBox = "assets/images/profile_icons/box.svg";
+
+  /// Assets for imagesProfileIconsEmptyWallet
+  /// assets/images/profile_icons/empty-wallet.svg
+  static const String imagesProfileIconsEmptyWallet = "assets/images/profile_icons/empty-wallet.svg";
+
+  /// Assets for imagesProfileIconsGlobal
+  /// assets/images/profile_icons/global.svg
+  static const String imagesProfileIconsGlobal = "assets/images/profile_icons/global.svg";
+
+  /// Assets for imagesProfileIconsHeart
+  /// assets/images/profile_icons/heart.svg
+  static const String imagesProfileIconsHeart = "assets/images/profile_icons/heart.svg";
+
+  /// Assets for imagesProfileIconsInfoCircle
+  /// assets/images/profile_icons/info-circle.svg
+  static const String imagesProfileIconsInfoCircle = "assets/images/profile_icons/info-circle.svg";
+
+  /// Assets for imagesProfileIconsLogout
+  /// assets/images/profile_icons/logout.svg
+  static const String imagesProfileIconsLogout = "assets/images/profile_icons/logout.svg";
+
+  /// Assets for imagesProfileIconsUser
+  /// assets/images/profile_icons/user.svg
+  static const String imagesProfileIconsUser = "assets/images/profile_icons/user.svg";
+
+  /// Assets for imagesProfilePicTest
+  /// assets/images/profile_pic_test.svg
+  static const String imagesProfilePicTest = "assets/images/profile_pic_test.svg";
+
   /// Assets for imagesSearch
   /// assets/images/search.svg
   static const String imagesSearch = "assets/images/search.svg";
