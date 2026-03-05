@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
@@ -14,6 +15,7 @@ import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/password_text_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/social_login_button.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -54,10 +56,15 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               Row(
                 mainAxisAlignment: .end,
                 children: [
-                  Text(
-                    "نسيت كلمة المرور؟",
-                    style: Appstyles.bold13.copyWith(
-                      color: AppColors.primaryColor,
+                  GestureDetector(
+                    onTap: () => GoRouter.of(
+                      context,
+                    ).pushNamed(AppRoutes.forgotPasswordView),
+                    child: Text(
+                      "نسيت كلمة المرور؟",
+                      style: Appstyles.bold13.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                   ),
                 ],

@@ -99,12 +99,12 @@ class FirebaseAuthService {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        throw CustomException('لم يتم العثور على حساب بهذا البريد الإلكتروني');
-      } else if (e.code == 'invalid-email') {
+      if (e.code == 'invalid-email') {
         throw CustomException('عنوان البريد الإلكتروني غير صالح');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException('تأكد من اتصالك بالإنترنت');
       } else {
-        throw CustomException('حدث خطأ، يرجى المحاولة لاحقاً');
+        throw CustomException('حدث خطأ، حاول لاحقاً');
       }
     }
   }

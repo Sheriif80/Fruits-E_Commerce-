@@ -13,10 +13,17 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+
+  Future<Either<Failures, void>> sendPasswordResetEmail(String email);
+
   Future addUserData({required UserEntity user});
+
   Future saveUserDataLocal({required UserEntity user});
+
   Future<UserEntity> getUserData({required String userId});
+
   Future<Either<Failures, UserEntity>> signinwithGoogle();
+
   Future<Either<Failures, UserEntity>> signinwithFacebook();
 
   ////

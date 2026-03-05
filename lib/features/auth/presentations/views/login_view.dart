@@ -16,7 +16,11 @@ class LoginView extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          appBar: showCustomAppBar(context, title: 'تسجيل دخول'),
+          appBar: showCustomAppBar(
+            context,
+            title: 'تسجيل دخول',
+            isBackVisible: false,
+          ),
           body: const LoginViewBodyBlocConsumer(),
         ),
       ),

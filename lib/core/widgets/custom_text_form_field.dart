@@ -8,12 +8,14 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.suffixIcon,
     this.onSaved,
+    this.onChanged,
     this.obsecureText = false,
   });
   final String hintText;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
   final bool obsecureText;
 
   @override
@@ -21,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       obscureText: obsecureText,
       onSaved: onSaved,
+      onChanged: onChanged,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'هذا الحقل مطلوب';
