@@ -165,4 +165,19 @@ class AuthRepoImpl extends AuthRepo {
 
     await CacheHelper.saveData(key: kUserData, value: jsonData);
   }
+
+  @override
+  Future<Either<Failures, void>> signOut() async {
+    try {
+      await firebaseAuthService.signOut();
+      await CacheHelper.removeData(key: kUserData);
+      return right(null);
+    } on CustomException catch (e) {
+      log("An error occurred: ${e.message}");
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log("An error occurred: ${e.toString()}");
+      return left(ServerFailure("An error occurred, please try again later"));
+    }
+  }
 }
