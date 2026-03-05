@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
-import 'package:fruits_e_commerce_app/features/home/presentations/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/views/cart_view.dart';
 import 'package:fruits_e_commerce_app/features/main/presentation/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/home_view.dart';

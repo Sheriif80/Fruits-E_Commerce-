@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
-import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_entity.dart';
-import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_item_entity.dart';
+import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_entity.dart';
+import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:meta/meta.dart';
 
 part 'cart_state.dart';

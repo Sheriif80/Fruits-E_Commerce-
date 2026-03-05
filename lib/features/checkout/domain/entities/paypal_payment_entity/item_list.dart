@@ -1,4 +1,4 @@
-import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_item_entity.dart';
+import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_item_entity.dart';
 
 import 'item.dart';
 

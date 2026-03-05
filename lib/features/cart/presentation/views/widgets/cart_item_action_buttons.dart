@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
-import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_item_entity.dart';
-import 'package:fruits_e_commerce_app/features/home/presentations/cubits/care_item_cubit/cart_item_cubit.dart';
+import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_item_entity.dart';
+import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/care_item_cubit/cart_item_cubit.dart';
 
 class CartItemActionButtons extends StatelessWidget {
   const CartItemActionButtons({super.key, required this.cartItemEntity});

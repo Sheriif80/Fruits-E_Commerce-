@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_e_commerce_app/features/home/domain/entites/nav_bar_item_entity.dart';
+import 'package:fruits_e_commerce_app/features/main/domain/entities/nav_bar_item_entity.dart';
 import 'package:fruits_e_commerce_app/features/main/presentation/views/widgets/nav_bar_item.dart';
 
 class CustomBottomNavBar extends StatelessWidget {

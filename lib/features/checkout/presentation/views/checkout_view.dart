@@ -9,7 +9,7 @@ import 'package:fruits_e_commerce_app/features/checkout/domain/entities/shipping
 import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/add_order_bloc_consumer.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_view_body.dart';
-import 'package:fruits_e_commerce_app/features/home/domain/entites/cart_entity.dart';
+import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_entity.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutView extends StatefulWidget {
