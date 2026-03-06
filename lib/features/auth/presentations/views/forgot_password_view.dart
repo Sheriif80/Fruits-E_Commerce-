@@ -17,7 +17,7 @@ class ForgotPasswordView extends StatelessWidget {
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
           appBar: showCustomAppBar(context, title: "نيسان كلمة المرور"),
-          body: ForgotPasswordViewBodyBlocConsumer(),
+          body: const ForgotPasswordViewBodyBlocConsumer(),
         ),
       ),
     );

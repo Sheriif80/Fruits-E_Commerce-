@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_e_commerce_app/core/routing/router_generation_config.dart';
@@ -9,6 +10,7 @@ import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
 import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/services/observer.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
+import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/firebase_options.dart';
 import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
@@ -26,23 +28,26 @@ class FruitHub extends StatelessWidget {
   const FruitHub({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      builder: EasyLoading.init(),
-      theme: ThemeData(
-        fontFamily: 'Cairo',
-        scaffoldBackgroundColor: Colors.white,
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+    return BlocProvider(
+      create: (context) => CartCubit(),
+      child: MaterialApp.router(
+        builder: EasyLoading.init(),
+        theme: ThemeData(
+          fontFamily: 'Cairo',
+          scaffoldBackgroundColor: Colors.white,
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+        ),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        locale: const Locale('ar'),
+        supportedLocales: S.delegate.supportedLocales,
+        routerConfig: RouterGenerationConfig.goRouter,
+        debugShowCheckedModeBanner: false,
       ),
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: const Locale('ar'),
-      supportedLocales: S.delegate.supportedLocales,
-      routerConfig: RouterGenerationConfig.goRouter,
-      debugShowCheckedModeBanner: false,
     );
   }
 }

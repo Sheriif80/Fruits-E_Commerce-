@@ -27,30 +27,27 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
-      child: BlocListener<CartCubit, CartState>(
-        listener: (context, state) {
-          if (state is CartItemAdded) {
-            AppSnackbars.showInfo(context, message: "تم اضافة المنتج بنجاح");
-          }
+    return BlocListener<CartCubit, CartState>(
+      listener: (context, state) {
+        if (state is CartItemAdded) {
+          AppSnackbars.showInfo(context, message: "تم اضافة المنتج بنجاح");
+        }
 
-          if (state is CartItemRemoved) {
-            AppSnackbars.showInfo(context, message: "تم حذف المنتج بنجاح");
-          }
-        },
-        child: Scaffold(
-          body: SafeArea(
-            child: IndexedStack(index: selectedIndex, children: screens),
-          ),
-          bottomNavigationBar: CustomBottomNavBar(
-            currentIndex: selectedIndex,
-            onItemSelected: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-          ),
+        if (state is CartItemRemoved) {
+          AppSnackbars.showInfo(context, message: "تم حذف المنتج بنجاح");
+        }
+      },
+      child: Scaffold(
+        body: SafeArea(
+          child: IndexedStack(index: selectedIndex, children: screens),
+        ),
+        bottomNavigationBar: CustomBottomNavBar(
+          currentIndex: selectedIndex,
+          onItemSelected: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
         ),
       ),
     );

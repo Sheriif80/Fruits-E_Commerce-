@@ -1,3 +1,4 @@
+import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/forgot_password_view.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/login_view.dart';
@@ -8,6 +9,7 @@ import 'package:fruits_e_commerce_app/features/checkout/presentation/views/order
 import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_entity.dart';
 import 'package:fruits_e_commerce_app/features/main/presentation/views/main_view.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
+import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/product_details_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -69,6 +71,13 @@ class RouterGenerationConfig {
         name: AppRoutes.forgotPasswordView,
 
         builder: (context, state) => const ForgotPasswordView(),
+      ),
+      GoRoute(
+        path: AppRoutes.productDetailsView,
+        name: AppRoutes.productDetailsView,
+
+        builder: (context, state) =>
+            ProductDetailsView(productEntity: state.extra as ProductEntity),
       ),
     ],
   );
