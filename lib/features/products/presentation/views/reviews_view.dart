@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/products/domain/repos/reviews_repo.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/cubits/add_review_cubit/add_review_cubit.dart';
+import 'package:fruits_e_commerce_app/features/products/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/reviews_view_body.dart';
 
 class ReviewsView extends StatelessWidget {
@@ -13,11 +14,24 @@ class ReviewsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddReviewCubit(getIt.get<ReviewsRepo>()),
-      child: Scaffold(
-        appBar: buildAppBar(title: "المراجعات", isNotificationVisible: false),
-        body: ReviewsViewBody(productEntity: productEntity),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AddReviewCubit>(
+          create: (context) => AddReviewCubit(getIt<ReviewsRepo>()),
+        ),
+        BlocProvider<GetReviewsCubit>(
+          create: (context) =>
+              GetReviewsCubit(getIt<ReviewsRepo>())
+                ..getReviews(productCode: productEntity.code),
+        ),
+      ],
+
+      child: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Scaffold(
+          appBar: buildAppBar(title: "المراجعات", isNotificationVisible: false),
+          body: ReviewsViewBody(productEntity: productEntity),
+        ),
       ),
     );
   }
