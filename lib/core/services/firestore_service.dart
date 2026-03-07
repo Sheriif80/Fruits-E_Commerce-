@@ -30,6 +30,9 @@ class FirestoreService implements DatabaseService {
     } else {
       Query<Map<String, dynamic>> data = firestore.collection(path);
       if (query != null) {
+        if (query['field'] != null && query['isEqualTo'] != null) {
+          data = data.where(query['field'], isEqualTo: query['isEqualTo']);
+        }
         if (query['orderBy'] != null) {
           if (query['descending'] != null) {
             data = data.orderBy(

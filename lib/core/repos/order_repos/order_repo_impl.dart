@@ -37,7 +37,7 @@ class OrderRepoImpl implements OrderRepo {
     try {
       final data = await databaseService.getData(
         path: AppEndPoints.getOrders,
-        query: {"userID": userID},
+        query: {"field": "userID", "isEqualTo": userID},
       );
       final List<MyOrdersModel> orders = data
           .map<MyOrdersModel>((e) => MyOrdersModel.fromJson(e))
