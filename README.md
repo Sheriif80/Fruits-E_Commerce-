@@ -10,7 +10,6 @@ A full-featured, highly scalable e-commerce application built with Flutter. This
 * **Product Browsing:** Explore products, view details, and discover best-sellers.
 * **Cart Management:** Add to cart, update quantities, and calculate total prices dynamically.
 * **Secure Checkout:** Integrated with **PayPal API** for safe and reliable payment processing.
-* **Multi-language Support:** Fully localized responsive UI supporting both Arabic and English using `intl`.
 * **Order History:** Users can track their previous orders and view statuses.
 * **Local Caching:** Efficient local data storage using SharedPreferences for a faster user experience.
 
@@ -23,7 +22,6 @@ This project strictly follows a **Feature-Driven Architecture** combined with Cl
 * **Backend:** Firebase (Cloud Firestore, Authentication)
 * **Dependency Injection:** GetIt (Service Locator)
 * **Payment Gateway:** PayPal APIs
-* **Localization:** `intl` package
 
 ## 🚀 Getting Started
 
@@ -32,3 +30,4 @@ To run this project locally, follow these steps:
 1. Clone the repository:
    ```bash
    git clone [https://github.com/yourusername/fruits-e-commerce.git](https://github.com/yourusername/fruits-e-commerce.git)
+
