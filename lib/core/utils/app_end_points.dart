@@ -5,6 +5,6 @@ class AppEndPoints {
   static const getProducts = 'products';
   static const addOrders = 'orders';
   static const getOrders = 'orders';
-  static const getReviews = '/reviews';
-  static const addReview = '/reviews';
+  static const getReviews = 'reviews';
+  static const addReview = 'reviews';
 }

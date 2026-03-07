@@ -60,7 +60,9 @@ class ProductDetailsFirstSection extends StatelessWidget {
             const Gap(10),
             GestureDetector(
               onTap: () {
-                GoRouter.of(context).pushNamed(AppRoutes.reviewsView);
+                GoRouter.of(
+                  context,
+                ).pushNamed(AppRoutes.reviewsView, extra: productEntity);
               },
               child: Text(
                 'المراجعات',

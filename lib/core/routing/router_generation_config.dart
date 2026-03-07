@@ -91,7 +91,8 @@ class RouterGenerationConfig {
         path: AppRoutes.reviewsView,
         name: AppRoutes.reviewsView,
 
-        builder: (context, state) => const ReviewsView(),
+        builder: (context, state) =>
+            ReviewsView(productEntity: state.extra as ProductEntity),
       ),
     ],
   );

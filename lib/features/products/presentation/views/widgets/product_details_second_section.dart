@@ -43,7 +43,9 @@ class ProductDetailsSecondSection extends StatelessWidget {
 
             GestureDetector(
               onTap: () {
-                GoRouter.of(context).pushNamed(AppRoutes.reviewsView);
+                GoRouter.of(
+                  context,
+                ).pushNamed(AppRoutes.reviewsView, extra: productEntity);
               },
               child: CustomProductDetailsContainer(
                 title: productEntity.avgRating.toString(),
