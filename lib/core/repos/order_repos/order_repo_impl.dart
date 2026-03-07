@@ -5,6 +5,8 @@ import 'package:fruits_e_commerce_app/core/services/database_service.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_end_points.dart';
 import 'package:fruits_e_commerce_app/features/checkout/data/models/order_model.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruits_e_commerce_app/features/profile/data/models/my_orders_model.dart';
+import 'package:fruits_e_commerce_app/features/profile/domain/entities/my_orders_entity.dart';
 
 class OrderRepoImpl implements OrderRepo {
   final DatabaseService databaseService;
@@ -23,6 +25,27 @@ class OrderRepoImpl implements OrderRepo {
         documentID: orderModel.orderID,
       );
       return const Right(null);
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<MyOrdersEntity>>> getMyOrders({
+    required String userID,
+  }) async {
+    try {
+      final data = await databaseService.getData(
+        path: AppEndPoints.getOrders,
+        query: {"userID": userID},
+      );
+      final List<MyOrdersModel> orders = data
+          .map((e) => MyOrdersModel.fromJson(e))
+          .toList();
+      final List<MyOrdersEntity> ordersEntity = orders
+          .map((e) => e.toEntity())
+          .toList();
+      return Right(ordersEntity);
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }

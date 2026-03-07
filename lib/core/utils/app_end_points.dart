@@ -4,4 +4,5 @@ class AppEndPoints {
   static const isUserExist = 'users';
   static const getProducts = 'products';
   static const addOrders = 'orders';
+  static const getOrders = 'orders';
 }
