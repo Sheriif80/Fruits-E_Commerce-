@@ -22,7 +22,6 @@ class ReviewsRepoImpl implements ReviewsRepo {
         path:
             "${AppEndPoints.getProducts}/$productDocId/${AppEndPoints.addReview}",
         data: ReviewModel.fromEntity(review).toJson(),
-        documentID: productDocId,
       );
       return const Right(null);
     } catch (e) {
