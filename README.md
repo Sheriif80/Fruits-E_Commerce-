@@ -23,12 +23,5 @@ This project strictly follows a **Feature-Driven Architecture** combined with Cl
 * **Dependency Injection:** GetIt (Service Locator)
 * **Payment Gateway:** PayPal APIs
 
-## 🚀 Getting Started
-
-To run this project locally, follow these steps:
-
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/Sheriif80/fruits-e-commerce.git](https://github.com/Sheriif80/fruits-e-commerce.git)
 
 
