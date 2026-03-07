@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/quantity_control_buttons.dart';
 import 'package:gap/gap.dart';
 
 class ProductDetailsFirstSection extends StatelessWidget {
@@ -17,25 +18,7 @@ class ProductDetailsFirstSection extends StatelessWidget {
           children: [
             Text(productEntity.name, style: Appstyles.bold16),
             const Spacer(),
-            /*
-            CircleAvatar(
-              backgroundColor: AppColors.primaryColor,
-              child: GestureDetector(
-                onTap: () {},
-                child: const Icon(Icons.add, color: Colors.white),
-              ),
-            ),
-            const Gap(12),
-            const Text("2", style: Appstyles.bold16),
-            const Gap(12),
-            CircleAvatar(
-              backgroundColor: const Color(0xFFF1F1F5),
-              child: GestureDetector(
-                onTap: () {},
-                child: Icon(Icons.remove, color: AppColors.greyColor),
-              ),
-            ),
-            */
+            const QuantityControlButtons(),
           ],
         ),
         const Gap(8),
