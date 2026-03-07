@@ -13,7 +13,6 @@ ProductEntity getDummyProduct() => ProductEntity(
   unitAmount: 1,
   avgRating: 4.5,
   numberOfRatings: 10,
-  reviews: [],
 );
 
 List<ProductEntity> getDummyProducts() =>

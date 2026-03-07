@@ -1,5 +1,4 @@
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
-import 'package:fruits_e_commerce_app/core/models/review_model.dart';
 
 class ProductModel {
   final String code;
@@ -14,7 +13,6 @@ class ProductModel {
   final int unitAmount;
   final num avgRating;
   final int numberOfRatings;
-  final List<ReviewModel> reviews;
   final int sellingCount;
 
   ProductModel({
@@ -30,7 +28,6 @@ class ProductModel {
     required this.unitAmount,
     required this.avgRating,
     required this.numberOfRatings,
-    required this.reviews,
     required this.sellingCount,
   });
 
@@ -47,11 +44,7 @@ class ProductModel {
     unitAmount: json['unitAmount'],
     avgRating: json['avgRating'],
     numberOfRatings: json['numberOfRatings'],
-    reviews: json['reviews'] == null
-        ? []
-        : List<ReviewModel>.from(
-            json['reviews'].map((x) => ReviewModel.fromJson(x)),
-          ),
+
     sellingCount: json['sellingCount'],
   );
 
@@ -68,7 +61,6 @@ class ProductModel {
     unitAmount: unitAmount,
     avgRating: avgRating,
     numberOfRatings: numberOfRatings,
-    reviews: reviews.map((e) => e.toEntity()).toList(),
   );
 
   toMap() => {
@@ -84,7 +76,6 @@ class ProductModel {
     "unitAmount": unitAmount,
     "avgRating": avgRating,
     "numberOfRatings": numberOfRatings,
-    "reviews": reviews.map((e) => e.toJson()).toList(),
     "sellingCount": sellingCount,
   };
 }

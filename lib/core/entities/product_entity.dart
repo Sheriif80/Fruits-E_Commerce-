@@ -1,5 +1,3 @@
-import 'package:fruits_e_commerce_app/core/entities/review_entity.dart';
-
 class ProductEntity {
   final String code;
   final String name;
@@ -13,7 +11,6 @@ class ProductEntity {
   final int unitAmount;
   final num avgRating;
   final int numberOfRatings;
-  final List<ReviewEntity> reviews;
 
   ProductEntity({
     required this.code,
@@ -28,6 +25,5 @@ class ProductEntity {
     required this.unitAmount,
     required this.avgRating,
     required this.numberOfRatings,
-    required this.reviews,
   });
 }
