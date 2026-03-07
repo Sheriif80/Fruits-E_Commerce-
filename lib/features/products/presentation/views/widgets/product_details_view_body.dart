@@ -22,13 +22,7 @@ class ProductDetailsViewBody extends StatelessWidget {
           ProductCircleBackground(imagePath: productEntity.imageURL!)
               .animate()
               .fadeIn(duration: 400.ms)
-              .scale(
-                begin: const Offset(
-                  0.9,
-                  0.9,
-                ), // بتبدأ أصغر شوية وتكبر لحجمها الطبيعي
-                curve: Curves.easeOutBack, // بتديها نطة خفيفة
-              ),
+              .scale(begin: const Offset(0.9, 0.9), curve: Curves.easeOutBack),
           Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
@@ -49,9 +43,9 @@ class ProductDetailsViewBody extends StatelessWidget {
                 ),
               )
               .animate()
-              .fadeIn(delay: 200.ms, duration: 400.ms) // بتستنى شوية بعد الصورة
+              .fadeIn(delay: 200.ms, duration: 400.ms)
               .slideY(
-                begin: 0.1, // بتيجي من تحت شوية
+                begin: 0.1,
                 end: 0,
                 duration: 400.ms,
                 curve: Curves.easeOut,

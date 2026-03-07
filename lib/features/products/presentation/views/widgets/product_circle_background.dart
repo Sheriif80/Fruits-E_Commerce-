@@ -1,6 +1,8 @@
 import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
+import 'package:svg_flutter/svg.dart';
 
 class ProductCircleBackground extends StatelessWidget {
   const ProductCircleBackground({super.key, required this.imagePath});
@@ -37,9 +39,13 @@ class ProductCircleBackground extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-            child: const CircleAvatar(
+            child: CircleAvatar(
               backgroundColor: Colors.white,
-              child: Icon(Icons.arrow_back_ios, color: Colors.black, size: 18),
+              child: SvgPicture.asset(
+                Assets.imagesBackIcon,
+                width: 9,
+                height: 14,
+              ),
             ),
           ),
         ),
