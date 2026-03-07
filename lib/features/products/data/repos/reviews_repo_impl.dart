@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:fruits_e_commerce_app/core/entities/review_entity.dart';
+import 'package:fruits_e_commerce_app/features/products/domain/entities/review_entity.dart';
 import 'package:fruits_e_commerce_app/core/errors/failures.dart';
-import 'package:fruits_e_commerce_app/core/models/review_model.dart';
+import 'package:fruits_e_commerce_app/features/products/data/models/review_model.dart';
 import 'package:fruits_e_commerce_app/core/services/database_service.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_end_points.dart';
 import 'package:fruits_e_commerce_app/features/products/domain/repos/reviews_repo.dart';

@@ -1,4 +1,4 @@
-import 'package:fruits_e_commerce_app/core/entities/review_entity.dart';
+import 'package:fruits_e_commerce_app/features/products/domain/entities/review_entity.dart';
 
 num getAvgRating(List<ReviewEntity> reviews) => reviews.isEmpty
     ? 0

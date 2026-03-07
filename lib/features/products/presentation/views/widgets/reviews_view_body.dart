@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
-import 'package:fruits_e_commerce_app/core/entities/review_entity.dart';
+import 'package:fruits_e_commerce_app/features/products/domain/entities/review_entity.dart';
 import 'package:fruits_e_commerce_app/core/helpers/get_user_data.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
@@ -80,7 +80,7 @@ class _ReviewsViewBodyState extends State<ReviewsViewBody> {
                             description: description!,
                             rating: rating!,
                             image: image!,
-                            date: DateTime.now().toString().substring(0, 10),
+                            date: DateTime.now().toString().substring(0, 19),
                           ),
                         );
                       }
