@@ -10,6 +10,7 @@ import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_entity.
 import 'package:fruits_e_commerce_app/features/main/presentation/views/main_view.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/product_details_view.dart';
+import 'package:fruits_e_commerce_app/features/profile/presentation/views/my_orders_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -71,6 +72,12 @@ class RouterGenerationConfig {
         name: AppRoutes.forgotPasswordView,
 
         builder: (context, state) => const ForgotPasswordView(),
+      ),
+      GoRoute(
+        path: AppRoutes.myOrdersView,
+        name: AppRoutes.myOrdersView,
+
+        builder: (context, state) => const MyOrdersView(),
       ),
       GoRoute(
         path: AppRoutes.productDetailsView,

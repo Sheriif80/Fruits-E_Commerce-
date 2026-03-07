@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/logout_button.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/profile_header.dart';
@@ -14,49 +15,44 @@ class ProfileViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListView(
-        children: [
-          const ProfileHeader(),
-
-          const ProfileSectionTitle(title: "عام"),
-
+        children: const [
+          ProfileHeader(),
+          ProfileSectionTitle(title: "عام"),
           ProfileListItem(
             title: "الملف الشخصي",
             iconPath: Assets.imagesProfileIconsUser,
-            onTap: () {},
+            path: AppRoutes.myOrdersView,
           ),
 
           ProfileListItem(
             title: "طلباتي",
             iconPath: Assets.imagesProfileIconsBox,
-            onTap: () {},
+            path: AppRoutes.myOrdersView,
           ),
           ProfileListItem(
             title: "المدفوعات",
             iconPath: Assets.imagesProfileIconsEmptyWallet,
-            onTap: () {},
+            path: AppRoutes.myOrdersView,
           ),
           ProfileListItem(
             title: "المفضلة",
             iconPath: Assets.imagesProfileIconsHeart,
-            onTap: () {},
+            path: AppRoutes.myOrdersView,
           ),
-
           ProfileListItem(
             title: "اللغة",
             iconPath: Assets.imagesProfileIconsGlobal,
-            onTap: () {},
+            path: AppRoutes.myOrdersView,
           ),
-
-          const ProfileSectionTitle(title: "المساعدة"),
-
+          ProfileSectionTitle(title: "المساعدة"),
           ProfileListItem(
             title: "من نحن",
             iconPath: Assets.imagesProfileIconsInfoCircle,
-            onTap: () {},
+            path: AppRoutes.myOrdersView,
           ),
-          const Gap(15),
-          const LogoutButton(),
-          const Gap(15),
+          Gap(15),
+          LogoutButton(),
+          Gap(15),
         ],
       ),
     );

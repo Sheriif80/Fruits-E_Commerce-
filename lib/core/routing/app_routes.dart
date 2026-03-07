@@ -9,4 +9,5 @@ class AppRoutes {
   static const String checkoutView = '/checkoutView';
   static const String orderCreatedView = '/orderCreatedView';
   static const String forgotPasswordView = '/forgotPasswordView';
+  static const String myOrdersView = '/myOrdersView';
 }
