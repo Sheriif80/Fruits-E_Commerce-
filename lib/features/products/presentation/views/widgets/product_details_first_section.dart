@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
+import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/quantity_control_buttons.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDetailsFirstSection extends StatelessWidget {
   const ProductDetailsFirstSection({super.key, required this.productEntity});
@@ -56,11 +58,16 @@ class ProductDetailsFirstSection extends StatelessWidget {
               style: Appstyles.regular13.copyWith(color: AppColors.greyColor),
             ),
             const Gap(10),
-            Text(
-              'المراجعه',
-              style: Appstyles.bold13.copyWith(
-                color: AppColors.primaryColor,
-                decoration: TextDecoration.underline,
+            GestureDetector(
+              onTap: () {
+                GoRouter.of(context).pushNamed(AppRoutes.reviewsView);
+              },
+              child: Text(
+                'المراجعات',
+                style: Appstyles.bold13.copyWith(
+                  color: AppColors.primaryColor,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
           ],

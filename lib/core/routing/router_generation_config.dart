@@ -9,6 +9,7 @@ import 'package:fruits_e_commerce_app/features/checkout/presentation/views/order
 import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_entity.dart';
 import 'package:fruits_e_commerce_app/features/main/presentation/views/main_view.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on_boarding_view.dart';
+import 'package:fruits_e_commerce_app/features/products/presentation/views/reviews_view.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/product_details_view.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/my_orders_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
@@ -85,6 +86,12 @@ class RouterGenerationConfig {
 
         builder: (context, state) =>
             ProductDetailsView(productEntity: state.extra as ProductEntity),
+      ),
+      GoRoute(
+        path: AppRoutes.reviewsView,
+        name: AppRoutes.reviewsView,
+
+        builder: (context, state) => const ReviewsView(),
       ),
     ],
   );
