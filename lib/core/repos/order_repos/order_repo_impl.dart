@@ -40,10 +40,10 @@ class OrderRepoImpl implements OrderRepo {
         query: {"userID": userID},
       );
       final List<MyOrdersModel> orders = data
-          .map((e) => MyOrdersModel.fromJson(e))
+          .map<MyOrdersModel>((e) => MyOrdersModel.fromJson(e))
           .toList();
       final List<MyOrdersEntity> ordersEntity = orders
-          .map((e) => e.toEntity())
+          .map<MyOrdersEntity>((e) => e.toEntity())
           .toList();
       return Right(ordersEntity);
     } catch (e) {
