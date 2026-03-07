@@ -19,10 +19,7 @@ class ProductDetailsViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ProductCircleBackground(imagePath: productEntity.imageURL!)
-              .animate()
-              .fadeIn(duration: 400.ms)
-              .scale(begin: const Offset(0.9, 0.9), curve: Curves.easeOutBack),
+          ProductCircleBackground(imagePath: productEntity.imageURL!),
           Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
@@ -43,11 +40,11 @@ class ProductDetailsViewBody extends StatelessWidget {
                 ),
               )
               .animate()
-              .fadeIn(delay: 200.ms, duration: 400.ms)
+              .fadeIn(delay: 200.ms, duration: 200.ms)
               .slideY(
                 begin: 0.1,
                 end: 0,
-                duration: 400.ms,
+                duration: 200.ms,
                 curve: Curves.easeOut,
               ),
         ],

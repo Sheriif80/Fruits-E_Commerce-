@@ -25,10 +25,15 @@ class OrderCreatedViewBody extends StatelessWidget {
           const Gap(15),
           const Text("سيتم التواصل معك في أقرب وقت", style: Appstyles.bold16),
           const Spacer(),
-          CustomButton(text: "تتبع الطلب", onPressed: () {}),
+          CustomButton(
+            text: "تتبع الطلب",
+            onPressed: () {
+              GoRouter.of(context).pushNamed(AppRoutes.myOrdersView);
+            },
+          ),
           const Gap(20),
           GestureDetector(
-            onTap: () => GoRouter.of(context).pushNamed(AppRoutes.homeView),
+            onTap: () => GoRouter.of(context).pop(),
             child: Text(
               "الرئيسية",
               style: Appstyles.bold16.copyWith(color: AppColors.primaryColor),

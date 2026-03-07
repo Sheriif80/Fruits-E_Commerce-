@@ -15,7 +15,7 @@ class CustomProductDetailsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 163,
+      width: MediaQuery.of(context).size.width * 0.44,
       padding: const EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
