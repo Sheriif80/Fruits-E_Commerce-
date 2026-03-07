@@ -8,6 +8,7 @@ import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_e_commerce_app/features/products/domain/entities/review_entity.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/cubits/add_review_cubit/add_review_cubit.dart';
+import 'package:fruits_e_commerce_app/features/products/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:gap/gap.dart';
 
 class AddReviewForm extends StatefulWidget {
@@ -47,7 +48,15 @@ class _AddReviewFormState extends State<AddReviewForm> {
           ),
           const Gap(16),
 
-          BlocBuilder<AddReviewCubit, AddReviewState>(
+          BlocConsumer<AddReviewCubit, AddReviewState>(
+            listener: (context, state) {
+              if (state is AddReviewSuccess) {
+                context.read<GetReviewsCubit>().getReviews(
+                  productCode: widget.productEntity.code,
+                );
+              }
+            },
+
             builder: (context, state) {
               if (state is AddReviewError) {
                 return Text(state.message);
