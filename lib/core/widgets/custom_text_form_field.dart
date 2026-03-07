@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -10,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.obsecureText = false,
+    this.inputFormatters,
   });
   final String hintText;
   final TextInputType? keyboardType;
@@ -17,10 +19,12 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
   final bool obsecureText;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: inputFormatters,
       obscureText: obsecureText,
       onSaved: onSaved,
       onChanged: onChanged,
