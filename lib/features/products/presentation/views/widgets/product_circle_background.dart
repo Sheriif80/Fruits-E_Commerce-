@@ -1,4 +1,6 @@
+import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 
 class ProductCircleBackground extends StatelessWidget {
   const ProductCircleBackground({super.key, required this.imagePath});
@@ -16,9 +18,14 @@ class ProductCircleBackground extends StatelessWidget {
             width: double.infinity,
             color: const Color(0xFFF3F5F7),
             child: Center(
-              child: Image.network(
-                imagePath,
+              child: CachedNetworkImage(
+                imageUrl: imagePath,
                 width: MediaQuery.of(context).size.width * 0.8,
+                placeholder: (context, url) => const Center(
+                  child: CustomLoadingIndicator(width: 20, height: 20),
+                ),
+                errorWidget: (context, url, error) =>
+                    const Center(child: Icon(Icons.error)),
               ),
             ),
           ),

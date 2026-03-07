@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
@@ -18,26 +19,43 @@ class ProductDetailsViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ProductCircleBackground(imagePath: productEntity.imageURL!),
+          ProductCircleBackground(imagePath: productEntity.imageURL!)
+              .animate()
+              .fadeIn(duration: 400.ms)
+              .scale(
+                begin: const Offset(
+                  0.9,
+                  0.9,
+                ), // بتبدأ أصغر شوية وتكبر لحجمها الطبيعي
+                curve: Curves.easeOutBack, // بتديها نطة خفيفة
+              ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ProductDetailsFirstSection(productEntity: productEntity),
-                const Gap(16),
-                ProductDetailsSecondSection(productEntity: productEntity),
-                const Gap(24),
-                CustomButton(
-                  text: "اضافة الى السلة",
-                  onPressed: () {
-                    context.read<CartCubit>().addProdcut(productEntity);
-                  },
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ProductDetailsFirstSection(productEntity: productEntity),
+                    const Gap(16),
+                    ProductDetailsSecondSection(productEntity: productEntity),
+                    const Gap(24),
+                    CustomButton(
+                      text: "اضافة الى السلة",
+                      onPressed: () {
+                        context.read<CartCubit>().addProdcut(productEntity);
+                      },
+                    ),
+                    const Gap(24),
+                  ],
                 ),
-                const Gap(24),
-              ],
-            ),
-          ),
+              )
+              .animate()
+              .fadeIn(delay: 200.ms, duration: 400.ms) // بتستنى شوية بعد الصورة
+              .slideY(
+                begin: 0.1, // بتيجي من تحت شوية
+                end: 0,
+                duration: 400.ms,
+                curve: Curves.easeOut,
+              ),
         ],
       ),
     );

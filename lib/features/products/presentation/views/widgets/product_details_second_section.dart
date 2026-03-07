@@ -21,7 +21,7 @@ class ProductDetailsSecondSection extends StatelessWidget {
               subtitle: "الصلاحية",
               iconPath: Assets.imagesCalendar,
             ),
-            const Gap(16),
+            const Spacer(),
             CustomProductDetailsContainer(
               title: productEntity.isOrganic ? "100%" : "0%",
               subtitle: productEntity.isOrganic ? "اورجانيك" : "مش اورجانيك",
@@ -37,7 +37,8 @@ class ProductDetailsSecondSection extends StatelessWidget {
               subtitle: "${productEntity.unitAmount} جرام",
               iconPath: Assets.imagesMatches,
             ),
-            const Gap(16),
+            const Spacer(),
+
             CustomProductDetailsContainer(
               title: productEntity.avgRating.toString(),
               subtitle: "المراجعات (${productEntity.numberOfRatings})",
