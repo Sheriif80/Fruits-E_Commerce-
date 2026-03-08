@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/care_item_cubit/cart_item_cubit.dart';
@@ -35,12 +36,16 @@ class CartItem extends StatelessWidget {
               width: 73,
               height: 92,
               padding: const EdgeInsets.all(8),
-              decoration: const BoxDecoration(color: Color(0xFFF3F5F7)),
+              decoration: BoxDecoration(
+                color: context.isDarkMode
+                    ? AppColors.darkBackground
+                    : const Color(0xFFF3F5F7),
+              ),
               child: CachedNetworkImage(
                 placeholder: (context, url) => const Center(
                   child: CustomLoadingIndicator(width: 20, height: 20),
                 ),
-                errorWidget: (context, url, error) =>
+                errorBuilder: (context, url, error) =>
                     const Center(child: Icon(Icons.error)),
 
                 imageUrl: cartItemEntity.productEntity.imageURL!,

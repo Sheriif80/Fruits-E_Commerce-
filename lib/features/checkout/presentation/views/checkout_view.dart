@@ -39,10 +39,15 @@ class _CheckoutViewState extends State<CheckoutView> {
     return BlocProvider(
       create: (context) => AddOrderCubit(getIt.get<OrderRepo>()),
       child: Scaffold(
-        appBar: buildAppBar(title: "الشحن", isNotificationVisible: false),
+        appBar: buildAppBar(
+          context: context,
+
+          title: "الشحن",
+          isNotificationVisible: false,
+        ),
         body: Provider.value(
           value: orderEntity,
-          child: AddOrderBlocConsumer(child: const CheckoutViewBody()),
+          child: const AddOrderBlocConsumer(child: CheckoutViewBody()),
         ),
       ),
     );

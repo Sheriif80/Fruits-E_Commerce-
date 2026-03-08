@@ -12,7 +12,7 @@ class ProfileListItem extends StatelessWidget {
     this.hasSwitch = false,
     this.switchValue = false,
     this.onSwitchChanged,
-    required this.path,
+    this.path,
   });
 
   final String title;
@@ -21,13 +21,15 @@ class ProfileListItem extends StatelessWidget {
   final bool hasSwitch;
   final bool switchValue;
   final ValueChanged<bool>? onSwitchChanged;
-  final String path;
+  final String? path;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).pushNamed(path);
+        if (path != null) {
+          GoRouter.of(context).pushNamed(path!);
+        } else {}
       },
       child: Column(
         children: [
@@ -40,11 +42,7 @@ class ProfileListItem extends StatelessWidget {
                 ? const Icon(Icons.arrow_forward_ios, size: 16)
                 : null,
           ),
-          const Divider(
-            height: 1,
-            color: const Color(0xFFF1F1F5),
-            thickness: 0.9,
-          ),
+          const Divider(height: 1, color: Color(0xFFF1F1F5), thickness: 0.9),
         ],
       ),
     );

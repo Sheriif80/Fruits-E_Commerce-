@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/products/domain/entities/review_entity.dart';
 import 'package:gap/gap.dart';
 
@@ -57,7 +58,7 @@ class ReviewItem extends StatelessWidget {
                     Text(
                       review.name,
                       style: Appstyles.semiBold16.copyWith(
-                        color: const Color(0xFF0C0D0D),
+                        color: context.isDarkMode ? Colors.white : Colors.black,
                       ),
                     ),
                     const Gap(4),

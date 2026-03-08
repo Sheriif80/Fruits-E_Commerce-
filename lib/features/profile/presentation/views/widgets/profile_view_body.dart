@@ -22,7 +22,6 @@ class ProfileViewBody extends StatelessWidget {
           ProfileListItem(
             title: "الملف الشخصي",
             iconPath: Assets.imagesProfileIconsUser,
-            path: AppRoutes.myOrdersView,
           ),
 
           ProfileListItem(
@@ -33,24 +32,20 @@ class ProfileViewBody extends StatelessWidget {
           ProfileListItem(
             title: "المدفوعات",
             iconPath: Assets.imagesProfileIconsEmptyWallet,
-            path: AppRoutes.myOrdersView,
           ),
           ProfileListItem(
             title: "المفضلة",
             iconPath: Assets.imagesProfileIconsHeart,
-            path: AppRoutes.myOrdersView,
           ),
           ProfileListItem(
             title: "اللغة",
             iconPath: Assets.imagesProfileIconsGlobal,
-            path: AppRoutes.myOrdersView,
           ),
           ThemeSwitcherButton(),
           ProfileSectionTitle(title: "المساعدة"),
           ProfileListItem(
             title: "من نحن",
             iconPath: Assets.imagesProfileIconsInfoCircle,
-            path: AppRoutes.myOrdersView,
           ),
           Gap(15),
           LogoutButton(),

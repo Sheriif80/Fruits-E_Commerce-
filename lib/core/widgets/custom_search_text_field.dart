@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomSearchTextField extends StatelessWidget {
@@ -32,7 +33,7 @@ class CustomSearchTextField extends StatelessWidget {
           ),
           hint: const Text('ابحث عن.......'),
           hintStyle: Appstyles.regular13.copyWith(
-            color: const Color(0xFF949D9E),
+            color: context.isDarkMode ? Colors.white : const Color(0xFF949D9E),
           ),
           border: buildBorder(),
           enabledBorder: buildBorder(),

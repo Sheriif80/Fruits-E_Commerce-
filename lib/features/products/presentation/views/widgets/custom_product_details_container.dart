@@ -19,7 +19,7 @@ class CustomProductDetailsContainer extends StatelessWidget {
       padding: const EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 12),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: const BorderSide(width: 1, color: const Color(0xFFF1F1F5)),
+          side: const BorderSide(width: 1, color: Color(0xFFF1F1F5)),
           borderRadius: BorderRadius.circular(16),
         ),
       ),

@@ -23,7 +23,7 @@ class ReviewsViewBody extends StatelessWidget {
             ),
           ),
           const SliverToBoxAdapter(child: Gap(16)),
-          ReviewsListViewBlocBuilder(),
+          const ReviewsListViewBlocBuilder(),
         ],
       ),
     );

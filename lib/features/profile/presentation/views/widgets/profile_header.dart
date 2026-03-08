@@ -21,10 +21,7 @@ class ProfileHeader extends StatelessWidget {
               backgroundImage: AssetImage(Assets.imagesAvatar),
             ),
             Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
+              decoration: const BoxDecoration(shape: BoxShape.circle),
               padding: const EdgeInsets.all(6),
               child: const Icon(Icons.camera_alt, size: 18),
             ),

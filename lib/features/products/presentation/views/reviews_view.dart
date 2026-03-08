@@ -29,7 +29,11 @@ class ReviewsView extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          appBar: buildAppBar(title: "المراجعات", isNotificationVisible: false),
+          appBar: buildAppBar(
+            context: context,
+            title: "المراجعات",
+            isNotificationVisible: false,
+          ),
           body: ReviewsViewBody(productEntity: productEntity),
         ),
       ),

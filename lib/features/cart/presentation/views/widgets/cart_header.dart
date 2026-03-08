@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 
 class CartHeader extends StatelessWidget {
@@ -13,10 +14,14 @@ class CartHeader extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 91, vertical: 10),
       clipBehavior: Clip.antiAlias,
-      decoration: const BoxDecoration(color: Color(0xFFEBF9F1)),
+      decoration: BoxDecoration(
+        color: context.isDarkMode ? AppColors.darkContainer : Color(0xFFEBF9F1),
+      ),
       child: Text(
         'لديك ${context.watch<CartCubit>().cartEntity.cartItems.length} منتجات في سله التسوق',
-        style: Appstyles.regular13.copyWith(color: AppColors.primaryColor),
+        style: Appstyles.regular13.copyWith(
+          color: context.isDarkMode ? Colors.white : AppColors.primaryColor,
+        ),
       ),
     );
   }

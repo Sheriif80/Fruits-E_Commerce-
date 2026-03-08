@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,9 @@ class OrderSummary extends StatelessWidget {
               Text(
                 'المجموع الفرعي :',
                 style: Appstyles.regular13.copyWith(
-                  color: const Color(0xFF4E5556),
+                  color: context.isDarkMode
+                      ? Colors.white
+                      : const Color(0xFF4E5556),
                 ),
               ),
               const Spacer(),
@@ -33,7 +36,9 @@ class OrderSummary extends StatelessWidget {
               Text(
                 "ألتوصيل :",
                 style: Appstyles.regular13.copyWith(
-                  color: const Color(0xFF4E5556),
+                  color: context.isDarkMode
+                      ? Colors.white
+                      : const Color(0xFF4E5556),
                 ),
               ),
               const Spacer(),
@@ -41,7 +46,11 @@ class OrderSummary extends StatelessWidget {
                 context.read<OrderInputEntity>().payWithCash
                     ? "40 جنيه"
                     : "مجانا",
-                style: Appstyles.regular16,
+                style: Appstyles.regular16.copyWith(
+                  color: context.read<OrderInputEntity>().payWithCard
+                      ? Colors.green
+                      : null,
+                ),
                 textAlign: .start,
               ),
             ],
@@ -52,7 +61,9 @@ class OrderSummary extends StatelessWidget {
               Text(
                 "المجموع الكلي :",
                 style: Appstyles.bold16.copyWith(
-                  color: const Color(0xFF4E5556),
+                  color: context.isDarkMode
+                      ? Colors.white
+                      : const Color(0xFF4E5556),
                 ),
               ),
               const Spacer(),

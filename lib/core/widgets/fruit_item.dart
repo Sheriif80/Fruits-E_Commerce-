@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,9 @@ class FruitItem extends StatelessWidget {
       },
       child: Container(
         decoration: ShapeDecoration(
-          color: const Color(0xFFF3F5F7),
+          color: context.isDarkMode
+              ? AppColors.darkContainer
+              : const Color(0xFFF3F5F7),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         ),
         child: Stack(
@@ -38,7 +41,7 @@ class FruitItem extends StatelessWidget {
                     placeholder: (context, url) => const Center(
                       child: CustomLoadingIndicator(width: 20, height: 20),
                     ),
-                    errorWidget: (context, url, error) =>
+                    errorBuilder: (context, url, error) =>
                         const Center(child: Icon(Icons.error)),
                   ),
                 ),

@@ -12,7 +12,11 @@ class CartView extends StatelessWidget {
     return BlocProvider(
       create: (context) => CartItemCubit(),
       child: Scaffold(
-        appBar: buildAppBar(title: 'السلة', isNotificationVisible: false),
+        appBar: buildAppBar(
+          context: context,
+          title: 'السلة',
+          isNotificationVisible: false,
+        ),
 
         body: const SafeArea(child: CartViewBody()),
       ),

@@ -8,7 +8,11 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "حسابي", isNotificationVisible: false),
+      appBar: buildAppBar(
+        context: context,
+        title: "حسابي",
+        isNotificationVisible: false,
+      ),
       body: const ProfileViewBody(),
     );
   }

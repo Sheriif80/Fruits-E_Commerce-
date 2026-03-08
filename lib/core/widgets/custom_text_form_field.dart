@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -38,9 +40,14 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         hint: Text(hintText),
-        hintStyle: Appstyles.bold13.copyWith(color: const Color(0xFF949D9E)),
-        fillColor: const Color(0xFFF9FAFA),
+        hintStyle: Appstyles.bold13.copyWith(
+          color: context.isDarkMode ? Colors.white : const Color(0xFF949D9E),
+        ),
+        fillColor: context.isDarkMode
+            ? AppColors.darkContainer
+            : const Color(0xFFF9FAFA),
         filled: true,
+
         border: buildBorder(),
         enabledBorder: buildBorder(),
         focusedBorder: buildBorder(),

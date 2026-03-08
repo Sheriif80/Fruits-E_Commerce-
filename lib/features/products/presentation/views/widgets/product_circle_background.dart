@@ -1,6 +1,8 @@
 import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -18,7 +20,7 @@ class ProductCircleBackground extends StatelessWidget {
           child: Container(
             height: MediaQuery.of(context).size.height * 0.48,
             width: double.infinity,
-            color: const Color(0xFFF3F5F7),
+            color: context.isDarkMode ? AppColors.darkContainer : Colors.white,
             child: Center(
               child: CachedNetworkImage(
                 imageUrl: imagePath,
@@ -26,7 +28,7 @@ class ProductCircleBackground extends StatelessWidget {
                 placeholder: (context, url) => const Center(
                   child: CustomLoadingIndicator(width: 20, height: 20),
                 ),
-                errorWidget: (context, url, error) =>
+                errorBuilder: (context, url, error) =>
                     const Center(child: Icon(Icons.error)),
               ),
             ),

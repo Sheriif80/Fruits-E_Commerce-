@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:gap/gap.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -14,7 +15,9 @@ class ActiveItem extends StatelessWidget {
     return Center(
       child: Container(
         decoration: ShapeDecoration(
-          color: const Color(0xFFEEEEEE),
+          color: context.isDarkMode
+              ? AppColors.darkContainer
+              : const Color(0xFFEEEEEE),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -28,7 +31,7 @@ class ActiveItem extends StatelessWidget {
                 width: 30,
                 height: 30,
                 decoration: ShapeDecoration(
-                  color: const Color(0xFF1B5E37) /* Green1-500 */,
+                  color: const Color(0xFF1B5E37),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -44,7 +47,9 @@ class ActiveItem extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Appstyles.semiBold11.copyWith(
-                    color: AppColors.primaryColor,
+                    color: context.isDarkMode
+                        ? Colors.white
+                        : AppColors.primaryColor,
                   ),
                 ),
               ),

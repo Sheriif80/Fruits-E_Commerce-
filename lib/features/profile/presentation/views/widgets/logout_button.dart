@@ -4,7 +4,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/cubits/sign_out_cubit/sign_out_cubit.dart';
 import 'package:gap/gap.dart';
@@ -21,7 +23,9 @@ class LogoutButton extends StatelessWidget {
       child: Container(
         height: 41,
         width: double.infinity,
-        color: const Color(0xFFEBF9F1),
+        color: context.isDarkMode
+            ? AppColors.darkContainer
+            : const Color(0xFFEBF9F1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -44,15 +48,15 @@ class LogoutButton extends StatelessWidget {
                   onTap: () {
                     showDialog(
                       context: context,
-                      builder: (dialog_context) => AlertDialog(
-                        title: const Text(
+                      builder: (dialogContext) => AlertDialog(
+                        title: Text(
                           'تسجيل الخروج',
-                          style: Appstyles.bold16,
+                          style: Appstyles.bold16.copyWith(),
                         ),
                         content: const Text('هل انت متأكد من تسجيل الخروج؟'),
                         actions: [
                           TextButton(
-                            onPressed: () => Navigator.pop(dialog_context),
+                            onPressed: () => Navigator.pop(dialogContext),
                             child: const Text(
                               'لا',
                               style: Appstyles.semiBold16,
@@ -73,7 +77,9 @@ class LogoutButton extends StatelessWidget {
                   child: Text(
                     'تسجيل الخروج',
                     style: Appstyles.semiBold13.copyWith(
-                      color: const Color(0xFF1B5E37),
+                      color: context.isDarkMode
+                          ? Colors.white
+                          : const Color(0xFF1B5E37),
                     ),
                   ),
                 );

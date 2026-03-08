@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:gap/gap.dart';
@@ -22,7 +23,9 @@ class AddressSummary extends StatelessWidget {
             child: Text(
               context.read<OrderInputEntity>().shippingAddress!.fullAddress,
               style: Appstyles.regular16.copyWith(
-                color: const Color(0xFF4E5556),
+                color: context.isDarkMode
+                    ? Colors.white
+                    : const Color(0xFF4E5556),
               ),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,

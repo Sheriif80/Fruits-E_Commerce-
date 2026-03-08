@@ -15,7 +15,7 @@ class ProductsView extends StatelessWidget {
       create: (context) =>
           ProductsCubit(getIt.get<ProductsRepo>())..getAllProducts(),
       child: Scaffold(
-        appBar: buildAppBar(title: "المنتجات"),
+        appBar: buildAppBar(context: context, title: "المنتجات"),
 
         body: const SafeArea(child: ProdctsViewBody()),
       ),

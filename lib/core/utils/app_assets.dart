@@ -122,6 +122,14 @@ class Assets {
   /// assets/images/notification.svg
   static const String imagesNotification = "assets/images/notification.svg";
 
+  /// Assets for imagesNotificationBlack
+  /// assets/images/notificationBlack.svg
+  static const String imagesNotificationBlack = "assets/images/notificationBlack.svg";
+
+  /// Assets for imagesNotificationnn
+  /// assets/images/notificationnn.svg
+  static const String imagesNotificationnn = "assets/images/notificationnn.svg";
+
   /// Assets for imagesOrder
   /// assets/images/order.svg
   static const String imagesOrder = "assets/images/order.svg";

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:gap/gap.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
@@ -35,7 +36,9 @@ class OrderWidget extends StatelessWidget {
               ),
             ],
             contentPadding: const EdgeInsets.all(20),
-            backgroundColor: Colors.white,
+            backgroundColor: context.isDarkMode
+                ? AppColors.darkContainer
+                : Colors.white,
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,12 +61,18 @@ class OrderWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         height: 107,
-        decoration: const BoxDecoration(color: Color(0x7FF2F3F3)),
+        decoration: BoxDecoration(
+          color: context.isDarkMode
+              ? AppColors.darkContainer
+              : const Color(0x7FF2F3F3),
+        ),
         child: Row(
           children: [
             CircleAvatar(
               radius: 33,
-              backgroundColor: const Color(0xFFEBF9F1),
+              backgroundColor: context.isDarkMode
+                  ? AppColors.darkContainer
+                  : const Color(0xFFEBF9F1),
               child: SvgPicture.asset(Assets.imagesOrder),
             ),
             const Gap(7),

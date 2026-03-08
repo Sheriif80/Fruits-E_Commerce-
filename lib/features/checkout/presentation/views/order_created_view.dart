@@ -8,7 +8,12 @@ class OrderCreatedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "الدفع", isNotificationVisible: false),
+      appBar: buildAppBar(
+        context: context,
+
+        title: "الدفع",
+        isNotificationVisible: false,
+      ),
 
       body: const OrderCreatedViewBody(),
     );

@@ -17,7 +17,11 @@ class MyOrdersView extends StatelessWidget {
           GetMyOrdersCubit(getIt.get<OrderRepo>())
             ..getMyOrders(userID: getUserData().userId!),
       child: Scaffold(
-        appBar: buildAppBar(title: "طلباتي", isNotificationVisible: false),
+        appBar: buildAppBar(
+          context: context,
+          title: "طلباتي",
+          isNotificationVisible: false,
+        ),
         body: const MyOrdersViewBodyBlocBuilder(),
       ),
     );
