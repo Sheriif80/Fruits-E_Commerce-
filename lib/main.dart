@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fruits_e_commerce_app/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:fruits_e_commerce_app/core/routing/router_generation_config.dart';
 import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
 import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
@@ -28,25 +29,30 @@ class FruitHub extends StatelessWidget {
   const FruitHub({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
-      child: MaterialApp.router(
-        builder: EasyLoading.init(),
-        theme: ThemeData(
-          fontFamily: 'Cairo',
-          scaffoldBackgroundColor: Colors.white,
-          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
-        ),
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        locale: const Locale('ar'),
-        supportedLocales: S.delegate.supportedLocales,
-        routerConfig: RouterGenerationConfig.goRouter,
-        debugShowCheckedModeBanner: false,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(create: (context) => ThemeCubit()),
+      ],
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return MaterialApp.router(
+            builder: EasyLoading.init(),
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeMode,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            locale: const Locale('ar'),
+            supportedLocales: S.delegate.supportedLocales,
+            routerConfig: RouterGenerationConfig.goRouter,
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }
