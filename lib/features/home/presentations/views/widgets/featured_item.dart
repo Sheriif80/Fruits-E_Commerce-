@@ -4,6 +4,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/featured_item_button.dart';
 import 'package:gap/gap.dart';
+import 'package:svg_flutter/svg.dart';
 
 class FeaturedItem extends StatelessWidget {
   const FeaturedItem({super.key});
@@ -20,8 +21,9 @@ class FeaturedItem extends StatelessWidget {
             Positioned(
               left: 0,
               bottom: 0,
+              top: 0,
               right: itemWidth * 0.4,
-              child: Image.asset(Assets.imagesStrawberryTest, fit: BoxFit.fill),
+              child: SvgPicture.asset(Assets.imagesPageViewImage2),
             ),
             Container(
               width: itemWidth * 0.5,

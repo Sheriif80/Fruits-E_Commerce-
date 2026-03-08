@@ -42,6 +42,30 @@ class Assets {
   /// assets/images/filter.svg
   static const String imagesFilter = "assets/images/filter.svg";
 
+  /// Assets for imagesFruitsAvocado
+  /// assets/images/fruits/avocado.png
+  static const String imagesFruitsAvocado = "assets/images/fruits/avocado.png";
+
+  /// Assets for imagesFruitsBananas
+  /// assets/images/fruits/bananas.png
+  static const String imagesFruitsBananas = "assets/images/fruits/bananas.png";
+
+  /// Assets for imagesFruitsMango
+  /// assets/images/fruits/mango.png
+  static const String imagesFruitsMango = "assets/images/fruits/mango.png";
+
+  /// Assets for imagesFruitsPineapple
+  /// assets/images/fruits/pineapple.png
+  static const String imagesFruitsPineapple = "assets/images/fruits/pineapple.png";
+
+  /// Assets for imagesFruitsStrawberry
+  /// assets/images/fruits/strawberry.png
+  static const String imagesFruitsStrawberry = "assets/images/fruits/strawberry.png";
+
+  /// Assets for imagesFruitsWatermelon
+  /// assets/images/fruits/watermelon.png
+  static const String imagesFruitsWatermelon = "assets/images/fruits/watermelon.png";
+
   /// Assets for imagesGoogleIcon
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
