@@ -8,4 +8,29 @@ class AppColors {
   static Color blackColor = const Color(0xff1F2C37);
   static Color greyColor = const Color(0xff9CA4AB);
   static Color whiteColor = Colors.white;
+
+  // Dark Theme Colors
+  static Color darkBackground = const Color(0xFF121212);
+  static Color darkContainer = const Color(0xFF1E1E1E);
+}
+
+class AppTheme {
+  // Light Theme
+  static ThemeData lightTheme = ThemeData(
+    fontFamily: 'Cairo',
+    scaffoldBackgroundColor: AppColors.whiteColor,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.primaryColor,
+      brightness: Brightness.light,
+    ),
+  );
+  // Dark Theme
+  static ThemeData darkTheme = ThemeData(
+    fontFamily: 'Cairo',
+    scaffoldBackgroundColor: AppColors.darkBackground,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.primaryColor,
+      brightness: Brightness.dark,
+    ),
+  );
 }
