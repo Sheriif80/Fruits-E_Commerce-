@@ -4,3 +4,5 @@ const kVerticalPadding = 10.0;
 const kIsOnBoardingVisible = 'isOnBoardingVisible';
 
 const kUserData = 'userData';
+
+const kIsDarkMode = 'isDarkMode';
