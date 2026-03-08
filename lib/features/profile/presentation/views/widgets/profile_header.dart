@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svgg;
 import 'package:fruits_e_commerce_app/core/helpers/get_user_data.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
@@ -19,7 +18,7 @@ class ProfileHeader extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 36.5,
-              backgroundImage: svgg.Svg(Assets.imagesProfilePicTest),
+              backgroundImage: AssetImage(Assets.imagesAvatar),
             ),
             Container(
               decoration: const BoxDecoration(
