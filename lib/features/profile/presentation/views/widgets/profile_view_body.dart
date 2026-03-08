@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/features/profile/presentation/views/widget
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/profile_header.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/profile_list_item.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/profile_section_title.dart';
+import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/theme_switcher_button.dart';
 import 'package:gap/gap.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -44,6 +45,7 @@ class ProfileViewBody extends StatelessWidget {
             iconPath: Assets.imagesProfileIconsGlobal,
             path: AppRoutes.myOrdersView,
           ),
+          ThemeSwitcherButton(),
           ProfileSectionTitle(title: "المساعدة"),
           ProfileListItem(
             title: "من نحن",

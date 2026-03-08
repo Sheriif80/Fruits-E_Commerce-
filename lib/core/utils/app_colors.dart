@@ -10,8 +10,8 @@ class AppColors {
   static Color whiteColor = Colors.white;
 
   // Dark Theme Colors
-  static Color darkBackground = const Color(0xFF121212);
-  static Color darkContainer = const Color(0xFF1E1E1E);
+  static Color darkBackground = const Color(0xFF181A20);
+  static Color darkContainer = const Color(0xFF1F222A);
 }
 
 class AppTheme {
