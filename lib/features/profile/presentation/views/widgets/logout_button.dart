@@ -34,7 +34,9 @@ class LogoutButton extends StatelessWidget {
               listener: (context, state) {
                 if (state is SignOutSuccess) {
                   EasyLoading.dismiss();
-                  GoRouter.of(context).go(AppRoutes.loginView);
+                  GoRouter.of(
+                    context,
+                  ).pushReplacementNamed(AppRoutes.loginView);
                 }
                 if (state is SignOutFailure) {
                   EasyLoading.showError(state.message);
