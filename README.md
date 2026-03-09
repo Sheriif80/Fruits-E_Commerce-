@@ -2,7 +2,7 @@
 
 A full-featured, highly scalable e-commerce application built with Flutter. This app provides a seamless shopping experience for users, allowing them to browse products, manage their cart, and securely checkout, with full support for both Arabic and English languages.
 
-> **Note:** This is the client-facing application. To view the Admin Dashboard repository, [Click Here](#) *(https://github.com/Sheriif80/Fruits-Hub-Dashboard)*.
+> **Note:** This is the client-facing application. To view the Admin Dashboard repository, [Click Here](https://github.com/Sheriif80/Fruits-Hub-Dashboard).
 
 ## ✨ Features
 
