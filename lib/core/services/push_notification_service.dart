@@ -26,6 +26,8 @@ class PushNotificationService {
 
     log('User granted permission: ${settings.authorizationStatus}');
 
+    await getToken();
+
     // Enable push notification in the background
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 

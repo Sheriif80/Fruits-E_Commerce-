@@ -10,6 +10,7 @@ import 'package:fruits_e_commerce_app/core/routing/router_generation_config.dart
 import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
 import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/services/observer.dart';
+import 'package:fruits_e_commerce_app/core/services/push_notification_service.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/firebase_options.dart';
@@ -21,6 +22,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await CacheHelper.init();
   setupGetIt();
+  await getIt<PushNotificationService>().init();
   Bloc.observer = AppBlocObserver();
   runApp(const FruitHub());
 }
