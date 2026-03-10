@@ -1,5 +1,6 @@
 class ProductEntity {
   final String code;
+  final String productID;
   final String name;
   final String description;
   String? imageURL;
@@ -14,6 +15,7 @@ class ProductEntity {
 
   ProductEntity({
     required this.code,
+    required this.productID,
     required this.name,
     required this.description,
     required this.price,

@@ -2,6 +2,7 @@ import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 
 class ProductModel {
   final String code;
+  final String productID;
   final String name;
   final String description;
   final num price;
@@ -17,6 +18,7 @@ class ProductModel {
 
   ProductModel({
     required this.code,
+    required this.productID,
     required this.name,
     required this.description,
     required this.price,
@@ -33,6 +35,7 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
     code: json['code'],
+    productID: json['productID'],
     name: json['name'],
     description: json['description'],
     price: json['price'],
@@ -44,12 +47,12 @@ class ProductModel {
     unitAmount: json['unitAmount'],
     avgRating: json['avgRating'],
     numberOfRatings: json['numberOfRatings'],
-
     sellingCount: json['sellingCount'],
   );
 
   ProductEntity toEntity() => ProductEntity(
     code: code,
+    productID: productID,
     name: name,
     description: description,
     price: price,
@@ -65,6 +68,7 @@ class ProductModel {
 
   toMap() => {
     "code": code,
+    "productID": productID,
     "name": name,
     "description": description,
     "imageURL": imageURL,

@@ -2,6 +2,7 @@ import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 
 ProductEntity getDummyProduct() => ProductEntity(
   code: "1234",
+  productID: "adskndas15sdv2c",
   name: "Apple",
   description: "A delicious apple",
   price: 10.99,
