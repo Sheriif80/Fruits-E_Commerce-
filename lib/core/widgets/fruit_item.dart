@@ -11,8 +11,13 @@ import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cub
 import 'package:go_router/go_router.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key, required this.productEntity});
+  const FruitItem({
+    super.key,
+    required this.productEntity,
+    required this.favoriteWidget,
+  });
   final ProductEntity productEntity;
+  final Widget favoriteWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -100,14 +105,7 @@ class FruitItem extends StatelessWidget {
                 ),
               ],
             ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.favorite_outline),
-              ),
-            ),
+            Positioned(top: 0, right: 0, child: favoriteWidget),
           ],
         ),
       ),
