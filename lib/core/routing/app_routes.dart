@@ -11,4 +11,5 @@ class AppRoutes {
   static const String forgotPasswordView = '/forgotPasswordView';
   static const String myOrdersView = '/myOrdersView';
   static const String reviewsView = '/reviewsView';
+  static const String favoritesView = '/favoritesView';
 }

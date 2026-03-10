@@ -36,6 +36,7 @@ class ProfileViewBody extends StatelessWidget {
           ProfileListItem(
             title: "المفضلة",
             iconPath: Assets.imagesProfileIconsHeart,
+            path: AppRoutes.favoritesView,
           ),
           ProfileListItem(
             title: "اللغة",
