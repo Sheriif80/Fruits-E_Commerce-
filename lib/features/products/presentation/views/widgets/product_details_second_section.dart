@@ -48,7 +48,7 @@ class ProductDetailsSecondSection extends StatelessWidget {
                 ).pushNamed(AppRoutes.reviewsView, extra: productEntity);
               },
               child: CustomProductDetailsContainer(
-                title: productEntity.avgRating.toString(),
+                title: productEntity.avgRating.toStringAsFixed(1),
                 subtitle: "المراجعات (${productEntity.numberOfRatings})",
                 iconPath: Assets.imagesFavourites,
               ),

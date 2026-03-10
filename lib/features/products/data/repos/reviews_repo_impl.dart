@@ -23,6 +23,22 @@ class ReviewsRepoImpl implements ReviewsRepo {
             "${AppEndPoints.getProducts}/$productDocId/${AppEndPoints.addReview}",
         data: ReviewModel.fromEntity(review).toJson(),
       );
+      // Getting product reference
+      final productRef = FirebaseFirestore.instance
+          .collection("products")
+          .doc(productDocId);
+      // Get old number of ratings and avg rating
+      final oldNumberOfRatings = (await productRef.get())["numberOfRatings"];
+      final oldAvgRating = (await productRef.get())["avgRating"];
+      // Calculate new number of ratings and avg rating
+      final newNumberOfRatings = oldNumberOfRatings + 1;
+      final newAvgRating = (oldAvgRating + review.rating) / newNumberOfRatings;
+      // Update product rating
+      await productRef.update({
+        "numberOfRatings": newNumberOfRatings,
+        "avgRating": newAvgRating,
+      });
+
       return const Right(null);
     } catch (e) {
       return Left(ServerFailure(e.toString()));

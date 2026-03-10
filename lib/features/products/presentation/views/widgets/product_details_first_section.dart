@@ -49,7 +49,7 @@ class ProductDetailsFirstSection extends StatelessWidget {
             const Icon(Icons.star, color: Color(0xFFFFC529)),
             const Gap(10),
             Text(
-              productEntity.avgRating.toString(),
+              productEntity.avgRating.toStringAsFixed(1),
               style: Appstyles.semiBold13,
             ),
             const Gap(10),
