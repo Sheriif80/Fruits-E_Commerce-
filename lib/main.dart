@@ -13,6 +13,8 @@ import 'package:fruits_e_commerce_app/core/services/observer.dart';
 import 'package:fruits_e_commerce_app/core/services/push_notification_service.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruits_e_commerce_app/features/favorites/domain/repos/favorites_repo.dart';
+import 'package:fruits_e_commerce_app/features/favorites/presentation/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:fruits_e_commerce_app/firebase_options.dart';
 import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
@@ -34,6 +36,12 @@ class FruitHub extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => CartCubit()),
+        BlocProvider(
+          create: (context) =>
+              FavoritesCubit(favoritesRepo: getIt<FavoritesRepo>())
+                ..getFavoriteProducts(),
+        ),
+
         BlocProvider(create: (context) => ThemeCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
