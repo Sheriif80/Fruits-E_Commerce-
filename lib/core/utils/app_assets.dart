@@ -194,6 +194,10 @@ class Assets {
   /// assets/images/search.svg
   static const String imagesSearch = "assets/images/search.svg";
 
+  /// Assets for imagesSearchViewIcon
+  /// assets/images/searchViewIcon.svg
+  static const String imagesSearchViewIcon = "assets/images/searchViewIcon.svg";
+
   /// Assets for imagesStrawberryTest
   /// assets/images/strawberry_test.png
   static const String imagesStrawberryTest = "assets/images/strawberry_test.png";

@@ -1,5 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
+import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/forgot_password_view.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/login_view.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/signup_view.dart';
@@ -13,6 +15,9 @@ import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/on
 import 'package:fruits_e_commerce_app/features/products/presentation/views/reviews_view.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/product_details_view.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/my_orders_view.dart';
+import 'package:fruits_e_commerce_app/features/search/domain/repos/search_repo.dart';
+import 'package:fruits_e_commerce_app/features/search/presentation/cubits/search_cubit/search_cubit.dart';
+import 'package:fruits_e_commerce_app/features/search/presentation/views/search_view.dart';
 import 'package:fruits_e_commerce_app/features/splash/presentations/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -100,6 +105,15 @@ class RouterGenerationConfig {
         name: AppRoutes.favoritesView,
 
         builder: (context, state) => const FavoritesView(),
+      ),
+      GoRoute(
+        path: AppRoutes.searchView,
+        name: AppRoutes.searchView,
+
+        builder: (context, state) => BlocProvider(
+          create: (context) => SearchCubit(searchRepo: getIt.get<SearchRepo>()),
+          child: const SearchView(),
+        ),
       ),
     ],
   );

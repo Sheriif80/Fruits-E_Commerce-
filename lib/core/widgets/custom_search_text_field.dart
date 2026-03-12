@@ -5,7 +5,17 @@ import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({super.key});
+  const CustomSearchTextField({
+    super.key,
+    this.readOnly = false,
+    this.autofocus = false,
+    this.onTap,
+    this.onChanged,
+  });
+  final bool readOnly;
+  final bool autofocus;
+  final void Function()? onTap;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +31,10 @@ class CustomSearchTextField extends StatelessWidget {
         ],
       ),
       child: TextField(
+        readOnly: readOnly,
+        onTap: onTap,
+        onChanged: onChanged,
+        autofocus: autofocus,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: SizedBox(

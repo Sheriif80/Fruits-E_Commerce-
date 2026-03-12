@@ -12,7 +12,7 @@ class CustomLoadingIndicator extends StatelessWidget {
     return SizedBox(
       height: height ?? 200,
       width: width ?? 200,
-      child: LottieBuilder.asset('assets/lottie/loading.json'),
+      child: LottieBuilder.asset('assets/lottie/greenLoading.json'),
     );
   }
 }
