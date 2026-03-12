@@ -61,4 +61,23 @@ class FirestoreService implements DatabaseService {
     final data = await firestore.collection(path).doc(docID).get();
     return data.exists;
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> searchData({
+    required String path,
+    required String field,
+    required String query,
+  }) async {
+    final snapshot = await firestore
+        .collection(path)
+        .where(field, isGreaterThanOrEqualTo: query)
+        .where(field, isLessThanOrEqualTo: '$query\uf8ff')
+        .get();
+
+    return snapshot.docs.map((doc) {
+      final data = doc.data();
+      data['productId'] = doc.id;
+      return data;
+    }).toList();
+  }
 }

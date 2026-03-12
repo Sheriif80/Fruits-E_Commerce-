@@ -9,5 +9,10 @@ abstract class DatabaseService {
     String? docID,
     Map<String, dynamic>? query,
   });
+  Future<List<Map<String, dynamic>>> searchData({
+    required String path,
+    required String field,
+    required String query,
+  });
   Future<bool> ifDataExists({required String path, required String docID});
 }
