@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/favorites/presentation/views/widgets/favorites_view_body.dart';
 
@@ -13,7 +14,7 @@ class FavoritesView extends StatelessWidget {
         title: "المفضلة",
         isNotificationVisible: false,
       ),
-      body: const FavoritesViewBody(),
+      body: const FavoritesViewBody().animate().fadeIn(duration: 800.ms),
     );
   }
 }

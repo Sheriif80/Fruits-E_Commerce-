@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:fruits_e_commerce_app/features/favorites/presentation/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:fruits_e_commerce_app/features/favorites/presentation/views/widgets/favorite_products_grid_view.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
 class FavoritesViewBody extends StatelessWidget {
@@ -31,10 +32,13 @@ class FavoritesViewBody extends StatelessWidget {
                     style: Appstyles.bold16,
                   ),
                   const SizedBox(height: 16),
-                  Text(
-                    "العودة الرئيسية",
-                    style: Appstyles.bold16.copyWith(
-                      color: AppColors.primaryColor,
+                  GestureDetector(
+                    onTap: () => GoRouter.of(context).pop(),
+                    child: Text(
+                      "العودة الرئيسية",
+                      style: Appstyles.bold16.copyWith(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                   ),
                 ],
