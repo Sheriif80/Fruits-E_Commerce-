@@ -13,4 +13,10 @@ class Debouncer {
     }
     _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
+
+  void cancel() {
+    if (_timer != null) {
+      _timer!.cancel();
+    }
+  }
 }

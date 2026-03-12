@@ -10,10 +10,11 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit({required this.searchRepo}) : super(SearchInitial());
 
   final SearchRepo searchRepo;
-  final Debouncer _debouncer = Debouncer(milliseconds: 500);
+  final Debouncer _debouncer = Debouncer(milliseconds: 1000);
 
   Future<void> searchProducts({required String query}) async {
     if (query.trim().isEmpty) {
+      _debouncer.cancel();
       emit(SearchInitial());
       return;
     }
