@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/shipping_item.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
@@ -17,14 +18,16 @@ class _ShippingSectionState extends State<ShippingSection>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final s = S.of(context);
     return Column(
       children: [
         const Gap(22),
         ShippingItem(
-          title: 'الدفع عند الاستلام',
-          subtitle: 'السعر يشمل مصاريف الشحن',
-          price:
-              '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40} جنيه',
+          title: s.cashOnDelivery,
+          subtitle: s.shippingIncluded,
+          price: s.price(
+            context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40,
+          ),
           isActive: selectedIndex == 0,
           onTap: () {
             setState(() {
@@ -36,10 +39,11 @@ class _ShippingSectionState extends State<ShippingSection>
         ),
         const Gap(16),
         ShippingItem(
-          title: 'الدفع باستخدام البطاقة البنكية',
-          subtitle: 'الشحن مجاني',
-          price:
-              "${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه",
+          title: s.payWithCard,
+          subtitle: s.freeShipping,
+          price: s.price(
+            context.read<OrderInputEntity>().cartEntity.calculateTotalPrice(),
+          ),
           isActive: selectedIndex == 1,
           onTap: () {
             setState(() {

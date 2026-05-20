@@ -9,6 +9,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/cubits/sign_out_cubit/sign_out_cubit.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg_flutter.dart';
@@ -52,23 +53,23 @@ class LogoutButton extends StatelessWidget {
                       context: context,
                       builder: (dialogContext) => AlertDialog(
                         title: Text(
-                          'تسجيل الخروج',
+                          S.of(context).logout,
                           style: Appstyles.bold16.copyWith(),
                         ),
-                        content: const Text('هل انت متأكد من تسجيل الخروج؟'),
+                        content: Text(S.of(context).logoutConfirmation),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(dialogContext),
-                            child: const Text(
-                              'لا',
+                            child: Text(
+                              S.of(context).no,
                               style: Appstyles.semiBold16,
                             ),
                           ),
                           TextButton(
                             onPressed: () =>
                                 context.read<SignOutCubit>().signOut(),
-                            child: const Text(
-                              'نعم',
+                            child: Text(
+                              S.of(context).yes,
                               style: Appstyles.semiBold13,
                             ),
                           ),
@@ -77,7 +78,7 @@ class LogoutButton extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    'تسجيل الخروج',
+                    S.of(context).logout,
                     style: Appstyles.semiBold13.copyWith(
                       color: context.isDarkMode
                           ? Colors.white

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 
 class OrDivider extends StatelessWidget {
@@ -7,13 +8,13 @@ class OrDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        Expanded(child: Divider()),
-        Gap(16),
-        Text("أو", style: Appstyles.semiBold13),
-        Gap(16),
-        Expanded(child: Divider()),
+        const Expanded(child: Divider()),
+        const Gap(16),
+        Text(S.of(context).or, style: Appstyles.semiBold13),
+        const Gap(16),
+        const Expanded(child: Divider()),
       ],
     );
   }

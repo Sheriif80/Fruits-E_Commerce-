@@ -9,6 +9,7 @@ import 'package:fruits_e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_e_commerce_app/features/products/domain/entities/review_entity.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/cubits/add_review_cubit/add_review_cubit.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 
 class AddReviewForm extends StatefulWidget {
@@ -25,19 +26,20 @@ class _AddReviewFormState extends State<AddReviewForm> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Form(
       key: formKey,
       child: Column(
         children: [
           CustomTextFormField(
-            hintText: "اكتب تعليقك...",
+            hintText: s.reviewHint,
             onChanged: (value) {
               description = value;
             },
           ),
           const Gap(16),
           CustomTextFormField(
-            hintText: "كم من 10 ؟",
+            hintText: s.ratingHint,
             keyboardType: TextInputType.number,
             onChanged: (value) {
               rating = num.tryParse(value);
@@ -70,11 +72,11 @@ class _AddReviewFormState extends State<AddReviewForm> {
               }
 
               if (state is AddReviewSuccess) {
-                return const Center(child: Text("تم ارسال التقييم بنجاح"));
+                return Center(child: Text(s.reviewSubmitted));
               }
 
               return CustomButton(
-                text: "ارسال التقييم",
+                text: s.submitReview,
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     context.read<AddReviewCubit>().addReview(

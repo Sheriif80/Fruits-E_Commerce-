@@ -13,6 +13,8 @@ class ProfileListItem extends StatelessWidget {
     this.switchValue = false,
     this.onSwitchChanged,
     this.path,
+    this.onTap,
+    this.trailing,
   });
 
   final String title;
@@ -22,25 +24,28 @@ class ProfileListItem extends StatelessWidget {
   final bool switchValue;
   final ValueChanged<bool>? onSwitchChanged;
   final String? path;
+  final VoidCallback? onTap;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: onTap ?? () {
         if (path != null) {
           GoRouter.of(context).pushNamed(path!);
-        } else {}
+        }
       },
       child: Column(
         children: [
           ListTile(
             leading: SvgPicture.asset(iconPath),
             title: Text(title, style: Appstyles.semiBold13),
-            trailing: hasSwitch
-                ? Switch(value: switchValue, onChanged: onSwitchChanged)
-                : showArrow
-                ? const Icon(Icons.arrow_forward_ios, size: 16)
-                : null,
+            trailing: trailing ??
+                (hasSwitch
+                    ? Switch(value: switchValue, onChanged: onSwitchChanged)
+                    : showArrow
+                    ? const Icon(Icons.arrow_forward_ios, size: 16)
+                    : null),
           ),
           const Divider(height: 1, color: Color(0xFFF1F1F5), thickness: 0.9),
         ],

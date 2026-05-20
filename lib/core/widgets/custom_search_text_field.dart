@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:svg_flutter/svg.dart';
 
 class CustomSearchTextField extends StatelessWidget {
@@ -45,7 +46,7 @@ class CustomSearchTextField extends StatelessWidget {
             width: 20,
             child: Center(child: SvgPicture.asset(Assets.imagesFilter)),
           ),
-          hint: const Text('ابحث عن.......'),
+          hint: Text(S.of(context).searchHint),
           hintStyle: Appstyles.regular13.copyWith(
             color: context.isDarkMode ? Colors.white : const Color(0xFF949D9E),
           ),

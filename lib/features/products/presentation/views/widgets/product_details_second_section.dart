@@ -3,6 +3,7 @@ import 'package:fruits_e_commerce_app/core/entities/product_entity.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/custom_product_details_container.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,20 +14,21 @@ class ProductDetailsSecondSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            const CustomProductDetailsContainer(
-              title: "عام",
-              subtitle: "الصلاحية",
+            CustomProductDetailsContainer(
+              title: s.general,
+              subtitle: s.expiration,
               iconPath: Assets.imagesCalendar,
             ),
             const Spacer(),
             CustomProductDetailsContainer(
               title: productEntity.isOrganic ? "100%" : "0%",
-              subtitle: productEntity.isOrganic ? "اورجانيك" : "مش اورجانيك",
+              subtitle: productEntity.isOrganic ? s.organic : s.nonOrganic,
               iconPath: Assets.imagesLotus,
             ),
           ],
@@ -35,8 +37,8 @@ class ProductDetailsSecondSection extends StatelessWidget {
         Row(
           children: [
             CustomProductDetailsContainer(
-              title: "${productEntity.numberOfCalories} كالوري",
-              subtitle: "${productEntity.unitAmount} جرام",
+              title: s.calories(productEntity.numberOfCalories),
+              subtitle: s.grams(productEntity.unitAmount),
               iconPath: Assets.imagesMatches,
             ),
             const Spacer(),
@@ -49,7 +51,7 @@ class ProductDetailsSecondSection extends StatelessWidget {
               },
               child: CustomProductDetailsContainer(
                 title: productEntity.avgRating.toStringAsFixed(1),
-                subtitle: "المراجعات (${productEntity.numberOfRatings})",
+                subtitle: s.reviewsCount(productEntity.numberOfRatings),
                 iconPath: Assets.imagesFavourites,
               ),
             ),

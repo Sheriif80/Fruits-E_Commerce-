@@ -10,6 +10,7 @@ import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/add_order_bloc_consumer.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_entity.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutView extends StatefulWidget {
@@ -42,7 +43,7 @@ class _CheckoutViewState extends State<CheckoutView> {
         appBar: buildAppBar(
           context: context,
 
-          title: "الشحن",
+          title: S.of(context).shipping,
           isNotificationVisible: false,
         ),
         body: Provider.value(

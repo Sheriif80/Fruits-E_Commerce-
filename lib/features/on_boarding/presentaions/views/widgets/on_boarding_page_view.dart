@@ -3,6 +3,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/widgets/page_view_item.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class OnBoardingPageView extends StatelessWidget {
   const OnBoardingPageView({super.key, required this.pageController});
@@ -10,6 +11,7 @@ class OnBoardingPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return PageView(
       controller: pageController,
       children: [
@@ -18,10 +20,10 @@ class OnBoardingPageView extends StatelessWidget {
           image: Assets.imagesPageViewImage1,
           backgroundImage: Assets.imagesPageViewBacgroundImage1,
           title: Row(
-            mainAxisAlignment: .center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                " مرحبًا بك في ",
+                s.onBoardingWelcome,
                 style: Appstyles.bold23.copyWith(
                   color: const Color(0xFF0C0D0D),
                 ),
@@ -38,19 +40,20 @@ class OnBoardingPageView extends StatelessWidget {
               ),
             ],
           ),
-          subtitle: const Text(
-            "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
-            textAlign: .center,
+          subtitle: Text(
+            s.onBoardingDescription,
+            textAlign: TextAlign.center,
             style: Appstyles.regular13,
           ),
         ),
-        const PageViewItem(
+        PageViewItem(
+          isVisible: false,
           image: Assets.imagesPageViewImage2,
           backgroundImage: Assets.imagesPageViewBacgroundImage2,
-          title: Text("ابحث وتسوق", style: Appstyles.bold23),
+          title: Text(s.onBoardingSearchTitle, style: Appstyles.bold23),
           subtitle: Text(
-            "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
-            textAlign: .center,
+            s.onBoardingSearchDescription,
+            textAlign: TextAlign.center,
             style: Appstyles.regular13,
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 
 class QuantityControlButtons extends StatefulWidget {
@@ -27,7 +28,7 @@ class _QuantityControlButtonsState extends State<QuantityControlButtons> {
                 } else {
                   AppSnackbars.showInfo(
                     context,
-                    message: 'لا يمكن أن يكون الكمية أكثر من 10',
+                    message: S.of(context).maxQuantity,
                   );
                 }
               });

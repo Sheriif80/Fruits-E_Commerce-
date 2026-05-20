@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/care_item_cubit/cart_item_cubit.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomCartButton extends StatelessWidget {
@@ -17,8 +18,9 @@ class CustomCartButton extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: CustomButton(
-            text:
-                "الدفع الان  :  ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه",
+            text: S.of(context).checkout(
+              context.watch<CartCubit>().cartEntity.calculateTotalPrice(),
+            ),
             onPressed: () {
               if (BlocProvider.of<CartCubit>(
                 context,
@@ -30,7 +32,7 @@ class CustomCartButton extends StatelessWidget {
               } else {
                 AppSnackbars.showInfo(
                   context,
-                  message: " لا يوجد منتجات في السلة",
+                  message: S.of(context).emptyCart,
                 );
               }
             },

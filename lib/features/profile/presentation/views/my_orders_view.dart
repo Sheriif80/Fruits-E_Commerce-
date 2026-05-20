@@ -6,6 +6,7 @@ import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/cubits/get_my_orders_cubit/get_my_orders_cubit.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/widgets/my_orders_view_body_bloc_builder.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class MyOrdersView extends StatelessWidget {
   const MyOrdersView({super.key});
@@ -19,7 +20,7 @@ class MyOrdersView extends StatelessWidget {
       child: Scaffold(
         appBar: buildAppBar(
           context: context,
-          title: "طلباتي",
+          title: S.of(context).myOrders,
           isNotificationVisible: false,
         ),
         body: const MyOrdersViewBodyBlocBuilder(),

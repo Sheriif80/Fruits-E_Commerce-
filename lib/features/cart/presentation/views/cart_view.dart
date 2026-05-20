@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/care_item_cubit/cart_item_cubit.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/views/widgets/cart_view_body.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -14,7 +15,7 @@ class CartView extends StatelessWidget {
       child: Scaffold(
         appBar: buildAppBar(
           context: context,
-          title: 'السلة',
+          title: S.of(context).cart,
           isNotificationVisible: false,
         ),
 

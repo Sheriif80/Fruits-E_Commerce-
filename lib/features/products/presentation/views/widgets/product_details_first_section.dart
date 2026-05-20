@@ -4,6 +4,7 @@ import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/quantity_control_buttons.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,6 +14,7 @@ class ProductDetailsFirstSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,13 +30,13 @@ class ProductDetailsFirstSection extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                text: '${productEntity.price} جنية ',
+                text: s.priceEgp(productEntity.price),
                 style: Appstyles.semiBold13.copyWith(
                   color: AppColors.secondaryColor,
                 ),
               ),
               TextSpan(
-                text: '/ الكيلو',
+                text: s.perKilo,
                 style: Appstyles.semiBold13.copyWith(
                   color: AppColors.lightSecondaryColor,
                 ),
@@ -65,7 +67,7 @@ class ProductDetailsFirstSection extends StatelessWidget {
                 ).pushNamed(AppRoutes.reviewsView, extra: productEntity);
               },
               child: Text(
-                'المراجعات',
+                s.reviews,
                 style: Appstyles.bold13.copyWith(
                   color: AppColors.primaryColor,
                   decoration: TextDecoration.underline,

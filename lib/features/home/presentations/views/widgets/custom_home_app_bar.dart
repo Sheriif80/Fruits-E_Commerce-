@@ -4,6 +4,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/core/widgets/notification_widget.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -13,7 +14,9 @@ class CustomHomeAppBar extends StatelessWidget {
     return ListTile(
       leading: Image.asset(Assets.imagesAvatar),
       title: Text(
-        DateTime.now().hour < 12 ? 'صباح الخير !..' : 'مساء الخير !..',
+        DateTime.now().hour < 12
+            ? S.of(context).morningGreeting
+            : S.of(context).eveningGreeting,
         textAlign: TextAlign.right,
         style: Appstyles.semiBold16.copyWith(
           color: context.isDarkMode ? Colors.white : const Color(0xFF949D9E),

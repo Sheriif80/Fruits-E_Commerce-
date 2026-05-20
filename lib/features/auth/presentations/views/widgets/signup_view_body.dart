@@ -8,6 +8,7 @@ import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signup_
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/have_an_account_widget.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/password_text_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/terms_and_conditions.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 
 class SignupViewBody extends StatefulWidget {
@@ -24,6 +25,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: SingleChildScrollView(
@@ -38,7 +40,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   _name = value!;
                 },
                 keyboardType: TextInputType.name,
-                hintText: ' الاسم كاملاً',
+                hintText: s.fullName,
               ),
               const Gap(16),
               CustomTextFormField(
@@ -46,7 +48,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   _email = value!;
                 },
                 keyboardType: TextInputType.emailAddress,
-                hintText: 'البريد الإلكتروني',
+                hintText: s.email,
               ),
               const Gap(16),
               PasswordTextField(onSaved: (value) => _password = value!),
@@ -58,7 +60,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               ),
               const Gap(30),
               CustomButton(
-                text: "إنشاء حساب جديد ",
+                text: s.createAccount,
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
@@ -74,7 +76,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     } else {
                       AppSnackbars.showError(
                         context,
-                        message: "يجب الموافقة على الشروط والأحكام",
+                        message: s.acceptTerms,
                       );
                     }
                   } else {

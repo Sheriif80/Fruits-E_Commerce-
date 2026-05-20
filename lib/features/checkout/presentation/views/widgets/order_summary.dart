@@ -3,6 +3,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/payment_item.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 class OrderSummary extends StatelessWidget {
@@ -10,14 +11,15 @@ class OrderSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return PaymentItem(
-      tile: "ملخص الطلب",
+      tile: s.orderSummary,
       child: Column(
         children: [
           Row(
             children: [
               Text(
-                'المجموع الفرعي :',
+                s.subtotal,
                 style: Appstyles.regular13.copyWith(
                   color: context.isDarkMode
                       ? Colors.white
@@ -26,7 +28,9 @@ class OrderSummary extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                "${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه ",
+                s.priceTotal(
+                  context.read<OrderInputEntity>().cartEntity.calculateTotalPrice(),
+                ),
                 style: Appstyles.semiBold16,
               ),
             ],
@@ -34,7 +38,7 @@ class OrderSummary extends StatelessWidget {
           Row(
             children: [
               Text(
-                "ألتوصيل :",
+                s.delivery,
                 style: Appstyles.regular13.copyWith(
                   color: context.isDarkMode
                       ? Colors.white
@@ -44,14 +48,14 @@ class OrderSummary extends StatelessWidget {
               const Spacer(),
               Text(
                 context.read<OrderInputEntity>().payWithCash
-                    ? "40 جنيه"
-                    : "مجانا",
+                    ? s.deliveryFee('40')
+                    : s.free,
                 style: Appstyles.regular16.copyWith(
                   color: context.read<OrderInputEntity>().payWithCard
                       ? Colors.green
                       : null,
                 ),
-                textAlign: .start,
+                textAlign: TextAlign.start,
               ),
             ],
           ),
@@ -59,7 +63,7 @@ class OrderSummary extends StatelessWidget {
           Row(
             children: [
               Text(
-                "المجموع الكلي :",
+                s.total,
                 style: Appstyles.bold16.copyWith(
                   color: context.isDarkMode
                       ? Colors.white
@@ -69,11 +73,14 @@ class OrderSummary extends StatelessWidget {
               const Spacer(),
               Text(
                 context.read<OrderInputEntity>().payWithCash
-                    ? "${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40} جنيه"
-                    : "${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()} جنيه",
-
+                    ? s.priceTotal(
+                        context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40,
+                      )
+                    : s.priceTotal(
+                        context.read<OrderInputEntity>().cartEntity.calculateTotalPrice(),
+                      ),
                 style: Appstyles.bold16,
-                textAlign: .start,
+                textAlign: TextAlign.start,
               ),
             ],
           ),

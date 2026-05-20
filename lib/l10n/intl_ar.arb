@@ -1,1 +1,220 @@
-{}
+{
+  "onBoardingWelcome": " مرحبًا بك في ",
+  "onBoardingDescription": "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
+  "onBoardingSearchTitle": "ابحث وتسوق",
+  "onBoardingSearchDescription": "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+  "onBoardingSkip": "تخط",
+  "onBoardingStart": "ابدأ الان",
+  "profileTitle": "حسابي",
+  "general": "عام",
+  "profileInfo": "الملف الشخصي",
+  "myOrders": "طلباتي",
+  "payments": "المدفوعات",
+  "favorites": "المفضلة",
+  "language": "اللغة",
+  "nightMode": "الوضع الليلي",
+  "help": "المساعدة",
+  "aboutUs": "من نحن",
+  "logout": "تسجيل الخروج",
+  "logoutConfirmation": "هل انت متأكد من تسجيل الخروج؟",
+  "no": "لا",
+  "yes": "نعم",
+  "login": "تسجيل دخول",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "signIn": "تسجيل الدخول",
+  "signInWithGoogle": "تسجيل بواسطة جوجل",
+  "signInWithApple": "تسجيل بواسطة أبل",
+  "signInWithFacebook": "تسجيل بواسطة فيسبوك",
+  "signUp": "حساب جديد",
+  "fullName": "الاسم كاملاً",
+  "createAccount": "إنشاء حساب جديد",
+  "acceptTerms": "يجب الموافقة على الشروط والأحكام",
+  "forgotPasswordTitle": "نسيت كلمة المرور",
+  "forgotPasswordDescription": "لا تقلق ، ما عليك سوى كتابة بريدك الالكتروني وسنرسل رمز التحقق.",
+  "enterEmail": "ادخل بريدك الالكتروني",
+  "termsPrefix": "من خلال إنشاء حساب ، فإنك توافق على ",
+  "terms": "الشروط والأحكام ",
+  "termsSuffix": "الخاصة بنا",
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "createOne": " قم بانشاء حساب",
+  "haveAccount": "تمتلك حساب بالفعل ؟",
+  "loginNow": "تسجيل الدخول",
+  "or": "أو",
+  "cart": "السلة",
+  "cartItemsCount": "لديك {count} منتجات في سله التسوق",
+  "@cartItemsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "checkout": "الدفع الان  :  {total} جنيه",
+  "@checkout": {
+    "placeholders": {
+      "total": {}
+    }
+  },
+  "emptyCart": " لا يوجد منتجات في السلة",
+  "kg": "كم ",
+  "shipping": "الشحن",
+  "address": "العنوان",
+  "payment": "الدفع",
+  "confirmOrder": "تأكيد الطلب",
+  "payWithPaypal": "الدفع بواسطة PayPal",
+  "next": "التالي",
+  "paymentSuccess": "تم الدفع بنجاح",
+  "errorOccurred": "حدث خطأ ما",
+  "orderCreated": "تم بنجاح !",
+  "contactMessage": "سيتم التواصل معك في أقرب وقت",
+  "trackOrder": "تتبع الطلب",
+  "home": "الرئيسية",
+  "cashOnDelivery": "الدفع عند الاستلام",
+  "shippingIncluded": "السعر يشمل مصاريف الشحن",
+  "payWithCard": "الدفع باستخدام البطاقة البنكية",
+  "freeShipping": "الشحن مجاني",
+  "orderSummary": "ملخص الطلب",
+  "subtotal": "المجموع الفرعي :",
+  "delivery": "ألتوصيل :",
+  "deliveryFee": "{amount} جنيه",
+  "@deliveryFee": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "free": "مجانا",
+  "total": "المجموع الكلي :",
+  "deliveryAddress": "عنوان التوصيل",
+  "edit": "تعديل",
+  "orderAdded": "تم اضافة الطلب بنجاح",
+  "orderDetails": "تفاصيل الطلب",
+  "close": "اغلاق",
+  "orderNumberFull": "رقم الطلب بالكامل : \n {orderNumber}",
+  "@orderNumberFull": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "orderDateLabel": "تاريخ الطلب : \n {orderDate}",
+  "@orderDateLabel": {
+    "placeholders": {
+      "orderDate": {}
+    }
+  },
+  "orderAmountLabel": "قيمة الطلب : \n {amount} جنيه",
+  "@orderAmountLabel": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "orderStatusLabel": "حالة الطلب : \n {status}",
+  "@orderStatusLabel": {
+    "placeholders": {
+      "status": {}
+    }
+  },
+  "orderNum": "طلب رقم:  {orderNumber}",
+  "@orderNum": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "orderPlaced": "تم الطلب : {date}",
+  "@orderPlaced": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "totalAmount": "الاجمالي : {amount} جنيه",
+  "@totalAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "phone": "رقم الهاتف",
+  "city": "المدينة",
+  "apartment": "رقم الطابق ,, الشقة",
+  "addToCart": "اضافة الى السلة",
+  "morningGreeting": "صباح الخير !..",
+  "eveningGreeting": "مساء الخير !..",
+  "bestSeller": "الأكثر مبيعًا",
+  "more": "المزيد...",
+  "products": "المنتجات",
+  "reviews": "المراجعات",
+  "organic": "اورجانيك",
+  "nonOrganic": "مش اورجانيك",
+  "calories": "{count} كالوري",
+  "@calories": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "grams": "{count} جرام",
+  "@grams": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "perKilo": "/ الكيلو",
+  "expiration": "الصلاحية",
+  "search": "البحث",
+  "searchHint": "ابحث عن.......",
+  "emptyFavorites": "لا يوجد منتجات في المفضلة",
+  "backToHome": "العودة الرئيسية",
+  "fieldRequired": "هذا الحقل مطلوب",
+  "results": "{length} نتائج",
+  "@results": {
+    "placeholders": {
+      "length": {}
+    }
+  },
+  "pricePerKilo": "{price} جنية / الكيلو",
+  "@pricePerKilo": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "price": "{price} جنيه",
+  "@price": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "priceEgp": "{price} جنية ",
+  "@priceEgp": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "priceTotal": "{price} جنيه",
+  "@priceTotal": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "reviewsCount": "المراجعات ({count})",
+  "@reviewsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "searchStartTyping": "ابدأ بالبحث عن منتجاتك",
+  "searchNoResults": "لا يوجد نتائج مطابقة للبحث",
+  "reviewHint": "اكتب تعليقك...",
+  "ratingHint": "كم من 10 ؟",
+  "reviewSubmitted": "تم ارسال التقييم بنجاح",
+  "submitReview": "ارسال التقييم",
+  "maxQuantity": "لا يمكن أن يكون الكمية أكثر من 10",
+  "passwordResetSent": "إذا كان هذا البريد الإلكتروني مسجلاً لدينا، سيتم إرسال رابط إعادة تعيين كلمة المرور.",
+  "shopNow": "تسوق الان",
+  "homeTab": "الرئيسية",
+  "productsTab": "المنتجات",
+  "cartTab": "السلة",
+  "profileTab": "أنا",
+  "loggedInSuccess": "تم تسجيل الدخول بنجاح",
+  "registeredSuccess": "تم التسجيل بنجاح",
+  "productAdded": "تم اضافة المنتج بنجاح",
+  "productRemoved": "تم حذف المنتج بنجاح",
+  "eidOffers": "عروض العيد",
+  "discount25": "خصم 25%"
+}

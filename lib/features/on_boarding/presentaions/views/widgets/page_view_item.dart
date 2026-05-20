@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
+import 'package:fruits_e_commerce_app/core/cubits/locale_cubit/locale_cubit.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
+import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
@@ -40,23 +44,57 @@ class PageViewItem extends StatelessWidget {
                 left: 0,
                 child: SvgPicture.asset(image),
               ),
-              Visibility(
-                visible: isVisible,
-                child: GestureDetector(
-                  onTap: () {
-                    CacheHelper.saveData(
-                      key: kIsOnBoardingVisible,
-                      value: true,
+              Positioned(
+                top: 16,
+                right: 16,
+                child: BlocBuilder<LocaleCubit, Locale>(
+                  builder: (context, locale) {
+                    return GestureDetector(
+                      onTap: () {
+                        context.read<LocaleCubit>().toggleLanguage();
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          locale.languageCode == 'ar' ? 'English' : 'العربية',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
                     );
-
-                    GoRouter.of(context).pushReplacement(AppRoutes.loginView);
                   },
-                  child: const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text("تخط"),
-                  ),
                 ),
               ),
+              if (isVisible)
+                Positioned(
+                  top: 16,
+                  left: 16,
+                  child: GestureDetector(
+                    onTap: () {
+                      CacheHelper.saveData(
+                        key: kIsOnBoardingVisible,
+                        value: true,
+                      );
+                      GoRouter.of(context).pushReplacement(AppRoutes.loginView);
+                    },
+                    child: Text(
+                      S.of(context).onBoardingSkip,
+                      style: const TextStyle(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),

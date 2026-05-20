@@ -3,6 +3,7 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svgg;
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/features/home/presentations/views/widgets/featured_item_button.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -11,6 +12,7 @@ class FeaturedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     final itemWidth = MediaQuery.of(context).size.width - 32;
     return SizedBox(
       width: itemWidth,
@@ -47,7 +49,7 @@ class FeaturedItem extends StatelessWidget {
                     Opacity(
                       opacity: 0.90,
                       child: Text(
-                        'عروض العيد',
+                        s.eidOffers,
                         style: Appstyles.regular13.copyWith(
                           color: Colors.white,
                         ),
@@ -55,7 +57,7 @@ class FeaturedItem extends StatelessWidget {
                     ),
                     const Spacer(),
                     Text(
-                      'خصم 25%',
+                      s.discount25,
                       style: Appstyles.bold19.copyWith(color: Colors.white),
                     ),
                     const Gap(11),

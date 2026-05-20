@@ -4,6 +4,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/care_item_cubit/cart_item_cubit.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class CartItemActionButtons extends StatelessWidget {
   const CartItemActionButtons({super.key, required this.cartItemEntity});
@@ -39,7 +40,7 @@ class CartItemActionButtons extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          "${cartItemEntity.calculateTotalPrice()} جنيه",
+          S.of(context).priceTotal(cartItemEntity.calculateTotalPrice()),
           style: Appstyles.bold16.copyWith(color: AppColors.secondaryColor),
         ),
       ],

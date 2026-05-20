@@ -7,6 +7,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:fruits_e_commerce_app/features/search/presentation/cubits/search_cubit/search_cubit.dart';
 import 'package:fruits_e_commerce_app/features/search/presentation/views/widgets/search_results_grid_view.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -26,7 +27,7 @@ class SearchResultsBlocBuilder extends StatelessWidget {
                 const Gap(80),
                 SvgPicture.asset(Assets.imagesSearchViewIcon),
                 const Gap(20),
-                const Text("ابدأ بالبحث عن منتجاتك", style: Appstyles.bold16),
+                Text(S.of(context).searchStartTyping, style: Appstyles.bold16),
               ],
             ),
           ).animate().fadeIn(duration: 800.ms);
@@ -46,8 +47,8 @@ class SearchResultsBlocBuilder extends StatelessWidget {
                     width: 200,
                   ),
                   const Gap(20),
-                  const Text(
-                    "لا يوجد نتائج مطابقة للبحث",
+                  Text(
+                    S.of(context).searchNoResults,
                     style: Appstyles.bold16,
                   ),
                 ],

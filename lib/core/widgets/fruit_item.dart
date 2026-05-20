@@ -8,6 +8,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 
 class FruitItem extends StatelessWidget {
@@ -21,6 +22,7 @@ class FruitItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return GestureDetector(
       onTap: () {
         GoRouter.of(
@@ -64,7 +66,7 @@ class FruitItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '${productEntity.price} جنية ',
+                          text: s.priceEgp(productEntity.price),
                           style: Appstyles.semiBold13.copyWith(
                             color: AppColors.secondaryColor,
                           ),
@@ -82,7 +84,7 @@ class FruitItem extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: 'الكيلو',
+                          text: s.perKilo,
                           style: Appstyles.semiBold13.copyWith(
                             color: AppColors.lightSecondaryColor,
                           ),

@@ -14,6 +14,7 @@ import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/or_divider.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/password_text_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/social_login_button.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,6 +31,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: SingleChildScrollView(
@@ -44,7 +46,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   _email = value!;
                 },
                 keyboardType: TextInputType.emailAddress,
-                hintText: 'البريد الإلكتروني',
+                hintText: s.email,
               ),
               const Gap(16),
               PasswordTextField(
@@ -54,14 +56,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               const Gap(16),
               Row(
-                mainAxisAlignment: .end,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GestureDetector(
                     onTap: () => GoRouter.of(
                       context,
                     ).pushNamed(AppRoutes.forgotPasswordView),
                     child: Text(
-                      "نسيت كلمة المرور؟",
+                      s.forgotPassword,
                       style: Appstyles.bold13.copyWith(
                         color: AppColors.primaryColor,
                       ),
@@ -71,7 +73,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               const Gap(24),
               CustomButton(
-                text: "تسجيل الدخول",
+                text: s.signIn,
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
@@ -96,7 +98,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               const Gap(31),
               SocialLoginButton(
                 image: Assets.imagesGoogleIcon,
-                title: "تسجيل بواسطة جوجل",
+                title: s.signInWithGoogle,
                 onPressed: () {
                   BlocProvider.of<SigninCubit>(context).signinWithGoogle();
                 },
@@ -108,7 +110,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   children: [
                     SocialLoginButton(
                       image: Assets.imagesAppleIcon,
-                      title: "تسجيل بواسطة أبل",
+                      title: s.signInWithApple,
                       onPressed: () {},
                     ),
                     const Gap(16),
@@ -117,7 +119,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               SocialLoginButton(
                 image: Assets.imagesFacebookIcon,
-                title: "تسجيل بواسطة فيسبوك",
+                title: s.signInWithFacebook,
                 onPressed: () {
                   BlocProvider.of<SigninCubit>(context).signinWithFacebook();
                 },

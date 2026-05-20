@@ -7,6 +7,7 @@ import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cub
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/product_circle_background.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/product_details_first_section.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/product_details_second_section.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
@@ -30,7 +31,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                     ProductDetailsSecondSection(productEntity: productEntity),
                     const Gap(24),
                     CustomButton(
-                      text: "اضافة الى السلة",
+                      text: S.of(context).addToCart,
                       onPressed: () {
                         context.read<CartCubit>().addProdcut(productEntity);
                       },

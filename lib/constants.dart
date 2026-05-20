@@ -6,3 +6,5 @@ const kIsOnBoardingVisible = 'isOnBoardingVisible';
 const kUserData = 'userData';
 
 const kIsDarkMode = 'isDarkMode';
+
+const kAppLocale = 'appLocale';
