@@ -47,6 +47,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_paypal_payment: ^1.0.8
+  flutter_stripe: ^13.0.0
   flutter_svg_provider: ^1.0.7
   gap: ^3.0.1
   get_it: ^9.2.0
