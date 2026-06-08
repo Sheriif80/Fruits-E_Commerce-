@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_e_commerce_app/core/cubits/locale_cubit/locale_cubit.dart';
 import 'package:fruits_e_commerce_app/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:fruits_e_commerce_app/core/routing/router_generation_config.dart';
@@ -53,9 +53,14 @@ class FruitHub extends StatelessWidget {
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: themeMode,
-                localizationsDelegates: S.localizationsDelegates,
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
                 locale: locale,
-                supportedLocales: S.supportedLocales,
+                supportedLocales: S.delegate.supportedLocales,
                 routerConfig: RouterGenerationConfig.goRouter,
                 debugShowCheckedModeBanner: false,
               );
