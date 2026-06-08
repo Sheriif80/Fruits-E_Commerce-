@@ -3,6 +3,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/payment_item.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
@@ -12,9 +13,8 @@ class AddressSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Used the payment item widget bcs it has the same structure
     return PaymentItem(
-      tile: "عنوان التوصيل",
+      tile: S.of(context).deliveryAddress,
       child: Row(
         children: [
           const Icon(Icons.location_on_rounded),
@@ -46,7 +46,7 @@ class AddressSummary extends StatelessWidget {
                 const Icon(Icons.edit, size: 17),
                 const Gap(5),
                 Text(
-                  "تعديل",
+                  S.of(context).edit,
                   style: Appstyles.semiBold13.copyWith(
                     color: const Color(0xFF949D9E),
                   ),

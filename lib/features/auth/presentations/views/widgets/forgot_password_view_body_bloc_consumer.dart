@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/reset_password_cubit/reset_password_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/forgot_password_view_body.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class ForgotPasswordViewBodyBlocConsumer extends StatelessWidget {
   const ForgotPasswordViewBodyBlocConsumer({super.key});
@@ -16,8 +17,7 @@ class ForgotPasswordViewBodyBlocConsumer extends StatelessWidget {
           EasyLoading.dismiss();
           AppSnackbars.showSuccess(
             context,
-            message:
-                "إذا كان هذا البريد الإلكتروني مسجلاً لدينا، سيتم إرسال رابط إعادة تعيين كلمة المرور.",
+            message: S.of(context).passwordResetSent,
           );
           Navigator.of(context).pop();
         }

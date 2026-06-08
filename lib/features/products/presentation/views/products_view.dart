@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/repos/products_repo/products_repo.dar
 import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/prodcts_view_body.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class ProductsView extends StatelessWidget {
   const ProductsView({super.key});
@@ -15,7 +16,7 @@ class ProductsView extends StatelessWidget {
       create: (context) =>
           ProductsCubit(getIt.get<ProductsRepo>())..getAllProducts(),
       child: Scaffold(
-        appBar: buildAppBar(context: context, title: "المنتجات"),
+        appBar: buildAppBar(context: context, title: S.of(context).products),
 
         body: const SafeArea(child: ProdctsViewBody()),
       ),

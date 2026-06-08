@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +12,7 @@ class AddressInputSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: SingleChildScrollView(
@@ -20,7 +22,7 @@ class AddressInputSection extends StatelessWidget {
           child: Column(
             children: [
               CustomTextFormField(
-                hintText: "الاسم كاملاً",
+                hintText: s.fullName,
                 keyboardType: TextInputType.name,
                 onSaved: (value) {
                   context.read<OrderInputEntity>().shippingAddress!.fullName =
@@ -29,7 +31,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const Gap(16),
               CustomTextFormField(
-                hintText: " البريد الإلكتروني",
+                hintText: s.email,
                 keyboardType: TextInputType.emailAddress,
                 onSaved: (value) {
                   context.read<OrderInputEntity>().shippingAddress!.email =
@@ -38,7 +40,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const Gap(16),
               CustomTextFormField(
-                hintText: "رقم الهاتف",
+                hintText: s.phone,
                 keyboardType: TextInputType.phone,
                 onSaved: (value) {
                   context.read<OrderInputEntity>().shippingAddress!.phone =
@@ -47,7 +49,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const Gap(16),
               CustomTextFormField(
-                hintText: "العنوان",
+                hintText: s.address,
                 keyboardType: TextInputType.streetAddress,
                 onSaved: (value) {
                   context.read<OrderInputEntity>().shippingAddress!.address =
@@ -56,7 +58,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const Gap(16),
               CustomTextFormField(
-                hintText: "المدينة",
+                hintText: s.city,
                 keyboardType: TextInputType.streetAddress,
                 onSaved: (value) {
                   context.read<OrderInputEntity>().shippingAddress!.city =
@@ -65,7 +67,7 @@ class AddressInputSection extends StatelessWidget {
               ),
               const Gap(16),
               CustomTextFormField(
-                hintText: "رقم الطابق ,, الشقة",
+                hintText: s.apartment,
                 keyboardType: TextInputType.streetAddress,
                 onSaved: (value) {
                   context.read<OrderInputEntity>().shippingAddress!.appartment =

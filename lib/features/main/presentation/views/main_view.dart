@@ -7,6 +7,7 @@ import 'package:fruits_e_commerce_app/features/main/presentation/views/widgets/c
 import 'package:fruits_e_commerce_app/features/home/presentations/views/home_view.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/products_view.dart';
 import 'package:fruits_e_commerce_app/features/profile/presentation/views/profile_view.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -30,11 +31,11 @@ class _MainViewState extends State<MainView> {
     return BlocListener<CartCubit, CartState>(
       listener: (context, state) {
         if (state is CartItemAdded) {
-          AppSnackbars.showInfo(context, message: "تم اضافة المنتج بنجاح");
+          AppSnackbars.showInfo(context, message: S.of(context).productAdded);
         }
 
         if (state is CartItemRemoved) {
-          AppSnackbars.showInfo(context, message: "تم حذف المنتج بنجاح");
+          AppSnackbars.showInfo(context, message: S.of(context).productRemoved);
         }
       },
       child: Scaffold(

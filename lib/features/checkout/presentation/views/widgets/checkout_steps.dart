@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/step_item.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class CheckoutSteps extends StatelessWidget {
   const CheckoutSteps({
@@ -11,8 +12,9 @@ class CheckoutSteps extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
+    final steps = getSteps(context);
     return Row(
-      children: List.generate(getSteps().length, (index) {
+      children: List.generate(steps.length, (index) {
         return Expanded(
           child: GestureDetector(
             onTap: () {
@@ -25,7 +27,7 @@ class CheckoutSteps extends StatelessWidget {
               }
             },
             child: StepItem(
-              title: getSteps()[index],
+              title: steps[index],
               index: index + 1,
               isActive: index < currentStep,
             ),
@@ -36,4 +38,7 @@ class CheckoutSteps extends StatelessWidget {
   }
 }
 
-List<String> getSteps() => ["الشحن", "العنوان", "الدفع"];
+List<String> getSteps(BuildContext context) {
+  final s = S.of(context);
+  return [s.shipping, s.address, s.payment];
+}

@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/widgets/custom_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signup_cubit/signup_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/signup_view_body_bloc_consumer.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
@@ -16,7 +17,7 @@ class SignupView extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          appBar: showCustomAppBar(context, title: "حساب جديد"),
+          appBar: showCustomAppBar(context, title: S.of(context).signUp),
 
           body: const SignupViewBodyBlocConsumer(),
         ),

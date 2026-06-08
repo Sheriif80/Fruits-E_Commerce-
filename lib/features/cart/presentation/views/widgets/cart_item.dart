@@ -10,6 +10,7 @@ import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_item_en
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/care_item_cubit/cart_item_cubit.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:fruits_e_commerce_app/features/cart/presentation/views/widgets/cart_item_action_buttons.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -57,7 +58,7 @@ class CartItem extends StatelessWidget {
                 width: 73,
                 height: 92,
                 child: Column(
-                  crossAxisAlignment: .start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: Row(
@@ -79,7 +80,7 @@ class CartItem extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "${cartItemEntity.calculateTotalWeight()} كم ",
+                      "${cartItemEntity.calculateTotalWeight()} ${S.of(context).kg}",
                       style: Appstyles.bold13.copyWith(
                         color: AppColors.secondaryColor,
                       ),

@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_loading_indicator.dart';
 import 'package:fruits_e_commerce_app/features/favorites/presentation/cubits/favorites_cubit/favorites_cubit.dart';
 import 'package:fruits_e_commerce_app/features/favorites/presentation/views/widgets/favorite_products_grid_view.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
@@ -27,15 +28,15 @@ class FavoritesViewBody extends StatelessWidget {
                       'assets/lottie/empty ghost.json',
                     ),
                   ),
-                  const Text(
-                    'لا يوجد منتجات في المفضلة',
+                  Text(
+                    S.of(context).emptyFavorites,
                     style: Appstyles.bold16,
                   ),
                   const SizedBox(height: 16),
                   GestureDetector(
                     onTap: () => GoRouter.of(context).pop(),
                     child: Text(
-                      "العودة الرئيسية",
+                      S.of(context).backToHome,
                       style: Appstyles.bold16.copyWith(
                         color: AppColors.primaryColor,
                       ),

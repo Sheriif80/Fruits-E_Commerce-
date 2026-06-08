@@ -7,6 +7,7 @@ import 'package:fruits_e_commerce_app/features/products/domain/repos/reviews_rep
 import 'package:fruits_e_commerce_app/features/products/presentation/cubits/add_review_cubit/add_review_cubit.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/cubits/get_reviews_cubit/get_reviews_cubit.dart';
 import 'package:fruits_e_commerce_app/features/products/presentation/views/widgets/reviews_view_body.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class ReviewsView extends StatelessWidget {
   const ReviewsView({super.key, required this.productEntity});
@@ -31,7 +32,7 @@ class ReviewsView extends StatelessWidget {
         child: Scaffold(
           appBar: buildAppBar(
             context: context,
-            title: "المراجعات",
+            title: S.of(context).reviews,
             isNotificationVisible: false,
           ),
           body: ReviewsViewBody(productEntity: productEntity),

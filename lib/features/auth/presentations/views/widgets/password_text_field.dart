@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_text_form_field.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({super.key, this.onSaved});
@@ -18,7 +19,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       obsecureText: obsecureText,
       onSaved: widget.onSaved,
       keyboardType: TextInputType.visiblePassword,
-      hintText: 'كلمة المرور',
+      hintText: S.of(context).password,
       suffixIcon: GestureDetector(
         onTap: () {
           setState(() {

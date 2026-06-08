@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -32,7 +33,7 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onChanged,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'هذا الحقل مطلوب';
+          return S.of(context).fieldRequired;
         }
         return null;
       },

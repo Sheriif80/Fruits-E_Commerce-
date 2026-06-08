@@ -4,9 +4,15 @@ import 'package:fruits_e_commerce_app/features/main/presentation/views/widgets/a
 import 'package:fruits_e_commerce_app/features/main/presentation/views/widgets/in_active_item.dart';
 
 class NavBarItem extends StatefulWidget {
-  const NavBarItem({super.key, required this.isSelected, required this.item});
+  const NavBarItem({
+    super.key,
+    required this.isSelected,
+    required this.item,
+    required this.localizedName,
+  });
   final bool isSelected;
   final NavBarItemEntity item;
+  final String localizedName;
 
   @override
   State<NavBarItem> createState() => _NavBarItemState();
@@ -36,7 +42,7 @@ class _NavBarItemState extends State<NavBarItem>
             ? ActiveItem(
                 key: ValueKey('active_${widget.item.name}'),
                 image: widget.item.activeIcon,
-                name: widget.item.name,
+                name: widget.localizedName,
               )
             : InActiveItem(
                 key: ValueKey('inactive_${widget.item.name}'),

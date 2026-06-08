@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/widgets/custom_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/reset_password_cubit/reset_password_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/forgot_password_view_body_bloc_consumer.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({super.key});
@@ -16,7 +17,7 @@ class ForgotPasswordView extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          appBar: showCustomAppBar(context, title: "نيسان كلمة المرور"),
+          appBar: showCustomAppBar(context, title: S.of(context).forgotPasswordTitle),
           body: const ForgotPasswordViewBodyBlocConsumer(),
         ),
       ),

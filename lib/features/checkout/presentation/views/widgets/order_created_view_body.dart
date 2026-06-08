@@ -4,6 +4,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:svg_flutter/svg.dart';
@@ -13,6 +14,7 @@ class OrderCreatedViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -21,12 +23,12 @@ class OrderCreatedViewBody extends StatelessWidget {
           const Gap(50),
           Center(child: SvgPicture.asset(Assets.imagesOrderCreated)),
           const Gap(33),
-          const Text("تم بنجاح !", style: Appstyles.bold16),
+          Text(s.orderCreated, style: Appstyles.bold16),
           const Gap(15),
-          const Text("سيتم التواصل معك في أقرب وقت", style: Appstyles.bold16),
+          Text(s.contactMessage, style: Appstyles.bold16),
           const Spacer(),
           CustomButton(
-            text: "تتبع الطلب",
+            text: s.trackOrder,
             onPressed: () {
               GoRouter.of(context).pushNamed(AppRoutes.myOrdersView);
             },
@@ -35,7 +37,7 @@ class OrderCreatedViewBody extends StatelessWidget {
           GestureDetector(
             onTap: () => GoRouter.of(context).pop(),
             child: Text(
-              "الرئيسية",
+              s.home,
               style: Appstyles.bold16.copyWith(color: AppColors.primaryColor),
             ),
           ),

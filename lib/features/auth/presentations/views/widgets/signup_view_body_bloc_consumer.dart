@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart'; // 1. Import this
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signup_cubit/signup_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/signup_view_body.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class SignupViewBodyBlocConsumer extends StatelessWidget {
   const SignupViewBodyBlocConsumer({super.key});
@@ -19,7 +20,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
         if (state is SignupSuccess) {
           EasyLoading.dismiss();
           Navigator.of(context).pop();
-          AppSnackbars.showSuccess(context, message: "تم التسجيل بنجاح");
+          AppSnackbars.showSuccess(context, message: S.of(context).registeredSuccess);
         }
 
         if (state is SignupFailure) {

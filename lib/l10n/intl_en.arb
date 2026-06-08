@@ -1,1 +1,220 @@
-{}
+{
+  "onBoardingWelcome": " Welcome to ",
+  "onBoardingDescription": "Discover a unique shopping experience with FruitHUB. Explore our wide range of fresh premium fruits and get the best deals and quality.",
+  "onBoardingSearchTitle": "Search and Shop",
+  "onBoardingSearchDescription": "We offer you the best carefully selected fruits. View details, photos and ratings to ensure you choose the perfect fruit.",
+  "onBoardingSkip": "Skip",
+  "onBoardingStart": "Get Started",
+  "profileTitle": "My Account",
+  "general": "General",
+  "profileInfo": "Profile Information",
+  "myOrders": "My Orders",
+  "payments": "Payments",
+  "favorites": "Favorites",
+  "language": "Language",
+  "nightMode": "Night Mode",
+  "help": "Help",
+  "aboutUs": "About Us",
+  "logout": "Logout",
+  "logoutConfirmation": "Are you sure you want to log out?",
+  "no": "No",
+  "yes": "Yes",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "signIn": "Sign In",
+  "signInWithGoogle": "Sign in with Google",
+  "signInWithApple": "Sign in with Apple",
+  "signInWithFacebook": "Sign in with Facebook",
+  "signUp": "Create Account",
+  "fullName": "Full Name",
+  "createAccount": "Create New Account",
+  "acceptTerms": "You must agree to the terms and conditions",
+  "forgotPasswordTitle": "Forgot Password",
+  "forgotPasswordDescription": "Don't worry, just enter your email and we'll send you a verification code.",
+  "enterEmail": "Enter your email",
+  "termsPrefix": "By creating an account, you agree to ",
+  "terms": "Terms and Conditions ",
+  "termsSuffix": "of our",
+  "dontHaveAccount": "Don't have an account?",
+  "createOne": " Create One",
+  "haveAccount": "Already have an account?",
+  "loginNow": "Login",
+  "or": "Or",
+  "cart": "Cart",
+  "cartItemsCount": "You have {count} products in your cart",
+  "@cartItemsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "checkout": "Checkout  :  {total} EGP",
+  "@checkout": {
+    "placeholders": {
+      "total": {}
+    }
+  },
+  "emptyCart": " No products in cart",
+  "kg": "kg ",
+  "shipping": "Shipping",
+  "address": "Address",
+  "payment": "Payment",
+  "confirmOrder": "Confirm Order",
+  "payWithPaypal": "Pay with PayPal",
+  "next": "Next",
+  "paymentSuccess": "Payment Successful",
+  "errorOccurred": "Something went wrong",
+  "orderCreated": "Order Created!",
+  "contactMessage": "We will contact you soon",
+  "trackOrder": "Track Order",
+  "home": "Home",
+  "cashOnDelivery": "Cash on Delivery",
+  "shippingIncluded": "Price includes shipping",
+  "payWithCard": "Pay with Card",
+  "freeShipping": "Free Shipping",
+  "orderSummary": "Order Summary",
+  "subtotal": "Subtotal :",
+  "delivery": "Delivery :",
+  "deliveryFee": "{amount} EGP",
+  "@deliveryFee": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "free": "Free",
+  "total": "Total :",
+  "deliveryAddress": "Delivery Address",
+  "edit": "Edit",
+  "orderAdded": "Order added successfully",
+  "orderDetails": "Order Details",
+  "close": "Close",
+  "orderNumberFull": "Order Number : \n {orderNumber}",
+  "@orderNumberFull": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "orderDateLabel": "Order Date : \n {orderDate}",
+  "@orderDateLabel": {
+    "placeholders": {
+      "orderDate": {}
+    }
+  },
+  "orderAmountLabel": "Order Amount : \n {amount} EGP",
+  "@orderAmountLabel": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "orderStatusLabel": "Order Status : \n {status}",
+  "@orderStatusLabel": {
+    "placeholders": {
+      "status": {}
+    }
+  },
+  "orderNum": "Order No:  {orderNumber}",
+  "@orderNum": {
+    "placeholders": {
+      "orderNumber": {}
+    }
+  },
+  "orderPlaced": "Ordered : {date}",
+  "@orderPlaced": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "totalAmount": "Total : {amount} EGP",
+  "@totalAmount": {
+    "placeholders": {
+      "amount": {}
+    }
+  },
+  "phone": "Phone",
+  "city": "City",
+  "apartment": "Apartment, Floor",
+  "addToCart": "Add to Cart",
+  "morningGreeting": "Good Morning!..",
+  "eveningGreeting": "Good Evening!..",
+  "bestSeller": "Best Seller",
+  "more": "More...",
+  "products": "Products",
+  "reviews": "Reviews",
+  "organic": "Organic",
+  "nonOrganic": "Non-Organic",
+  "calories": "{count} Calories",
+  "@calories": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "grams": "{count} Gram",
+  "@grams": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "perKilo": "/ Kilo",
+  "expiration": "Expiration",
+  "search": "Search",
+  "searchHint": "Search for.......",
+  "emptyFavorites": "No favorites yet",
+  "backToHome": "Back to Home",
+  "fieldRequired": "This field is required",
+  "results": "{length} results",
+  "@results": {
+    "placeholders": {
+      "length": {}
+    }
+  },
+  "pricePerKilo": "{price} EGP / Kilo",
+  "@pricePerKilo": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "price": "{price} EGP",
+  "@price": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "priceEgp": "{price} EGP ",
+  "@priceEgp": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "priceTotal": "{price} EGP",
+  "@priceTotal": {
+    "placeholders": {
+      "price": {}
+    }
+  },
+  "reviewsCount": "Reviews ({count})",
+  "@reviewsCount": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "searchStartTyping": "Start searching for your products",
+  "searchNoResults": "No matching results found",
+  "reviewHint": "Write your review...",
+  "ratingHint": "Rate out of 10?",
+  "reviewSubmitted": "Review submitted successfully",
+  "submitReview": "Submit Review",
+  "maxQuantity": "Quantity cannot exceed 10",
+  "passwordResetSent": "If this email is registered, a password reset link will be sent.",
+  "shopNow": "Shop Now",
+  "homeTab": "Home",
+  "productsTab": "Products",
+  "cartTab": "Cart",
+  "profileTab": "Me",
+  "loggedInSuccess": "Logged in successfully",
+  "registeredSuccess": "Registered successfully",
+  "productAdded": "Product added successfully",
+  "productRemoved": "Product removed successfully",
+  "eidOffers": "Eid Offers",
+  "discount25": "25% OFF"
+}

@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signin_cubit/signin_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/login_view_body.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginViewBodyBlocConsumer extends StatelessWidget {
@@ -20,7 +21,7 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
 
         if (state is SigninSuccess) {
           EasyLoading.dismiss();
-          AppSnackbars.showSuccess(context, message: "تم تسجيل الدخول بنجاح");
+          AppSnackbars.showSuccess(context, message: S.of(context).loggedInSuccess);
           GoRouter.of(context).pushReplacement(AppRoutes.homeView);
         }
 

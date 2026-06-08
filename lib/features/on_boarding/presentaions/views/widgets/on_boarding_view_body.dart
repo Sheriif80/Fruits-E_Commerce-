@@ -1,11 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
 import 'package:fruits_e_commerce_app/core/routing/app_routes.dart';
 import 'package:fruits_e_commerce_app/core/services/cahce_helper.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/features/on_boarding/presentaions/views/widgets/on_boarding_page_view.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -58,12 +60,12 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
             child: CustomButton(
-              text: "ابدأ الان",
+              text: S.of(context).onBoardingStart,
               onPressed: () {
                 CacheHelper.saveData(key: kIsOnBoardingVisible, value: true);
                 GoRouter.of(context).pushReplacement(AppRoutes.loginView);
               },
-            ),
+            ).animate().fadeIn(duration: 800.ms),
           ),
         ),
 

@@ -5,12 +5,14 @@ import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/reset_password_cubit/reset_password_cubit.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {
   const ForgotPasswordViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     String email = '';
 
     return Padding(
@@ -20,7 +22,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
           children: [
             const SizedBox(height: 24),
             Text(
-              'لا تقلق ، ما عليك سوى كتابة بريدك الالكتروني وسنرسل رمز التحقق.',
+              s.forgotPasswordDescription,
               textAlign: TextAlign.right,
               style: Appstyles.semiBold16.copyWith(
                 color: const Color(0xFF616A6B),
@@ -28,7 +30,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             CustomTextFormField(
-              hintText: "ادخل بريدك الالكتروني",
+              hintText: s.enterEmail,
               keyboardType: TextInputType.emailAddress,
               onChanged: (value) {
                 email = value;
@@ -36,7 +38,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             CustomButton(
-              text: "نسيت كلمة المرور",
+              text: s.forgotPasswordTitle,
               onPressed: () {
                 if (email.isNotEmpty) {
                   context.read<ResetPasswordCubit>().resetPassword(

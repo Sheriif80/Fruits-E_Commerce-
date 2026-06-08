@@ -14,22 +14,22 @@ class NavBarItemEntity {
 
 List<NavBarItemEntity> get navBarItems => [
   NavBarItemEntity(
-    name: 'الرئيسية',
+    name: 'home',
     activeIcon: Assets.imagesNavBarIconsHomeActive,
     inActiveIcon: Assets.imagesNavBarIconsHome,
   ),
   NavBarItemEntity(
-    name: 'المنتجات',
+    name: 'products',
     activeIcon: Assets.imagesNavBarIconsCategoriesActive,
     inActiveIcon: Assets.imagesNavBarIconsCategories,
   ),
   NavBarItemEntity(
-    name: 'السلة',
+    name: 'cart',
     activeIcon: Assets.imagesNavBarIconsCartActive,
     inActiveIcon: Assets.imagesNavBarIconsCart,
   ),
   NavBarItemEntity(
-    name: 'أنا',
+    name: 'profile',
     activeIcon: Assets.imagesNavBarIconsUserActive,
     inActiveIcon: Assets.imagesNavBarIconsUser,
   ),

@@ -75,6 +75,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -125,5 +126,6 @@ flutter_assets:
   output_path: lib/core/utils
   filename: app_assets.dart
   field_prefix: null
+
 flutter_intl:
   enabled: true

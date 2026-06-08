@@ -5,6 +5,7 @@ import 'package:fruits_e_commerce_app/core/widgets/custom_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/cubits/signin_cubit/signin_cubit.dart';
 import 'package:fruits_e_commerce_app/features/auth/presentations/views/widgets/login_view_body_bloc_consumer.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -18,7 +19,7 @@ class LoginView extends StatelessWidget {
         child: Scaffold(
           appBar: showCustomAppBar(
             context,
-            title: 'تسجيل دخول',
+            title: S.of(context).login,
             isBackVisible: false,
           ),
           body: const LoginViewBodyBlocConsumer(),

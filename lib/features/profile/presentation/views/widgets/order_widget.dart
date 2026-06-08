@@ -3,6 +3,7 @@ import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_colors.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
 import 'package:fruits_e_commerce_app/core/utils/theme_extension.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
@@ -21,18 +22,19 @@ class OrderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = S.of(context);
     return GestureDetector(
       onTap: () {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text("تفاصيل الطلب"),
+            title: Text(s.orderDetails),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text("اغلاق"),
+                child: Text(s.close),
               ),
             ],
             contentPadding: const EdgeInsets.all(20),
@@ -43,16 +45,13 @@ class OrderWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("رقم الطلب بالكامل : \n $orderNumber"),
+                Text(s.orderNumberFull(orderNumber)),
                 const Gap(10),
-                Text("تاريخ الطلب : \n ${orderDate.substring(0, 19)}"),
+                Text(s.orderDateLabel(orderDate.substring(0, 19))),
                 const Gap(10),
-                Text(
-                  "قيمة الطلب : \n $totalAmount"
-                  " جنيه",
-                ),
+                Text(s.orderAmountLabel(totalAmount)),
                 const Gap(10),
-                Text("حالة الطلب : \n $orderStatus"),
+                Text(s.orderStatusLabel(orderStatus)),
               ],
             ),
           ),
@@ -81,20 +80,20 @@ class OrderWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'طلب رقم:  ${orderNumber.substring(0, 10).toUpperCase()}',
+                  s.orderNum(orderNumber.substring(0, 10).toUpperCase()),
                   style: Appstyles.bold13,
-                  overflow: .ellipsis,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const Gap(6),
                 Text(
-                  'تم الطلب : ${orderDate.substring(0, 10)}',
+                  s.orderPlaced(orderDate.substring(0, 10)),
                   style: Appstyles.regular11.copyWith(
                     color: const Color(0xFF949D9E),
                   ),
                 ),
                 const Gap(6),
                 Text(
-                  "الاجمالي : ${totalAmount.toString()} جنيه",
+                  s.totalAmount(totalAmount.toString()),
                   style: Appstyles.bold13,
                 ),
               ],

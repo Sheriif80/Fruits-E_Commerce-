@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_assets.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_styles.dart';
+import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:svg_flutter/svg.dart';
 
 class ProductsViewResultHeader extends StatelessWidget {
@@ -12,7 +13,7 @@ class ProductsViewResultHeader extends StatelessWidget {
     return Row(
       children: [
         Text(
-          '$productsLength نتائج',
+          S.of(context).results(productsLength),
           textAlign: TextAlign.right,
           style: Appstyles.regular16,
         ),
