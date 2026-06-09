@@ -27,13 +27,20 @@ class ApiService {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
+    String? token,
+    String? contentType,
   }) async {
     try {
       final response = await _dio.post(
         path,
         data: data,
         queryParameters: queryParameters,
-        options: options,
+        options:
+            options ??
+            Options(
+              contentType: contentType ?? Headers.formUrlEncodedContentType,
+              headers: {'Authorization': 'Bearer $token'},
+            ),
       );
       return response;
     } catch (e) {
