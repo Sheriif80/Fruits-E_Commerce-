@@ -2,7 +2,9 @@ import 'package:fruits_e_commerce_app/core/repos/order_repos/order_repo.dart';
 import 'package:fruits_e_commerce_app/core/repos/order_repos/order_repo_impl.dart';
 import 'package:fruits_e_commerce_app/core/repos/products_repo/products_repo.dart';
 import 'package:fruits_e_commerce_app/core/repos/products_repo/products_repo_impl.dart';
+import 'package:fruits_e_commerce_app/core/services/api_service.dart';
 import 'package:fruits_e_commerce_app/core/services/database_service.dart';
+import 'package:fruits_e_commerce_app/core/services/dio_factory.dart';
 import 'package:fruits_e_commerce_app/core/services/firebase_auth_service.dart';
 import 'package:fruits_e_commerce_app/core/services/firestore_service.dart';
 import 'package:fruits_e_commerce_app/core/services/push_notification_service.dart';
@@ -19,6 +21,10 @@ import 'package:get_it/get_it.dart';
 final GetIt getIt = GetIt.instance;
 
 void setupGetIt() {
+  getIt.registerLazySingleton<ApiService>(
+    () => ApiService(DioFactory.getDio()),
+  );
+
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<PushNotificationService>(PushNotificationService());
   getIt.registerSingleton<DatabaseService>(FirestoreService());
