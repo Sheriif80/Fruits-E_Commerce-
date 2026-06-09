@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_e_commerce_app/core/cubits/locale_cubit/locale_cubit.dart';
@@ -25,6 +26,7 @@ void main() async {
   await CacheHelper.init();
   setupGetIt();
   await getIt<PushNotificationService>().init();
+  await dotenv.load();
   Bloc.observer = AppBlocObserver();
   runApp(const FruitHub());
 }
