@@ -24,7 +24,7 @@ class OrderModel {
   factory OrderModel.fromEntity(OrderInputEntity entity) => OrderModel(
     userID: entity.userID,
     shippingAddress: ShippingAddressModel.fromEntity(entity.shippingAddress!),
-    totalPrice: entity.payWithCard
+    totalPrice: entity.payWithCard || entity.payWithStripe
         ? entity.cartEntity.calculateTotalPrice()
         : entity.cartEntity.calculateTotalPrice() + 40,
     paymentMethod: entity.payWithCard
