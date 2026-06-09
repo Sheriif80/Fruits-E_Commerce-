@@ -6,7 +6,9 @@ import 'package:fruits_e_commerce_app/core/services/get_it_service.dart';
 import 'package:fruits_e_commerce_app/core/widgets/build_app_bar.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/shipping_address_entity.dart';
+import 'package:fruits_e_commerce_app/features/checkout/domain/repos/checkout_repo.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
+import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/pay_with_stripe_cubit/pay_with_stripe_cubit.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/add_order_bloc_consumer.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:fruits_e_commerce_app/features/cart/domain/entities/cart_entity.dart';
@@ -37,8 +39,16 @@ class _CheckoutViewState extends State<CheckoutView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddOrderCubit(getIt.get<OrderRepo>()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AddOrderCubit(getIt.get<OrderRepo>()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              PayWithStripeCubit(checkoutRepo: getIt.get<CheckoutRepo>()),
+        ),
+      ],
       child: Scaffold(
         appBar: buildAppBar(
           context: context,

@@ -1,17 +1,13 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:fruits_e_commerce_app/constants.dart';
-import 'package:fruits_e_commerce_app/core/utils/app_keys.dart';
 import 'package:fruits_e_commerce_app/core/utils/app_snackbars.dart';
-import 'package:fruits_e_commerce_app/core/widgets/custom_button.dart';
 import 'package:fruits_e_commerce_app/features/checkout/domain/entities/order_entity.dart';
-import 'package:fruits_e_commerce_app/features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/add_order_cubit/add_order_cubit.dart';
+import 'package:fruits_e_commerce_app/features/checkout/presentation/cubits/pay_with_stripe_cubit/pay_with_stripe_cubit.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/checkout_steps_page_view_builder.dart';
+import 'package:fruits_e_commerce_app/features/checkout/presentation/views/widgets/custom_checkout_button.dart';
 import 'package:fruits_e_commerce_app/generated/l10n.dart';
 import 'package:gap/gap.dart';
 
@@ -63,74 +59,26 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
               formKey: _formKey,
             ),
           ),
-          CustomButton(
-            text: currentPage == 2
-                ? context.read<OrderInputEntity>().payWithCash
-                      ? s.confirmOrder
-                      : "الدفع بواسطة حسابك البنكي"
-                : s.next,
-            onPressed: () async {
-              if (currentPage == 1) {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                } else {
-                  return;
-                }
-              }
-              if (currentPage == 2) {
-                if (context.read<OrderInputEntity>().payWithCash) {
-                  await context.read<AddOrderCubit>().addOrder(
-                    orderEntity: context.read<OrderInputEntity>(),
-                  );
-                  return;
-                } else {
-                  _processPayment(context);
-                  return;
-                }
-              }
+          BlocListener<PayWithStripeCubit, PayWithStripeState>(
+            listener: (context, state) {
+              if (state is PayWithStripeSuccess) {
+                context.read<AddOrderCubit>().addOrder(
+                  orderEntity: context.read<OrderInputEntity>(),
+                );
 
-              pageController.animateToPage(
-                currentPage + 1,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-              );
+                AppSnackbars.showSuccess(context, message: s.paymentSuccess);
+              } else if (state is PayWithStripeError) {
+                AppSnackbars.showError(context, message: state.message);
+              }
             },
+            child: CustomCheckoutButton(
+              currentPage: currentPage,
+              pageController: pageController,
+              formKey: _formKey,
+            ),
           ),
           const Gap(25),
         ],
-      ),
-    );
-  }
-
-  void _processPayment(BuildContext context) {
-    final s = S.of(context);
-    final OrderInputEntity orderEntity = context.read<OrderInputEntity>();
-    final PaypalPaymentEntity payPalPaymentEntity =
-        PaypalPaymentEntity.fromEntity(orderEntity);
-    final addOrderCubit = context.read<AddOrderCubit>();
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (BuildContext context) => PaypalCheckoutView(
-          sandboxMode: true,
-          clientId: kPayPalClientID,
-          secretKey: kPayPalSecretKey,
-          transactions: [payPalPaymentEntity.toJson()],
-          note: "Contact us for any questions on your order.",
-          onSuccess: (Map params) async {
-            log("onSuccess: $params");
-            Navigator.pop(context);
-            AppSnackbars.showSuccess(context, message: s.paymentSuccess);
-            await addOrderCubit.addOrder(orderEntity: orderEntity);
-          },
-          onError: (error) {
-            log("onError: $error");
-            Navigator.pop(context);
-            AppSnackbars.showError(context, message: s.errorOccurred);
-          },
-          onCancel: () {
-            log('cancelled:');
-          },
-        ),
       ),
     );
   }
