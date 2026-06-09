@@ -72,6 +72,7 @@
   "cashOnDelivery": "الدفع عند الاستلام",
   "shippingIncluded": "السعر يشمل مصاريف الشحن",
   "payWithCard": "الدفع باستخدام البطاقة البنكية",
+  "payWithStripe": "الدفع بواسطة Stripe",
   "freeShipping": "الشحن مجاني",
   "orderSummary": "ملخص الطلب",
   "subtotal": "المجموع الفرعي :",

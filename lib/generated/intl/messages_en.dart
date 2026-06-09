@@ -174,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "payWithCard": MessageLookupByLibrary.simpleMessage("Pay with Card"),
     "payWithPaypal": MessageLookupByLibrary.simpleMessage("Pay with PayPal"),
+    "payWithStripe": MessageLookupByLibrary.simpleMessage("Pay with Stripe"),
     "payment": MessageLookupByLibrary.simpleMessage("Payment"),
     "paymentSuccess": MessageLookupByLibrary.simpleMessage(
       "Payment Successful",

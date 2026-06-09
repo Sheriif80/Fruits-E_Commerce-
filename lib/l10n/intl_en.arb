@@ -72,6 +72,7 @@
   "cashOnDelivery": "Cash on Delivery",
   "shippingIncluded": "Price includes shipping",
   "payWithCard": "Pay with Card",
+  "payWithStripe": "Pay with Stripe",
   "freeShipping": "Free Shipping",
   "orderSummary": "Order Summary",
   "subtotal": "Subtotal :",

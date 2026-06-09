@@ -529,6 +529,16 @@ class S {
     );
   }
 
+  /// `Pay with Stripe`
+  String get payWithStripe {
+    return Intl.message(
+      'Pay with Stripe',
+      name: 'payWithStripe',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Free Shipping`
   String get freeShipping {
     return Intl.message(
