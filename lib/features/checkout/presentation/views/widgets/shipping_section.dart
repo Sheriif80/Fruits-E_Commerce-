@@ -26,7 +26,8 @@ class _ShippingSectionState extends State<ShippingSection>
           title: s.cashOnDelivery,
           subtitle: s.shippingIncluded,
           price: s.price(
-            context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 40,
+            context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() +
+                40,
           ),
           isActive: selectedIndex == 0,
           onTap: () {
@@ -35,6 +36,7 @@ class _ShippingSectionState extends State<ShippingSection>
             });
             context.read<OrderInputEntity>().payWithCash = true;
             context.read<OrderInputEntity>().payWithCard = false;
+            context.read<OrderInputEntity>().payWithStripe = false;
           },
         ),
         const Gap(16),
@@ -51,6 +53,24 @@ class _ShippingSectionState extends State<ShippingSection>
             });
             context.read<OrderInputEntity>().payWithCash = false;
             context.read<OrderInputEntity>().payWithCard = true;
+            context.read<OrderInputEntity>().payWithStripe = false;
+          },
+        ),
+        const Gap(16),
+        ShippingItem(
+          title: s.payWithStripe,
+          subtitle: s.freeShipping,
+          price: s.price(
+            context.read<OrderInputEntity>().cartEntity.calculateTotalPrice(),
+          ),
+          isActive: selectedIndex == 2,
+          onTap: () {
+            setState(() {
+              selectedIndex = 2;
+            });
+            context.read<OrderInputEntity>().payWithCash = false;
+            context.read<OrderInputEntity>().payWithCard = false;
+            context.read<OrderInputEntity>().payWithStripe = true;
           },
         ),
       ],

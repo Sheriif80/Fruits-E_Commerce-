@@ -27,7 +27,11 @@ class OrderModel {
     totalPrice: entity.payWithCard
         ? entity.cartEntity.calculateTotalPrice()
         : entity.cartEntity.calculateTotalPrice() + 40,
-    paymentMethod: entity.payWithCard ? "Card(Paypal)" : "Cash",
+    paymentMethod: entity.payWithCard
+        ? "Card(Paypal)"
+        : entity.payWithCash
+        ? "Cash"
+        : "Card(Stripe)",
     orderID: const Uuid().v4(),
     orderedProducts: entity.cartEntity.cartItems
         .map((e) => OrderedProductModel.fromEntity(e))

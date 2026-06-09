@@ -67,7 +67,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
             text: currentPage == 2
                 ? context.read<OrderInputEntity>().payWithCash
                       ? s.confirmOrder
-                      : s.payWithPaypal
+                      : "الدفع بواسطة حسابك البنكي"
                 : s.next,
             onPressed: () async {
               if (currentPage == 1) {

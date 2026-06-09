@@ -6,12 +6,14 @@ class OrderInputEntity {
   final CartEntity cartEntity;
   bool payWithCash;
   bool payWithCard;
+  bool payWithStripe;
   ShippingAddressEntity? shippingAddress;
   OrderInputEntity({
     required this.userID,
     required this.cartEntity,
     this.payWithCash = true,
     this.payWithCard = false,
+    this.payWithStripe = false,
     required this.shippingAddress,
   });
 
