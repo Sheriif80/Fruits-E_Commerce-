@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:fruits_e_commerce_app/core/repos/order_repos/order_repo.dart';
 import 'package:fruits_e_commerce_app/core/repos/order_repos/order_repo_impl.dart';
 import 'package:fruits_e_commerce_app/core/repos/products_repo/products_repo.dart';
@@ -8,8 +9,11 @@ import 'package:fruits_e_commerce_app/core/services/dio_factory.dart';
 import 'package:fruits_e_commerce_app/core/services/firebase_auth_service.dart';
 import 'package:fruits_e_commerce_app/core/services/firestore_service.dart';
 import 'package:fruits_e_commerce_app/core/services/push_notification_service.dart';
+import 'package:fruits_e_commerce_app/core/services/stripe_service.dart';
 import 'package:fruits_e_commerce_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:fruits_e_commerce_app/features/auth/domain/repos/auth_repo.dart';
+import 'package:fruits_e_commerce_app/features/checkout/data/repos/checkout_repo_impl.dart';
+import 'package:fruits_e_commerce_app/features/checkout/domain/repos/checkout_repo.dart';
 import 'package:fruits_e_commerce_app/features/favorites/data/repos/favorites_repo_impl.dart';
 import 'package:fruits_e_commerce_app/features/favorites/domain/repos/favorites_repo.dart';
 import 'package:fruits_e_commerce_app/features/products/data/repos/reviews_repo_impl.dart';
@@ -21,9 +25,8 @@ import 'package:get_it/get_it.dart';
 final GetIt getIt = GetIt.instance;
 
 void setupGetIt() {
-  getIt.registerLazySingleton<ApiService>(
-    () => ApiService(DioFactory.getDio()),
-  );
+  getIt.registerLazySingleton<Dio>(() => DioFactory.getDio());
+  getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
 
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<PushNotificationService>(PushNotificationService());
@@ -47,6 +50,12 @@ void setupGetIt() {
   );
 
   getIt.registerLazySingleton<FavoritesRepo>(() => FavoritesRepoImpl());
+  getIt.registerLazySingleton<StripeService>(
+    () => StripeService(apiService: getIt<ApiService>()),
+  );
+  getIt.registerLazySingleton<CheckoutRepo>(
+    () => CheckoutRepoImpl(stripeService: getIt<StripeService>()),
+  );
 
   getIt.registerLazySingleton<SearchRepo>(
     () => SearchRepoImpl(databaseService: getIt<DatabaseService>()),

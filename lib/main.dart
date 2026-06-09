@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fruits_e_commerce_app/core/cubits/locale_cubit/locale_cubit.dart';
 import 'package:fruits_e_commerce_app/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:fruits_e_commerce_app/core/routing/router_generation_config.dart';
@@ -28,6 +29,7 @@ void main() async {
   await getIt<PushNotificationService>().init();
   await dotenv.load();
   Bloc.observer = AppBlocObserver();
+  Stripe.publishableKey = dotenv.get('Stripe_Publishable_Key');
   runApp(const FruitHub());
 }
 
