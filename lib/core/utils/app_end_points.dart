@@ -7,4 +7,5 @@ class AppEndPoints {
   static const getOrders = 'orders';
   static const getReviews = 'reviews';
   static const addReview = 'reviews';
+  static const createPaymentIntentStripe = '/v1/payment_intents';
 }
